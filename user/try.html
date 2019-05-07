@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>try</title>
+  <link rel="stylesheet" type="text/css" href="../css/all.css">
+  <link rel="stylesheet" href="../css/theme.css" type="text/css">
+</head>
+<body>
+
+                      <div class="py-2">
+                        <div class="container">
+                          <div class="row">
+                      <div id="house_append" class="row">
+                            <div class="col-md-4 p-3" id="try">
+                              <div class="card box-shadow">
+                                <img class="card-img-top" src="../img/photo-1.jpg">
+                                <div class="card-body">
+                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                  <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                      <a data-toggle="modal" data-target="#house1" href="" class="btn btn-sm btn-outline-secondary">View</a>
+                                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    </div> <small class="text-muted">9 mins</small>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                       </div>
+                            <div class="p-5 col-lg-4">                       
+                                  <div class="col-md-12"><button class="btn btn-primary" style="border-radius:50%;" id="append1"><i class="fa fa-plus fa-fw fa-1x py-1"></i></button></div>
+                                </div>
+                          </div>
+                        </div>
+                      </div>
+     <script src="../js/jquery-3.3.1.min.js"></script>       
+<script>
+    //新增模块
+$(document).ready(function(){
+    $("#append1").click(function(){
+      $("#house_append").append("<div class="col-md-4 p-3"><div class="card box-shadow"><img class="card-img-top" src="../img/photo-1.jpg"><div class="card-body"><p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p><div class="d-flex justify-content-between align-items-center"><div class="btn-group"><a data-toggle="modal" data-target="#house2" href="" class="btn btn-sm btn-outline-secondary">View</a><button type="button" class="btn btn-sm btn-outline-secondary">Edit</button></div><small class="text-muted">9 mins</small></div></div></div></div>");
+    });
+  });
+/*another try
+var $parent = $("#house_append"); //the element you're appending .relevantClass to
+$parent.on("click","#append1",function(){
+    //code...
+    <div class="col-md-4 p-3"><div class="card box-shadow"><img class="card-img-top" src="../img/photo-1.jpg"><div class="card-body"><p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p><div class="d-flex justify-content-between align-items-center"><div class="btn-group"><a data-toggle="modal" data-target="#house2" href="" class="btn btn-sm btn-outline-secondary">View</a><button type="button" class="btn btn-sm btn-outline-secondary">Edit</button></div><small class="text-muted">9 mins</small></div></div></div></div>
+});*/
+</script>
+</body>
+</html>

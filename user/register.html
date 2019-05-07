@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- PAGE settings -->
+  <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
+  <title>SignUp</title>
+  <!-- CSS dependencies -->
+  <link rel="stylesheet" href="../css/all.css" type="text/css">
+   <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/wireframe.css">
+   
+</head>
+
+<body class="bg-light">
+  <div class="text-white" style="position: relative; overflow: hidden;"> <video autoplay="" loop="" muted="" plays-inline="" style="position: absolute; right: 0; top: 0; min-width:100%; z-index: -100;">
+      <source src="../mp4/video-placeholder.mp4" type="video/mp4"> </video>
+    <div class="container">
+      <div class="row">
+        <div class="text-center col-md-12 mx-auto">
+          <h4 class="display-4 mt-1">JOIN US NOW</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-4 order-md-2">
+              <h4 class="d-flex justify-content-between mb-3"> <span class="">用户头像</span> </h4>
+              <form class="my-1 mb-2">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group"><img class="img-fluid d-block rounded-circle d-inline-flex" src="../svgs/img-placeholder-3.svg" width="160"></div>
+                  </div>
+                </div>
+              </form>
+              <div class="row">
+              </div>
+              <li class="list-group-item d-flex justify-content-between bg-light list-group-item-action">
+                <div class="text-success">
+                  <h6 class="my-0">免费 Totally Free</h6> <small>免费信息平台</small>
+                </div> <span class="text-success">特点1</span>
+              </li>
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-action justify-content-between d-flex">
+                  <div>
+                    <h6 class="my-0"><b>海量住房信息</b></h6> <small class="text-muted">专为西大人提供租房一手资讯</small>
+                  </div> <span class="text-muted">特点2</span>
+                </li>
+                <li class="list-group-item list-group-item-action justify-content-between d-flex">
+                  <div>
+                    <h6 class="my-0"><b>个性租房选择</b></h6> <small class="text-muted">二手闲置物品，提供便捷&nbsp;</small>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                  </div> <span class="text-muted">特点3</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between list-group-item-action">
+                  <div>
+                    <h6 class="my-0">西大人的另一个社交小站</h6> <small class="text-muted">线上发布信息，线下联系互动</small>
+                  </div> <span class="text-muted">特点4</span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-8 order-md-1" style="">
+              <h4 class="text-left mb-2"><b>Create an account to EXPLORE 栖居！</b></h4>
+              <form class="needs-validation" id="reg-form" novalidate="">
+                <div class="mb-1 form-group has-feedback"> 
+                <label for="username" >用户名</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend"> <span class="input-group-text">@</span> </div>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" easyform="length:4-16;char-normal;real-time;" message="用户名必须为4—16位的英文字母或数字" easytip="disappear:lost-focus;theme:blue;" ajax-message="Ooh，该用户名已存在哦" required autofocus>
+                  </div>
+                    <!--<span style="display: none;" class="tips text-danger"></span>
+                    <span style="display: none;" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>-->
+                </div>
+               <div class="mb-1"> <label for="email" contenteditable="true">邮箱<span class="text-muted"></span></label>
+                  <input type="text" class="form-control" id="email" name="email" placeholder="you@example.com"
+                   easyform="email;real-time;" message="Email格式要正确哦" easytip="disappear:lost-focus;theme:blue;" ajax-message="这个Email地址已经被注册过啦，换一个试试哦">
+                </div>
+
+                <div class="mb-1"> 
+                <label for="phone" contenteditable="true" >电话<span class="text-muted"></span></label>
+                  <input type="text" class="form-control" id="phone" name="phone" placeholder="输入手机号码(11位)" maxlength="11" easyform="phone;length:11;real-time;" message="电话格式要正确哦，请输入11位数字" easytip="disappear:lost-focus;theme:blue;" ajax-message="这个电话号码已经被注册过啦，换一个试试哦"
+                  required>
+                  <!--<div class="invalid-feedback"> 请输入一个有效的电话号码 </div>-->
+                  <div class="invalid-feedback"> 请输入一个有效的电话号码 </div>
+                </div>
+                <!-- <small class="form-text text-light">嘘，我们会对你的电话号码保密</small>-->
+                <div class="row">
+                  <div class="col-md-6 mb-1" style=""> 
+                  <label for="gender">性别</label> 
+                  <select class="custom-select d-block w-100" id="gender" required>
+                      <option value="not_choose">Choose...</option>
+                      <option value="male">male</option>
+                      <option value="female">female</option>
+                    </select>
+                    <div class="invalid-feedback"> 请选择性别. </div>
+                  </div>
+                  <div class="col-md-6 mb-1" >
+                   <label for="region">校区</label> 
+                   <select class="custom-select d-block w-100" id="region" required="required">
+                      <option value="not_choose">Choose...</option>
+                      <option value="rongchang">荣昌校区</option>
+                      <option value="beibei">北碚校区</option>
+                      <option value="other">其他(含提供住房信息的非校内人员)</option>
+                    </select>
+                    <div class="invalid-feedback"> 请选择一个具体校区. </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 form-group has-feedback">
+                    <div class="form-group"> <label for="password">密码</label> 
+                    <input type="password" class="form-control" placeholder="Password" id="password" easyform="length:6-16;" message="密码必须为6—16位" easytip="disappear:lost-focus;theme:blue;" required> 
+                    </div>
+                    <!--<span style="display: none;" class="tips text-danger"></span>
+                   <span style="display: none;" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                   <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>-->
+                  </div>
+                  <div class="col-md-6 form-group has-feedback">
+                    <div class="form-group"> <label for="ConfirmPassword" >确认密码</label> 
+                    <input type="password" class="form-control" id="ConfirmPassword" maxlength="20" required easyform="length:6-16;equal:#password;" message="两次密码输入要一致" easytip="disappear:lost-focus;theme:blue;">
+                    </div>
+                    <!--<span style="display: none;" class="tips text-danger"></span>
+                    <span style="display: none;" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>-->
+                  </div>
+                </div>
+                
+                <div class="form-group" style="">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="save-info" value="on"> <label class="custom-control-label" for="save-info" required>我同意这些条款和条件 &amp; 知识产权政策 </label> </div>
+                </div>
+                <div class="buttons">
+                 <input value="注 册" type="submit" class="btn btn-primary btn-lg btn-block" id="submit">
+              </div>   
+               <br class="clear">
+            <!--  <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-block" id="sub">提交</button>
+              </div>-->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center pt-1">
+          <p class="mb-1">© 2018-2019 发际线保卫队</p>
+          <ul class="list-inline">
+            <li class="list-inline-item text-white">
+              <a href="#" class="text-dark">Privacy</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="text-dark">Terms</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="text-dark">Support</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../js/jquery-3.3.1.min.js" ></script>
+  <script src="../js/easyform.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+     $('#reg-form').easyform();
+   });
+ </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous" style=""></script>
+  
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+
+
+  <script> 
+    //获取前端注册数据 
+    axios .post('/qiju/user/signup', { 
+    username:$("#username").val(),
+    email: $("#email").val(),
+    phone: $("#phone").val(), 
+    gender:$("#gender option:selected").val(), 
+    region:$("#region option:selected").val(),  
+    password : $("#password").val()
+     }).then(function(response) { 
+       console.log(response); 
+    if (response.data.code === 1) location.href="/login.html";  
+    else alert("Ooh，注册失败了，请稍后再试") ;          //如果失败的话建议给个提示，比如弹个框之类的 
+      }).catch(function(error){ 
+        console.log(error); 
+      }); 
+  </script>
+ 
+</body>
+
+</html>
