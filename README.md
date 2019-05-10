@@ -25,6 +25,8 @@ tips：
 ![image](https://github.com/perseverance123/web_design/blob/master/display2.jpg)
 tips：
 
+1.个人页面正在加紧美化中，近期内会更改调整文件！！！
+
 1.在修改框内已经实现图片上传及预览。
 
 2.尚在完善增加模块(append)相关功能。
@@ -38,7 +40,7 @@ tips：
 
 1.通过forget your password进入safe_support，目前只有这一个方式进入安全信息修改页。
 
-2.remember me(login)和统一协议(register)的复选框目前尚未实现相关功能。
+2.这两个页面美化工作接近尾声了，最近会合并代码，上传新的login.html和register.html文件。
 
 3.注册页目前实现了对读入数据的初步判断和限制，具体js代码见html下方(有些是试验代码)和formeasy.js
 
@@ -68,3 +70,7 @@ tips：
 3)三个tab(phone,email,password)尚未实现分别提交保存(三个submit除了id不同，其他尚无区分度)
 
 4)填写的信息框在切换tab时无法消除。
+
+六、首页index
+正在美化，尚未截图。目前搜索功能尚未实现。美化工作完成后，将编写有关的前端js代码。
+
