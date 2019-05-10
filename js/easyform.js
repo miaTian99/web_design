@@ -352,7 +352,6 @@
          * 按照各种rule进行判断的函数数组
          * 通过对judge添加成员函数，可以扩充规则
          * */
-
         judge: {
             "char-normal": function (ei, v, p)
             {
@@ -393,14 +392,6 @@
                     return ei._success_rule("phone");
             },
 
-            "valid_phone": function (ei, v, p)
-            {
-                //if (false == /^[0-9]{6}$/.test(v))
-                if (false == /^111111/.test(v))//短信验证码设置的111111
-                    return ei._error("valid_phone");
-                else
-                    return ei._success_rule("valid_phone");
-            },
             "length": function (ei, v, p)
             {
                 var range = p.split("-");
@@ -506,13 +497,13 @@
         },
         blue: {
             color: "rgba(255,255,255,1)",
-            "background-color": "rgba(51,153,204,0.8)",
-            "border": "1px solid rgba(102,153,204,1)",
+            "background-color": "rgba(249,211,103,0.9)",
+            "border": "1px solid rgba(249,236,195,1)",
             "border-radius": 5
         },
         red: {
             color: "rgba(255,255,255,1)",
-            "background-color": "rgba(255,102,102,0.9)",
+            "background-color": "rgba(249,236,195,0.9)",
             "border": "1px solid rgba(204,0,51,1)",
             "border-radius": 5
         },
