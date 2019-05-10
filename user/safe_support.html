@@ -61,6 +61,7 @@
       cursor: pointer;
     }
   </style>
+  <link rel="stylesheet" href="../scss/theme.css">
 </head>
 
 <body>
@@ -71,51 +72,57 @@
           <div class="card">
             <div class="card-header"> 安全信息修改 </div>
             <div class="card-body">
-            <form method="post" class="">
-              <div class="row">
-                <div class="col-3">
-                  <ul class="nav nav-pills flex-column bg-light">
-                    <li class="nav-item"> <a href="" class="nav-link active" data-toggle="pill" data-target="#tabone"><br><h4>Phone</h4><br></a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo"><br><h4>Email</h4><br></a></li>
-                    <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree"><br><h4>Password</h4><br></a> </li>
-                  </ul>
-                </div>
-                <div class="col-9">
-                  <div class="tab-content" id="reg-form">
-                    <div class="tab-pane fade show active" id="tabone" role="tabpanel">
-                      <div class="form-group row">
-                        <label for="oldphone" class="col-2 col-form-label text-center"><i class="fas fa-phone-volume fa-1x"></i>
-                        </label>
-                        <div class="col-8">
-                          <input type="text" class="form-control" id="oldphone" placeholder="原手机号码(11位)" maxlength="11" easyform="phone;length:11;real-time;" message="电话格式要正确哦，请输入11位数字" easytip="disappear:lost-focus;theme:blue;" ajax-message="这个电话号码没有被注册过哦" required="">
+              <form method="post" class="">
+                <div class="row">
+                  <div class="col-3">
+                    <ul class="nav nav-pills flex-column bg-light">
+                      <li class="nav-item" style="	text-shadow: 0px 0px 4px black;"> <a href="" class="nav-link active" data-toggle="pill" data-target="#tabone"><br>
+                          <h4 style="	text-shadow: 0px 0px 0px;">Phone</h4><br>
+                        </a> </li>
+                      <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo"><br>
+                          <h4>Email</h4><br>
+                        </a></li>
+                      <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree"><br>
+                          <h4>Password</h4><br>
+                        </a> </li>
+                    </ul>
+                  </div>
+                  <div class="col-9">
+                    <div class="tab-content" id="reg-form">
+                      <div class="tab-pane fade show active" id="tabone" role="tabpanel">
+                        <div class="form-group row">
+                          <label for="oldphone" class="col-2 col-form-label text-center"><i class="fas fa-phone-volume fa-1x"></i>
+                          </label>
+                          <div class="col-8">
+                            <input type="text" class="form-control" id="oldphone" placeholder="原手机号码(11位)" maxlength="11" easyform="phone;length:11;real-time;" message="电话格式要正确哦，请输入11位数字" easytip="disappear:lost-focus;theme:blue;" ajax-message="这个电话号码没有被注册过哦" required="">
+                          </div>
+                        </div>
+                        <div class="form-group row"> <label for="newphone" class="col-2 col-form-label text-center"><i class="fas fa-mobile-alt fa-1x"></i></label>
+                          <div class="col-8">
+                            <input type="text" class="form-control" id="newphone" name="phone" placeholder="请输入新的手机号码(11位)" maxlength="11" easyform="phone;length:11;real-time;" message="电话格式要正确哦，请输入11位数字" easytip="disappear:lost-focus;theme:blue;" ajax-message="这个电话号码已经被注册过啦，换一个试试哦" required="">
+                          </div>
+                        </div>
+                        <div class="row" style=" float:right;padding-right: 17%">
+                          <div class="col-6">
+                            <input class="form-control btn navbar-btn btn-outline-primary" id="submit1" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保&nbsp;存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" type="submit">
+                          </div>
+                          <div class="col-6">
+                            <input value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;取&nbsp;消&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" id="reset1" class="form-control btn navbar-btn btn-outline-primary" type="reset">
+                          </div>
                         </div>
                       </div>
-                      <div class="form-group row"> <label for="newphone" class="col-2 col-form-label text-center"><i class="fas fa-mobile-alt fa-1x"></i></label>
-                        <div class="col-8">
-                          <input type="text" class="form-control" id="newphone" name="phone" placeholder="请输入新的手机号码(11位)" maxlength="11" easyform="phone;length:11;real-time;" message="电话格式要正确哦，请输入11位数字" easytip="disappear:lost-focus;theme:blue;" ajax-message="这个电话号码已经被注册过啦，换一个试试哦" required="">
+                      <div class="tab-pane fade" id="tabtwo" role="tabpanel">
+                        <div class="form-group row"> <label for="oldmail" class="col-2 col-form-label text-center"><i class="fas fa-envelope fa-1x"></i></label>
+                          <div class="col-8">
+                            <input type="text" class="form-control" id="oldmail" placeholder="输入旧邮箱地址" easyform="email;real-time;" message="Email格式要正确哦" easytip="disappear:lost-focus;theme:blue;" ajax-message="这个Email地址没有被注册过哦">
+                          </div>
                         </div>
-                      </div>
-                      <div class="row" style=" float:right;padding-right: 17%">
-                        <div class="col-6">
-                          <input class="form-control btn btn-outline-dark navbar-btn" id="submit1" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保&nbsp;存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" type="submit">
+                        <div class="form-group row"> <label for="newmail" class="col-2 col-form-label text-center"><i class="far fa-envelope fa-1x"></i></label>
+                          <div class="col-8">
+                            <input type="text" class="form-control" id="newmail" placeholder="输入新邮箱地址" easyform="email;real-time;" message="Email格式要正确哦" easytip="disappear:lost-focus;theme:blue;" ajax-message="这个Email地址已经被注册过啦，换一个试试哦">
+                          </div>
                         </div>
-                        <div class="col-6">
-                          <input value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;取&nbsp;消&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" id="reset1" class="form-control btn btn-outline-dark navbar-btn" type="reset">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="tabtwo" role="tabpanel">
-                      <div class="form-group row"> <label for="oldmail" class="col-2 col-form-label text-center"><i class="fas fa-envelope fa-1x"></i></label>
-                        <div class="col-8">
-                          <input type="text" class="form-control" id="oldmail" placeholder="输入旧邮箱地址" easyform="email;real-time;" message="Email格式要正确哦" easytip="disappear:lost-focus;theme:blue;" ajax-message="这个Email地址没有被注册过哦">
-                        </div>
-                      </div>
-                      <div class="form-group row"> <label for="newmail" class="col-2 col-form-label text-center"><i class="far fa-envelope fa-1x"></i></label>
-                        <div class="col-8">
-                          <input type="text" class="form-control" id="newmail" placeholder="输入新邮箱地址" easyform="email;real-time;" message="Email格式要正确哦" easytip="disappear:lost-focus;theme:blue;" ajax-message="这个Email地址已经被注册过啦，换一个试试哦">
-                        </div>
-                      </div>
-                      <!--邮箱验证，待定
+                        <!--邮箱验证，待定
               <div class="form-group row">
                 <label for="validate_email" class="col-2 col-form-label text-center">
                   <i class="fas fa-envelope fa-1x"></i></label>
@@ -123,65 +130,61 @@
                   <input type="email" class="form-control" id="validate_email" placeholder="mail@example.com"> </div>
               </div>
               -->
-                      <div class="row" style=" float:right;padding-right: 17%">
-                        <div class="col-6">
-                          <input class="form-control btn btn-outline-dark navbar-btn" id="submit2" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保&nbsp;存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" type="submit">
-                        </div>
-                        <div class="col-6">
-                          <input value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;取&nbsp;消&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" id="reset2" class="form-control btn btn-outline-dark navbar-btn" type="reset">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="tabthree" role="tabpanel">
-                      <div class="col-md-12 form-group has-feedback">
-                        
-                      <div class="form-group row"> <label for="phone" class="col-2 col-form-label text-center"><i class="fas fa-mobile-alt fa-1x"></i></label>
-                          <div class="col-8">
-                            <input type="text" class="form-control" id="phone" name="phone" placeholder="手机号码(11位)" maxlength="11" easyform="phone;length:11;real-time;" message="电话格式要正确哦，请输入11位数字" easytip="disappear:lost-focus;theme:blue;">
-                          </div>
-                        </div>
-
-                        <div class="form-group row has-feedback"> <label for="valid_phone" class="col-2 col-form-label text-center"><i class="fas fa-sms fa-1x"></i></label>
+                        <div class="row" style=" float:right;padding-right: 17%">
                           <div class="col-6">
-                            <input type="text" class="form-control" id="valid_phone" placeholder="请输入手机验证码，现设置的是111111" easyform="valid_phone;length:6;real-time;" message="短信验证码错误" easytip="disappear:lost-focus;theme:blue;" ajax-message="验证码超时，请重新获取">
+                            <input class="form-control btn navbar-btn btn-outline-primary" id="submit2" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保&nbsp;存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" type="submit">
                           </div>
-                          <div class="" style=" float:right;">
-                            <button type="button" id="loadingButton" class="btn btn-outline-dark navbar-btn" autocomplete="off">获取短信校验码</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-12 row ml-3">
-                        <div class="col-md-5 form-group has-feedback">
-                          <label for="password">新密码</label>
-                          <input type="password" class="form-control" placeholder="newPassword" id="password" easyform="length:6-16;" message="密码必须为6—16位" easytip="disappear:lost-focus;theme:blue;" required="">
-                        </div>
-                        <div class="col-md-5 form-group has-feedback">
-                          <div class="form-group"> <label for="ConfirmPassword">确认新密码</label>
-                            <input type="password" class="form-control" id="ConfirmPassword" placeholder="ConfirmPassword" required="" easyform="length:6-16;equal:#password;" message="两次密码输入要一致" easytip="disappear:lost-focus;theme:blue;">
+                          <div class="col-6">
+                            <input value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;取&nbsp;消&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" id="reset2" class="form-control btn navbar-btn btn-outline-primary" type="reset">
                           </div>
                         </div>
                       </div>
-                      <div class="row col-md-12 ml-3">
-              
-                        <div class="col-md-5 ">
-                          <label for="idcode-btn">验证码</label>
-                          <input type="text" class="form-control" placeholder="请输入4位验证码" id="idcode-btn" easyform="length:4;" message="验证码输入错误" easytip="disappear:lost-focus;theme:blue;" required>
+                      <div class="tab-pane fade" id="tabthree" role="tabpanel">
+                        <div class="col-md-12 form-group has-feedback">
+                          <div class="form-group row"> <label for="phone" class="col-2 col-form-label text-center"><i class="fas fa-mobile-alt fa-1x"></i></label>
+                            <div class="col-8">
+                              <input type="text" class="form-control" id="phone" name="phone" placeholder="手机号码(11位)" maxlength="11" easyform="phone;length:11;real-time;" message="电话格式要正确哦，请输入11位数字" easytip="disappear:lost-focus;theme:blue;">
+                            </div>
+                          </div>
+                          <div class="form-group row has-feedback"> <label for="valid_phone" class="col-2 col-form-label text-center"><i class="fas fa-sms fa-1x"></i></label>
+                            <div class="col-6">
+                              <input type="text" class="form-control" id="valid_phone" placeholder="请输入手机验证码，现设置的是111111" easyform="valid_phone;length:6;real-time;" message="短信验证码错误" easytip="disappear:lost-focus;theme:blue;" ajax-message="验证码超时，请重新获取">
+                            </div>
+                            <div class="" style=" float:right;">
+                              <button type="button" id="loadingButton" class="btn navbar-btn btn-outline-primary" autocomplete="off">获取短信校验码</button>
+                            </div>
+                          </div>
                         </div>
-
-                        <div class="col-md-6" style="padding-top: 3.5%">
-                          <div id="idcode" style="background: transparent;"></div>
+                        <div class="col-md-12 row ml-3">
+                          <div class="col-md-5 form-group has-feedback">
+                            <label for="password">新密码</label>
+                            <input type="password" class="form-control" placeholder="newPassword" id="password" easyform="length:6-16;" message="密码必须为6—16位" easytip="disappear:lost-focus;theme:blue;" required="">
+                          </div>
+                          <div class="col-md-5 form-group has-feedback">
+                            <div class="form-group"> <label for="ConfirmPassword">确认新密码</label>
+                              <input type="password" class="form-control" id="ConfirmPassword" placeholder="ConfirmPassword" required="" easyform="length:6-16;equal:#password;" message="两次密码输入要一致" easytip="disappear:lost-focus;theme:blue;">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row col-md-12 ml-3">
+                          <div class="col-md-5 ">
+                            <label for="idcode-btn">验证码</label>
+                            <input type="text" class="form-control" placeholder="请输入4位验证码" id="idcode-btn" easyform="length:4;" message="验证码输入错误" easytip="disappear:lost-focus;theme:blue;" required="">
+                          </div>
+                          <div class="col-md-6" style="padding-top: 3.5%">
+                            <div id="idcode" style="background: transparent;"></div>
+                          </div>
+                        </div>
+                        <div class="row py-3 ml-4 text-center">
+                          <div class="col-md-5">
+                            <input class="form-control btn navbar-btn btn-outline-primary" id="submit3" value="保&nbsp;存" type="submit">
+                          </div>
+                          <div class="col-md-5">
+                            <input value="取&nbsp;消" id="reset3" class="form-control btn navbar-btn btn-outline-primary" type="reset">
+                          </div>
                         </div>
                       </div>
-                      <div class="row py-3 ml-4 text-center">
-                        <div class="col-md-5">
-                          <input class="form-control btn btn-outline-dark navbar-btn" id="submit3" value="保&nbsp;存" type="submit">
-                        </div>
-                        <div class="col-md-5">
-                          <input value="取&nbsp;消" id="reset3" class="form-control btn btn-outline-dark navbar-btn" type="reset">
-                        </div>
-                      </div>
-                    </div>
-                    <!--<div class="form-group row py-3 ml-4">
+                      <!--<div class="form-group row py-3 ml-4">
                 <div class="col-md-4">
                   <input class="form-control btn btn-outline-dark navbar-btn" id="submit" value="保&nbsp;&nbsp;存&nbsp;&nbsp;修&nbsp;&nbsp;改" type="submit">
                 </div>
@@ -189,10 +192,10 @@
                   <input value="取&nbsp;&nbsp;消" id="reset" class="form-control btn btn-outline-dark navbar-btn" type="reset">
                 </div>
               </div>-->
+                    </div>
                   </div>
                 </div>
-              </div>
-            </form>
+              </form>
             </div>
           </div>
         </div>
@@ -204,7 +207,7 @@
     </div>
   </div>
   <script src="../js/jquery-3.3.1.min.js"></script>
- <script src="../js/easyform.js"></script>
+  <script src="../js/easyform.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
       $('#reg-form').easyform();
@@ -213,9 +216,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
-   <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
-  
-<!--随机验证码生成，验证码不匹配时自动更改-->
+  <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+  <!--随机验证码生成，验证码不匹配时自动更改-->
   <script type="text/javascript">
     var settings = {
       e: 'idcode',
@@ -333,28 +335,25 @@
       }
       return code;
     }
-
     //前端数据校验，通过span显示，和easyform.js机制不同-
-var check = [false, false, false, false, false, false];
+    var check = [false, false, false, false, false, false];
     //校验成功函数
-function success(Obj, counter) {
-    Obj.parent().parent().removeClass('has-error').addClass('has-success');
-    $('.tips').eq(counter).hide();
-    $('.glyphicon-ok').eq(counter).show();
-    $('.glyphicon-remove').eq(counter).hide();
-    check[counter] = true;
-
-}
-
-// 校验失败函数
-function fail(Obj, counter, msg) {
-    Obj.parent().parent().removeClass('has-success').addClass('has-error');
-    $('.glyphicon-remove').eq(counter).show();
-    $('.glyphicon-ok').eq(counter).hide();
-    $('.tips').eq(counter).text(msg).show();
-    check[counter] = false;
-}
-   // 验证码
+    function success(Obj, counter) {
+      Obj.parent().parent().removeClass('has-error').addClass('has-success');
+      $('.tips').eq(counter).hide();
+      $('.glyphicon-ok').eq(counter).show();
+      $('.glyphicon-remove').eq(counter).hide();
+      check[counter] = true;
+    }
+    // 校验失败函数
+    function fail(Obj, counter, msg) {
+      Obj.parent().parent().removeClass('has-success').addClass('has-error');
+      $('.glyphicon-remove').eq(counter).show();
+      $('.glyphicon-ok').eq(counter).hide();
+      $('.tips').eq(counter).text(msg).show();
+      check[counter] = false;
+    }
+    // 验证码
     $.idcode.setCode();
     $('.container').find('input').eq(12).change(function() {
       var IsBy = $.idcode.validateCode();
@@ -402,17 +401,15 @@ function fail(Obj, counter, msg) {
         $('.container').find('input').eq(4).parent().parent().removeClass('has-success').addClass('has-error');
       }
     });
-
   </script>
-
-<script>
+  <script>
     axios.post('/qiju/user/safeinfo_edit', {
       //安全信息更改接口
       oldphone: $("#oldphone").val(),
       newphone: $("#newphone").val(),
       oldmail: $("#oldmail").val(),
       newmail: $("#newmail").val(),
-      phone: $("#phone").val(),       //获取当前的手机号，发送手机验证码
+      phone: $("#phone").val(), //获取当前的手机号，发送手机验证码
       password: $("#password").val() //获取新密码
     }).then(function(response) {
       console.log(response);
@@ -422,7 +419,6 @@ function fail(Obj, counter, msg) {
       console.log(error);
     });
   </script>
-
 </body>
 
 </html>
