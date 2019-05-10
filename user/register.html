@@ -331,7 +331,7 @@
             })
             .then(function(response) {
               console.log(response);
-              if (response.data.code === '1') location.href = 'login.html';
+              if (response.data.code === 1) location.href = 'login.html';
               else alert('Ooh，注册失败了，请稍后再试'); //如果失败的话建议给个提示，比如弹个框之类的
             })
             .catch(function(error) {
