@@ -249,7 +249,7 @@
                           <a class="nav-link" data-toggle="tab" data-target="#tabthree">Contact</a>
                         </li>
                         <li class="nav-item">
-                          <a class="btn btn-primary px-3 collect" href="#"><i class="fa fa-star fa-fw fa-1x py-1"></i></a>
+                          <a class="btn btn-primary px-3 collect" href="#"><i class="far fa-star fa-fw fa-1x py-1"></i></a>
                         </li>
                       </ul>
                     </div>
@@ -281,22 +281,24 @@
   <script type="text/javascript">
   //TO DO:点击收藏、取消收藏；将收藏的模块传至后端
 $(".collect").click(function(){
-        if (userID == 0) {
+        var user_id = $('');//获当前登陆的用户id
+        if (user_id == 0) {
             alert("Ooh,请先登录再操作哦");
             //最好在前端加一个弹框model，id=failCollect
             //$("#failCollect").show();
-             setTimeout(function(){$("#failCollect").hide();},1000);
+             //setTimeout(function(){$("#failCollect").hide();},1000);
              location.href = '../user/login.html';
         }else{
-        $.post("FrontUserCollectServlet.do?action=check",{bookID:bookID,userID:userID},function(result){
+        $.post("FrontUserCollectServlet.do?action=check",{bookID:bookID,user_id:user_id},function(result){
             if(result == 0){
               //数据库中没有收藏,点击收藏操作
                 $.post("FrontUserCollectServlet.do?action=add",{bookID:bookID,userID:userID},function(msg){
                     $("#successCollect").show();
-                    //$(".collect").html("★已收藏");
+                    //$(".collect").html("已收藏");
                     alter('已收藏');
-                    $(".collect").css("background-color","#FF7F50");
-                     setTimeout(function(){$("#successCollect").hide();},1000);
+                    $('.collect').removeClass('far').addClass('fas')
+                   // $(".collect").css("...");
+                     //setTimeout(function(){$("#successCollect").hide();},1000);
                 });
             }
             else{
@@ -305,8 +307,9 @@ $(".collect").click(function(){
                //$("#successDelCollect").show();
                //$(".collect").html("加入收藏");
                alter('加入收藏');
-               $(".collect").css("background-color","#FFC125");
-               setTimeout(function(){$("#successDelCollect").hide();},1000);
+               $('.collect').removeClass('far').addClass('fas')
+              // $(".collect").css("...");
+               //setTimeout(function(){$("#successDelCollect").hide();},1000);
             });
             }
         })
