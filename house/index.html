@@ -284,16 +284,22 @@
     $(document).ready(function(){ 
        var user_id;
        var house_collect_status;
+       const urlModule1 = require('url1/*含有用户id信息的url*/');
+       let params1 = urlModule1.parse(request.url, true).query;//解析数据获得Json对象
+       let user_id = params1.user_id;//通过参数名称获得参数值
        // 为当前用户创建请求
-        axios.get('user_id=?')
+        axios.get('qiju/house/index', {
+            params: {
+              user_id:user_id
+    }
+  })
         .then(function (response) {
             console.log(response);
             if(response.data.code === 1 ){
                //已经登录，对应服务端获取数据 
-              const urlModule = require('url');
-              let params = urlModule.parse(request.url, true).query;//解析数据获得Json对象
-              let user_id = params.key;//通过参数名称获得参数值
-              let house_collect_status = params.key;//通过参数名称获得参数值
+              const urlModule2 = require('url2/*含有收藏信息的url*/');
+              let params2 = urlModule2.parse(request.url, true).query;//解析数据获得Json对象
+              let house_collect_status = params2.house_collect_status;//通过参数名称获得参数值
             }
             else{
             alert("Ooh,请先登录再操作哦");
@@ -373,12 +379,58 @@ $(".collect").click(function(){
 
   <script type="text/javascript">
   //TO DO:通过勾选复选框筛选房源(价格/地区)
+  $(document).ready(function(){ 
+    var array = new Array();
+        $check_boxes.each(function(){
+            var array_push = new Array();
+            array_push.push($(this).val());
+            array_push.push(2);
+            array.push(array_push);
+   var region = $('#region').prop('checked');//获取数组编码
+   var price = $('#price').prop('checked');//获取数组编码
+   if(region=='00'){
+      
 
+   }
+ 
+});
   </script>
 
   <script type="text/javascript">
-  //TO DO:通过获取房屋出租状态下架房源
-
+  //TO DO:通过获取房屋出租状态下架房源，下面只写了一个对应的处理状态。下架房源不止一个，循环？
+  $(document).ready(function(){ 
+       var house_rent_status;
+       var house_id;
+       //对应服务端获取数据 
+      const urlModule3 = require('url/*含有房屋状态的url*/');
+      let params3 = urlModule3.parse(request.url, true).query;//解析数据 获得Json对象
+      let house_rent_status = params3.house_rent_status;//通过参数名称获得参数值
+       //如果房屋已经出租了状态为1，未租为-1
+       if(house_rent_status == 1){
+         // 创建删除请求
+        axios.post('qiju/house/index')
+        .then(function (response) {
+            console.log(response);
+            if(response.data.code === 1 ){
+               //从服务端获取数据house_id 
+              const urlModule4 = require('url');
+              let params4 = urlModule4.parse(request.url, true).query;//解析数据 获得Json对象
+              let house_id = params4.house_id;//通过参数名称获得参数值
+                  $('#house' + house_id + '').remove();
+            }
+            else{
+            //如果删除失败了怎么办？即该下架的房源仍然在页面显示。
+            //方案之一：在对应house显示模块上蒙上一层div显示下架
+            //$('#house' + house_id + '').html(...);
+          }
+      })
+      .catch(function (error) {
+            console.log(error);
+      });
+    }else{
+        //未租仍然显示，不作处理
+    }
+  });
   </script>
 </body>
 
