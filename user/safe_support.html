@@ -146,6 +146,17 @@
                               <input type="text" class="form-control" id="phone" name="phone" placeholder="手机号码(11位)" maxlength="11" easyform="phone;length:11;real-time;" message="电话格式要正确哦，请输入11位数字" easytip="disappear:lost-focus;theme:blue;">
                             </div>
                           </div>
+                          <div class="row col-md-12 ml-3">
+                            <div class="form-group row col-md-5 ">
+                                <label for="idcode-btn" class="col-md-2 col-form-label text-center"><i class="fas fa-mobile-alt fa-1x"></i></label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" placeholder="请输入4位验证码" id="idcode-btn" easyform="length:4;" message="验证码输入错误" easytip="disappear:lost-focus;theme:blue;" required>
+                                </div>
+                               </div>
+                            <div class="col-md-6" style="padding-top: 3.5%">
+                              <div id="idcode" style="background: transparent;"></div>
+                            </div>
+                          </div>
                           <div class="form-group row has-feedback"> <label for="valid_phone" class="col-2 col-form-label text-center"><i class="fas fa-sms fa-1x"></i></label>
                             <div class="col-6">
                               <input type="text" class="form-control" id="valid_phone" placeholder="请输入手机验证码，现设置的是111111" easyform="valid_phone;length:6;real-time;" message="短信验证码错误" easytip="disappear:lost-focus;theme:blue;" ajax-message="验证码超时，请重新获取">
@@ -166,15 +177,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="row col-md-12 ml-3">
-                          <div class="col-md-5 ">
-                            <label for="idcode-btn">验证码</label>
-                            <input type="text" class="form-control" placeholder="请输入4位验证码" id="idcode-btn" easyform="length:4;" message="验证码输入错误" easytip="disappear:lost-focus;theme:blue;" required="">
-                          </div>
-                          <div class="col-md-6" style="padding-top: 3.5%">
-                            <div id="idcode" style="background: transparent;"></div>
-                          </div>
-                        </div>
+
                         <div class="row py-3 ml-4 text-center">
                           <div class="col-md-5">
                             <input class="form-control btn navbar-btn btn-outline-primary" id="submit3" value="保&nbsp;存" type="submit">
