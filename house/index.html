@@ -8,7 +8,7 @@
   <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
   <title>Index</title>
   <!-- CSS dependencies -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="../css/all.css" type="text/css">
   <link rel="stylesheet" href="../css/wireframe.css">
 </head>
 
@@ -249,7 +249,7 @@
                           <a class="nav-link" data-toggle="tab" data-target="#tabthree">Contact</a>
                         </li>
                         <li class="nav-item">
-                          <a class="btn btn-primary px-3 collect" href="#"><i class="far fa-star fa-fw fa-1x py-1"></i></a>
+                          <a class="btn btn-primary px-3 isclick" href="#"><i class="collect far fa-star fa-fw fa-1x py-1"></i></a>
                         </li>
                       </ul>
                     </div>
@@ -280,43 +280,90 @@
   <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
   <script type="text/javascript">
   //TO DO:点击收藏、取消收藏；将收藏的模块传至后端
-$(".collect").click(function(){
-        var user_id = $('');//获当前登陆的用户id
-        if (user_id == 0) {
-            alert("Ooh,请先登录再操作哦");
-            //最好在前端加一个弹框model，id=failCollect
-            //$("#failCollect").show();
-             //setTimeout(function(){$("#failCollect").hide();},1000);
-             location.href = '../user/login.html';
-        }else{
-        $.post("FrontUserCollectServlet.do?action=check",{bookID:bookID,user_id:user_id},function(result){
-            if(result == 0){
-              //数据库中没有收藏,点击收藏操作
-                $.post("FrontUserCollectServlet.do?action=add",{bookID:bookID,userID:userID},function(msg){
-                    $("#successCollect").show();
-                    //$(".collect").html("已收藏");
-                    alter('已收藏');
-                    $('.collect').removeClass('far').addClass('fas')
-                   // $(".collect").css("...");
-                     //setTimeout(function(){$("#successCollect").hide();},1000);
-                });
+ //-------------获当前登陆的用户id和收藏状态-----------------//
+    $(document).ready(function(){ 
+       var user_id;
+       var house_collect_status;
+       // 为当前用户创建请求
+        axios.get('user_id=?')
+        .then(function (response) {
+            console.log(response);
+            if(response.data.code === 1 ){
+               //已经登录，对应服务端获取数据 
+              const urlModule = require('url');
+              let params = urlModule.parse(request.url, true).query;//解析数据获得Json对象
+              let user_id = params.key;//通过参数名称获得参数值
+              let house_collect_status = params.key;//通过参数名称获得参数值
             }
             else{
-              //数据库存在收藏,点击删除收藏操作
-               $.post("FrontUserCollectServlet.do?action=del",{bookID:bookID,userID:userID},function(msg){
-               //$("#successDelCollect").show();
-               //$(".collect").html("加入收藏");
-               alter('加入收藏');
-               $('.collect').removeClass('far').addClass('fas')
-              // $(".collect").css("...");
-               //setTimeout(function(){$("#successDelCollect").hide();},1000);
+            alert("Ooh,请先登录再操作哦");
+            //或者在前端加一个弹框model
+             //此时不跳转，允许用户不登录查看，但不允许不登录进行收藏操作
+          }
+      })
+      .catch(function (error) {
+            console.log(error);
+      });
+  });
+
+//-----------------------房源收藏----------------------//
+$(".collect").click(function(){
+        if (user_id == null) {
+            //alert("Ooh,请先登录再操作哦");
+            //若用户未登录，不允许进行收藏操作，跳转至登录界面
+             $("#failCollect").show();
+             setTimeout(function(){
+               $("#failCollect").hide();
+               },1000);
+             location.href = '../user/login.html';
+        }else{
+           if(house_collect_status == 0 ){
+            //数据库中没有收藏,点击收藏操作
+            $('.collect').removeClass('far').addClass('fas')
+            //更新数据库收藏状态,变为已收藏
+             axios.post('/qiju/house/index', {
+              house_collect_status = 1,
+              house_id = $(this).attr("id"),
+              user_id = user_id
+            })
+            .then(function(response) {
+              console.log(response);
+              if(response.data.code === 1) alert('收藏成功');
+              else alter('收藏失败');
+            })
+            .catch(function(error) {
+              console.log(error);
             });
-            }
-        })
+           }
+           else{
+            //数据库存在收藏,点击删除收藏操作
+            $('.collect').removeClass('far').addClass('fas')
+            //更新数据库收藏状态，变为未收藏
+            axios.post('/qiju/house/index', {
+              collect_status = 0,
+              house_id = $(this).attr("id"),
+              user_id = user_id
+            })
+            .then(function(response) {
+              console.log(response);
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+           }
         }
-
-    });
-
+       });
+  /*效果演示代码
+   var isclick = 0;
+   $(".isclick").click(function(){
+      isclick++;
+      if(isclick%2 == 0){
+        $('.collect').removeClass('fas').addClass('far')
+      }
+      else{
+        $('.collect').removeClass('far').addClass('fas')
+      }
+   });*/
   </script>
 
   <script type="text/javascript">
@@ -329,7 +376,10 @@ $(".collect").click(function(){
 
   </script>
 
+  <script type="text/javascript">
+  //TO DO:通过获取房屋出租状态下架房源
 
+  </script>
 </body>
 
 </html>
