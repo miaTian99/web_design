@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--<link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">-->
   <link href="../css/theme.css" rel="stylesheet">
   <style>
     form {
@@ -17,20 +16,32 @@
   </style>
   <link rel="stylesheet" href="../kindeditor/themes/default/default.css">
   <link rel="stylesheet" type="text/css" href="../css/all.css">
+  <link rel="stylesheet" href="../scss/theme.css">
 </head>
 
-<body>
-  <div class="py-5 bg-info">
+<body style="background-color:#363433;">
+    <div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 px-0">
+              <img src="../img/355.gif" class="ml-0">
+              <img src="../img/355.gif" class="ml-4">
+              <img src="../img/355.gif" class="ml-5"> <img src="../img/355.gif" class="ml-5"> <img src="../img/355.gif" class="ml-4"> <img src="../img/355.gif" class="ml-5">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div >
     <div class="container">
-      <div class="row">
-        <div class="col-md-4 d-flex flex-column justify-content-center bg-light px-4 pb-4" style="">
+      <div class="row ml-2">
+        <div class="col-md-4 d-flex flex-column justify-content-center bg-primary px-4 pb-4">
           <div class="pb-4">
             <div class="row">
               <div><a href="user_page.html"><i class="fas fa-arrow-left fa-1x p-2 text-dark"></i></a></div>
               <div>
                 <h5 class="pt-1 pb-1" contenteditable="true">Back&nbsp;</h5>
               </div>
-            </div><a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            </div><a class="list-group-item list-group-item-action flex-column align-items-start list-group-item-warning">
               <b>
                 <li class="border-0 d-flex justify-content-between align-items-center border-dark">
                   <h5>House-one</h5> <i class="fa fa-pencil-alt text-muted fa-lg"></i>
@@ -39,7 +50,7 @@
             </a>
           </div>
           <div class="pb-4">
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <a class="list-group-item list-group-item-action flex-column align-items-start list-group-item-warning">
               <b>
                 <li class="border-0 d-flex justify-content-between align-items-center border-dark">
                   <h5>House-two</h5> <i class="fa fa-pencil-alt text-muted fa-lg"></i>
@@ -48,7 +59,7 @@
             </a>
           </div>
           <div class="pb-4">
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <a class="list-group-item list-group-item-action flex-column align-items-start list-group-item-warning">
               <b>
                 <li class="border-0 d-flex justify-content-between align-items-center border-dark">
                   <h5>House-three</h5> <i class="fa fa-pencil-alt text-muted fa-lg"></i>
@@ -56,7 +67,7 @@
               </b>
             </a>
           </div>
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+          <a class="list-group-item list-group-item-action flex-column align-items-start list-group-item-warning">
             <b>
               <li class="border-0 d-flex justify-content-between align-items-center border-dark">
                 <h5>House-four</h5> <i class="fa fa-pencil-alt text-muted fa-lg"></i>
@@ -64,21 +75,22 @@
             </b>
           </a>
         </div><b>
-       <form>
-          <div class="card">
-            <div class="card-header bg-white">
-              <ul class="nav nav-pills" style="float:right">
-                <li class="nav-item"><button class="nav-link btn btn-outline-light" type="submit" name="submit" id="save"><i class="d-block fas fa-lg fa-save text-muted"></i></button></li>
-                <li class="nav-item"> <button class="nav-link btn btn-outline-light" type="reset" name="reset" id="delete"><i class="d-block fas fa-lg fa-trash-alt text-muted"></i></button> </li>
-              </ul>
-            </div>
-            <div class="card">
-                <textarea name="content" id="content" style="overflow:hidden;width:100%;min-height:500px; visibility:hidden;"></textarea>
-                <!--<p>
-                  <input type="button" name="clear" value="清空内容">
-                  <input type="reset" name="reset" value="Reset">
-                </p>-->
-            </div>
+            <form>
+                <div class="card">
+                  <div class="card-header border-primary bg-primary">
+                    <ul class="nav nav-pills" style="float:right">
+                      <li class="nav-item"><button class="nav-link btn btn-outline-light" type="submit" name="submit" id="save"><i class="d-block fas fa-lg fa-save text-muted"></i></button></li>
+                      <li class="nav-item"> <button class="nav-link btn btn-outline-light" type="reset" name="reset" id="delete"><i class="d-block fas fa-lg fa-trash-alt text-muted"></i></button> </li>
+                    </ul>
+                  </div>
+                  <div class="card border-primary" >
+                    <textarea name="content" id="content" style="overflow:hidden;width:100%;min-height:500px; visibility:hidden;"></textarea>
+                    <!--<p>
+                      <input type="button" name="clear" value="清空内容">
+                      <input type="reset" name="reset" value="Reset">
+                    </p>-->
+                  </div>
+                </div>
               </form>
             
           </div>
@@ -161,50 +173,14 @@
       }).catch(function(error){ 
         console.log(error); 
       });
+      //TO DO:按下按钮删除
 
-   //获取时间差，动态显示最近编辑时间，尝试失败
+      //TO DO:按下按钮保存
+
+
+      //TO DO:获取时间差，动态显示最近编辑时间(可不做)
       
- // $("#save").click(function() {
-       // var global_time = ((new Date()).getTime() + '').substring(0, 10);((new Date()).getTime() + '')  
-        //是将整形变成字符串。
-        //substring(0, 10) 
-        //只用于截取字符串，是从第0个开始截取，截取10个。  
- /*     startTime();
-      function startTime() {        
-      var today = new Date();        
-      var y = today.getFullYear();        
-      var M = today.getMonth()+1;        
-      var d = today.getDate();        
-      var w = today.getDay();        
-      var h = today.getHours();        
-      var m = today.getMinutes();        
-      var s = today.getSeconds();        
-      var week=['星期天','星期一','星期二','星期三','星期四','星期五','星期六']; 
-      // add a zero in front of numbers<10        
-      m = checkTime(m);        
-      s = checkTime(s);        
-      $('#time1').html('现在是：'+h+':'+m+':'+s+' '+y+'年'+M+'月'+d+"日 "+week[w]);//可改变格式        
-      t = setTimeout(startTime, 500);        
-      function checkTime(i) {            
-        if (i < 10) {                
-          i = "0" + i;            
-        }            
-        return i;        
-      }    
-    }
-       function getFormatDate(){    
-        var nowDate = new Date();    
-        var year = nowDate.getFullYear();    
-        var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1) : nowDate.getMonth() + 1;    
-        var date = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();    
-        var hour = nowDate.getHours()< 10 ? "0" + nowDate.getHours() : nowDate.getHours();   
-        var minute = nowDate.getMinutes()< 10 ? "0" + nowDate.getMinutes() : nowDate.getMinutes();    
-        var second = nowDate.getSeconds()< 10 ? "0" + nowDate.getSeconds() : nowDate.getSeconds();    
-        return year + "-" + month + "-" + date+" "+hour+":"+minute+":"+second;}
-        var str = getFormatDate();console.log(str);
-        $(".content_list_time").text(str);
-*/
-      //  });
+
   </script>
 </body>
 
