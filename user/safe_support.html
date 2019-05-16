@@ -259,7 +259,7 @@
 
                           <div class="form-group row py-2">
                               <label for="phone" class="col-2 col-form-label text-center">
-                               <i class="fas fa-mobile-alt fa-1x"></i></label>
+                               <i class="far fa-check-circle fa-1x"></i></label>
                                <div class="col-6">
                                <input type="text" 
                                 class="form-control" 
@@ -294,23 +294,26 @@
                           </div>
                         </div>
 
-                        <div class="col-md-12 row ml-3">
+                        <div class="col-md-12 row ml-3 py-2">
                           <div class="col-md-5 form-group has-feedback">
-                            <label for="password">新密码</label>
+                            <label for="password">
+                              <i class="fas fa-key fa-1x"></i></label>
                             <input type="password" 
                             class="form-control" 
-                            placeholder="newPassword" 
+                            placeholder="请输入新密码" 
                             id="password" 
                             easyform="length:6-16;" 
                             message="密码必须为6—16位" 
                             easytip="disappear:lost-focus;theme:blue;" required>
                           </div>
                           <div class="col-md-5 form-group has-feedback">
-                            <div class="form-group"> <label for="ConfirmPassword">确认新密码</label>
+                            <div class="form-group"> 
+                              <label for="ConfirmPassword">
+                                <i class="fas fa-key fa-1x"></i></label>
                               <input type="password" 
                               class="form-control" 
                               id="ConfirmPassword" 
-                              placeholder="ConfirmPassword" required 
+                              placeholder="确认新密码" required 
                               easyform="length:6-16;equal:#password;" 
                               message="两次密码输入要一致" 
                               easytip="disappear:lost-focus;theme:blue;">
@@ -319,7 +322,7 @@
                         </div>
 
                         
-                        <div class="row py-2 ml-4 text-center">
+                        <div class="row ml-4 text-center">
                           <div class="col-md-5">
                             <input 
                             class="form-control btn navbar-btn btn-outline-primary" 
