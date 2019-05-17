@@ -466,19 +466,17 @@ $(".collect").click(function(){
        var house_rent_status;
        var house_id;
        //对应服务端获取数据 
-      const urlModule3 = require('url/*含有房屋状态的url*/');
-      let params3 = urlModule3.parse(request.url, true).query;//解析数据 获得Json对象
-      let house_rent_status = params3.house_rent_status;//通过参数名称获得参数值
-       //如果房屋已经出租了状态为1，未租为-1
        if(house_rent_status == 1){
+        //  $.post('qiju/house/index', function (data) {
+        //     if(data.code === 1 ){
+           
+        //  })
          // 创建删除请求
         axios.post('qiju/house/index')
         .then(function (response) {
             console.log(response);
             if(response.data.code === 1 ){
                //从服务端获取数据house_id 
-              const urlModule4 = require('url');
-              let params4 = urlModule4.parse(request.url, true).query;//解析数据 获得Json对象
               let house_id = params4.house_id;//通过参数名称获得参数值
                   $('#house' + house_id + '').remove();
             }
