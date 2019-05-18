@@ -17,7 +17,7 @@
     <div class="collapse in" style="background-image: url(../img/dynamic-style.png);" id="navbarHeader">
       <div class="container">
         <div class="row">
-          <div class="py-4 col-md-4">
+          <div class="py-4 col-md-4" id="login_status">
             <a href="../user/login.html">
               <h1>Login</h1>
               <h5>Click here to login</h5>
@@ -345,18 +345,12 @@
   //TO DO:点击收藏、取消收藏；将收藏的模块传至后端
  //-------------获当前登陆的用户id和收藏状态-----------------//
     $(document).ready(function(){ 
-       var user_id;
-       var house_collect_status;
-       const urlModule1 = require('url1/*含有用户id信息的url*/');
-       let params1 = urlModule1.parse(request.url, true).query;//解析数据获得Json对象
-       let user_id = params1.user_id;//通过参数名称获得参数值
        // 为当前用户创建请求
         axios.get('qiju/house/index', {
             params: {
               user_id:user_id
     }
-  })
-        .then(function (response) {
+  }).then(function (response) {
             console.log(response);
             if(response.data.code === 1 ){
                //已经登录，对应服务端获取数据 
