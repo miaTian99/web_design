@@ -354,9 +354,9 @@
               if(response.data.code === -1){
               //alert("Ooh,请先登录再操作哦");
               //若用户未登录，不允许进行收藏操作，跳转至登录界面
-            $("#failCollect").show();
+              $("#fail").show();//fail对应弹框无效操作提醒弹框的id
              setTimeout(function(){
-               $("#failCollect").hide();
+               $("#fail").hide();
                },1000);
              location.href = '../user/login.html';
 
