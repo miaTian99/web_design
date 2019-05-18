@@ -17,7 +17,7 @@ $theme-colors: (
   primary: #f9d367,
   secondary: #f7e8aa,
   light: white,
-  dark: #f7e8aa,
+  dark: #363433,
   info: #ccc,
   success: #28a745,
   warning: #ffc107,
@@ -41,6 +41,7 @@ $lead-font-size:   1.30rem;
 
 $spacer: 1.5rem;
 $font-size-base: 1rem;
-$link-color: #f9d367;
+$link-color: black;
+
 
 @import 'bootstrap-4.2.1';
