@@ -244,18 +244,24 @@
 
                       <div class="tab-pane fade" id="tabthree" role="tabpanel">
                         <div class="col-md-12 form-group has-feedback">
-                          <div class="form-group row"> 
-                            <label for="phone" class="col-2 col-form-label text-center">
-                              <i class="fas fa-mobile-alt fa-1x"></i></label>
-                            <div class="col-8">
-                              <input type="text" 
-                              class="form-control" 
-                              id="phone" name="phone" 
-                              placeholder="手机号码(11位)" 
-                              maxlength="11" easyform="phone;length:11;real-time;" 
-                              message="电话格式要正确哦，请输入11位数字" easytip="disappear:lost-focus;theme:blue;">
-                            </div>
-                          </div>
+                            <div class="form-group row">
+                                <label
+                                  for="mail"
+                                  class="col-2 col-form-label text-center"
+                                  ><i class="far fa-envelope fa-1x"></i
+                                ></label>
+                                <div class="col-8">
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    id="mail"
+                                    placeholder="输入当前邮箱地址"
+                                    easyform="email;real-time;"
+                                    message="Email格式要正确哦"
+                                    easytip="disappear:lost-focus;theme:blue;"
+                                  />
+                                </div>
+                              </div>
 
                           <div class="form-group row py-2">
                               <label for="phone" class="col-2 col-form-label text-center">
@@ -275,21 +281,21 @@
                             </div>
 
                           <div class="form-group row has-feedback"> 
-                            <label for="valid_phone" class="col-2 col-form-label text-center">
-                              <i class="fas fa-sms fa-1x"></i></label>
+                            <label for="valid_mail" class="col-2 col-form-label text-center">
+                              <i class="far fa-paper-plane fa-1x"></i></label>
                             <div class="col-6">
                               <input type="text" 
                               class="form-control" 
-                              id="valid_phone" 
-                              placeholder="请输入手机验证码，现设置的是111111" easyform="valid_phone;length:6;real-time;" 
-                              message="短信验证码错误" 
+                              id="valid_mail" 
+                              placeholder="请输入邮箱验证码" easyform="length:6;real-time;" 
+                              message="验证码错误" 
                               easytip="disappear:lost-focus;theme:blue;" 
                               ajax-message="验证码超时，请重新获取">
                             </div>
                             <div class="" style=" float:right;">
                               <button type="button" id="loadingButton" 
                               class="btn navbar-btn btn-outline-primary" 
-                              autocomplete="off">获取短信校验码</button>
+                              autocomplete="off">获取邮箱校验码</button>
                             </div>
                           </div>
                         </div>
@@ -353,9 +359,23 @@
       </div>
     </div>
   </div>
-    <div class="py-5">
-      <div class="container"></div>
-    </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center pt-3 pb-2">
+            <p class="mb-1 h6 text-dark">© 2018-2019 发际线保卫队</p>
+            <ul class="list-inline">
+              <li class="list-inline-item ">
+                <a href="#" class="text-dark h6">Privacy</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="text-dark h6">Terms</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="text-dark h6">Support</a>
+              </li>
+            </ul>
+          </div>
+        </div>
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/easyform.js"></script>
     <script src="../js/hashRouter.min.js"></script>
@@ -401,226 +421,108 @@
     <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
     <!--随机验证码生成，验证码不匹配时自动更改-->
     <script>
-       var settings = {
-         e: 'idcode',
-         codeType: {
-           name: 'follow',
-           len: 4
-         }, //len是修改验证码长度的
-         codeTip: '换个验证码?',
-         inputID: 'idcode-btn' //验证元素的ID
-       };
-       var _set = {
-         storeLable: 'codeval',
-         store: '#ehong-code-input',
-         codeval: '#ehong-code'
-       }
-       $.idcode = {
-         getCode: function(option) {
-          _commSetting(option);
-           return _storeData(_set.storeLable, null);
-         },
-         setCode: function(option) {
-           _commSetting(option);
-           _setCodeStyle("#" + settings.e, settings.codeType.name, settings.codeType.len);
-         },
-         validateCode: function(option) {
-           _commSetting(option);
-           var inputV;
-           if (settings.inputID) {
-             inputV = $('#' + settings.inputID).val();
-           } else {
-             inputV = $(_set.store).val();
-           }
-           if (inputV.toUpperCase() == _storeData(_set.storeLable, null).toUpperCase()) { //修改的不区分大小写
-            return true;
-          } else {
-            _setCodeStyle("#" + settings.e, settings.codeType.name, settings.codeType.len);
-            return false;
-          }
-        }
-      };
+      //TO DO:发送邮箱验证码
 
-       function _commSetting(option) {
-         $.extend(settings, option);
-       }
+      // //短信验证码
+      // var regMsg = /111111/;
+      // $('.container')
+      //   .find('input')
+      //   .eq(9)
+      //   .change(function() {
+      //     if (check[4]) {
+      //       if (regMsg.test($(this).val())) {
+      //         success($(this), 9);
+      //       } else {
+      //         fail($(this), 9, '验证码错误');
+      //       }
+      //     } else {
+      //       $('.container')
+      //         .find('input')
+      //         .eq(9)
+      //         .parent()
+      //         .parent()
+      //         .removeClass('has-success')
+      //         .addClass('has-error');
+      //     }
+      //   });
+      // //超时，重新获取手机短信码
+      // $('#loadingButton').click(function() {
+      //   if (check[4]) {
+      //     $(this)
+      //       .removeClass('btn-primary')
+      //       .addClass('disabled');
+      //     $(this).html('<span class="red">59</span> 秒后重新获取');
+      //     var secondObj = $('#loadingButton').find('span');
+      //     var secondObjVal = secondObj.text();
 
-       function _storeData(dataLabel, data) {
-         var store = $(_set.codeval).get(0);
-         if (data) {
-           $.data(store, dataLabel, data);
-         } else {
-           return $.data(store, dataLabel);
-         }
-       }
-
-       function _setCodeStyle(eid, codeType, codeLength) {
-         var codeObj = _createCode(settings.codeType.name, settings.codeType.len);
-         var randNum = Math.floor(Math.random() * 6);
-         var htmlCode = ''
-         if (!settings.inputID) {
-           htmlCode = '<span><input id="ehong-code-input" type="text" maxlength="4" /></span>';
-         }
-         htmlCode += '<div id="ehong-code" class="ehong-idcode-val ehong-idcode-val';
-         htmlCode += String(randNum);
-         htmlCode += '" href="#" onblur="return false" onfocus="return false" oncontextmenu="return false" onclick="$.idcode.setCode()">' + _setStyle(codeObj) + '</div>' + '<span id="ehong-code-tip-ck" class="ehong-code-val-tip" onclick="$.idcode.setCode()">' + settings.codeTip + '</span>';
-         $(eid).html(htmlCode);
-         _storeData(_set.storeLable, codeObj);
-       }
-
-       function _setStyle(codeObj) {
-         var fnCodeObj = new Array();
-         var col = new Array('#BF0C43', '#E69A2A', '#707F02', '#18975F', '#BC3087', '#73C841', '#780320', '#90719B', '#1F72D8', '#D6A03C', '#6B486E', '#243F5F', '#16BDB5');
-         var charIndex;
-         for (var i = 0; i < codeObj.length; i++) {
-           charIndex = Math.floor(Math.random() * col.length);
-           fnCodeObj.push('<font color="' + col[charIndex] + '">' + codeObj.charAt(i) + '</font>');
-         }
-         return fnCodeObj.join('');
-       }
-
-       function _createCode(codeType, codeLength) {
-         var codeObj;
-         if (codeType == 'follow') {
-           codeObj = _createCodeFollow(codeLength);
-         } else if (codeType == 'calc') {
-           codeObj = _createCodeCalc(codeLength);
-         } else {
-           codeObj = "";
-         }
-         return codeObj;
-       }
-
-       function _createCodeCalc(codeLength) {
-         var code1, code2, codeResult;
-         var selectChar = new Array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
-         var charIndex;
-         for (var i = 0; i < codeLength; i++) {
-           charIndex = Math.floor(Math.random() * selectChar.length);
-           code1 += selectChar[charIndex];
-           charIndex = Math.floor(Math.random() * selectChar.length);
-           code2 += selectChar[charIndex];
-         }
-         return [parseInt(code1), parseInt(code2), parseInt(code1) + parseInt(code2)];
-       }
-
-       function _createCodeFollow(codeLength) {
-         var code = "";
-         var selectChar = new Array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
-        for (var i = 0; i < codeLength; i++) {
-         var charIndex = Math.floor(Math.random() * selectChar.length);
-           if (charIndex % 2 == 0) {
-             code += selectChar[charIndex].toLowerCase();
-           } else {
-             code += selectChar[charIndex];
-           }
-         }
-         return code;
-       }
-       //前端数据校验，通过span显示，和easyform.js机制不同-
-       var check = [false, false, false, false, false, false];
-       //校验成功函数
-       function success(Obj, counter) {
-         Obj.parent().parent().removeClass('has-error').addClass('has-success');
-         $('.tips').eq(counter).hide();
-         $('.glyphicon-ok').eq(counter).show();
-         $('.glyphicon-remove').eq(counter).hide();
-         check[counter] = true;
-       }
-       // 校验失败函数
-       function fail(Obj, counter, msg) {
-         Obj.parent().parent().removeClass('has-success').addClass('has-error');
-         $('.glyphicon-remove').eq(counter).show();
-         $('.glyphicon-ok').eq(counter).hide();
-         $('.tips').eq(counter).text(msg).show();
-         check[counter] = false;
-       }
-       // 验证码
-       $.idcode.setCode();
-       $('.container').find('input').eq(9).change(function() {
-         var IsBy = $.idcode.validateCode();
-         if (IsBy) {
-           success($(this), 9);
-         } else {
-           fail($(this), 9, '验证码输入错误');
-         }
-       });
-      ////////////////////////////////////////////////////////////////////
-
-      //短信验证码
-      var regMsg = /111111/;
-      $('.container')
-        .find('input')
-        .eq(9)
-        .change(function() {
-          if (check[4]) {
-            if (regMsg.test($(this).val())) {
-              success($(this), 9);
-            } else {
-              fail($(this), 9, '短信验证码错误');
-            }
-          } else {
-            $('.container')
-              .find('input')
-              .eq(9)
-              .parent()
-              .parent()
-              .removeClass('has-success')
-              .addClass('has-error');
-          }
-        });
-      //超时，重新获取手机短信码
-      $('#loadingButton').click(function() {
-        if (check[4]) {
-          $(this)
-            .removeClass('btn-primary')
-            .addClass('disabled');
-          $(this).html('<span class="red">59</span> 秒后重新获取');
-          var secondObj = $('#loadingButton').find('span');
-          var secondObjVal = secondObj.text();
-
-          function secondCounter() {
-            var secondTimer = setTimeout(function() {
-              secondObjVal--;
-              secondObj.text(secondObjVal);
-              secondCounter();
-            }, 1000);
-            if (secondObjVal == 0) {
-              clearTimeout(secondTimer);
-              $('#loadingButton').text('重新获取校验码');
-              $('#loadingButton')
-                .removeClass('disabled')
-                .addClass('btn-primary');
-            }
-          }
-          secondCounter();
-        } else {
-          $('.container')
-            .find('input')
-            .eq(4)
-            .parent()
-            .parent()
-            .removeClass('has-success')
-            .addClass('has-error');
-        }
-      });
+      //     function secondCounter() {
+      //       var secondTimer = setTimeout(function() {
+      //         secondObjVal--;
+      //         secondObj.text(secondObjVal);
+      //         secondCounter();
+      //       }, 1000);
+      //       if (secondObjVal == 0) {
+      //         clearTimeout(secondTimer);
+      //         $('#loadingButton').text('重新获取校验码');
+      //         $('#loadingButton')
+      //           .removeClass('disabled')
+      //           .addClass('btn-primary');
+      //       }
+      //     }
+      //     secondCounter();
+      //   } else {
+      //     $('.container')
+      //       .find('input')
+      //       .eq(4)
+      //       .parent()
+      //       .parent()
+      //       .removeClass('has-success')
+      //       .addClass('has-error');
+      //   }
+      // });
     </script>
     <script>
-      // axios.post('/qiju/user/safeinfo_edit', {
-      //   //安全信息更改接口
-      //   oldphone: $("#oldphone").val(),
-      //   newphone: $("#newphone").val(),
-      //   oldmail: $("#oldmail").val(),
-      //   newmail: $("#newmail").val(),
-      //   phone: $("#phone").val(), //获取当前的手机号，发送手机验证码
-      //   password: $("#password").val() //获取新密码
-      // }).then(function(response) {
-      //   console.log(response);
-      //   if (response.data.code === 1) alert("修改成功"); //location.href="/login.html";
-      //   else alert("Ooh，修改失败了，请稍后再试");
-      // }).catch(function(error) {
-      //   console.log(error);
-      // });
+     //安全信息更改接口
+     //修改手机号
+       $("#submit1").click(function() {
+        axios.post('/qiju/user/safe_support', {
+        oldphone: $("#oldphone").val(),
+        newphone: $("#newphone").val()
+      }).then(function(response) {
+        console.log(response);
+        if (response.data.code === 1) alert("修改成功"); //location.href="/login.html";
+        else alert("Ooh，修改失败了，请稍后再试");
+      }).catch(function(error) {
+        console.log(error);
+      });    
+       });
+    //修改邮箱号
+    $("#submit2").click(function() {
+        axios.post('/qiju/user/safe_support', {
+        oldmail: $("#oldmail").val(),
+        newmail: $("#newmail").val(),
+      }).then(function(response) {
+        console.log(response);
+        if (response.data.code === 1) alert("修改成功"); //location.href="/login.html";
+        else alert("Ooh，修改失败了，请稍后再试");
+      }).catch(function(error) {
+        console.log(error);
+      });    
+       });
+    //修改密码
+    $("#submit3").click(function() {
+        axios.post('/qiju/user/safe_support', {
+        mail: $("#mail").val(), //获取当前的邮箱号，发送邮箱验证码
+        valid_mail:$("#valid_mail").val,
+        password: $("#password").val() //获取新密码
+      }).then(function(response) {
+        console.log(response);
+        if (response.data.code === 1) alert("修改成功"); //location.href="/login.html";
+        else alert("Ooh，修改失败了，请稍后再试");
+      }).catch(function(error) {
+        console.log(error);
+      });    
+       });
     </script>
   </body>
 </html>
