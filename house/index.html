@@ -342,76 +342,64 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
   <script type="text/javascript">
-  //TO DO:点击收藏、取消收藏；将收藏的模块传至后端
- //-------------获取用户当前登录状态-----------------//
-    $(document).ready(function(){ 
-      axios.get('/qiju/user/login', {
-                phone_email,
-                data
-            })
-            .then(function(response) {
-              console.log(response);
-              if(response.data.code === -1){
-              //alert("Ooh,请先登录再操作哦");
-              //若用户未登录，不允许进行收藏操作，跳转至登录界面
-              $("#fail").show();//fail对应弹框无效操作提醒弹框的id
-             setTimeout(function(){
-               $("#fail").hide();
-               },1000);
-             location.href = '../user/login.html';
+   //TO DO：点击收藏、取消收藏；前段记录收藏的状态
+   //点击奇数次收藏，偶数次取消收藏，下次访问index不会显示已经收藏的内容
+   var  house_collect_status;
+   var isclick = 0;
+   $(".isclick").click(function(){
+    isclick++;
+    if(isclick%2 == 0){
+    $('.collect').removeClass('fas').addClass('far')
+    house_collect_status = 0;
+  }
+   else{
+   $('.collect').removeClass('far').addClass('fas')
+    house_collect_status = 1;
+   }
+ });
+   //-----------------------房源收藏----------------------//
+   $(".collect").click(function(){
+      //获取用户当前登录状态  
+     axios.get('/qiju/user/login', {
+          phone_email,
+          data
+     }).then(function(response) {
+       console.log(response);
+      //如果用户未登录
 
-              }
-            })
-            .catch(function(error) {
-              console.log(error);
-            });
-    });
- //-----------------------房源收藏----------------------//
- $(".collect").click(function(){
-        if (user_id == null) {
-            //alert("Ooh,请先登录再操作哦");
-            //若用户未登录，不允许进行收藏操作，跳转至登录界面
-             $("#failCollect").show();
-             setTimeout(function(){
-               $("#failCollect").hide();
-               },1000);
-             location.href = '../user/login.html';
-        }else{
-           if(house_collect_status == 0 ){
-            //数据库中没有收藏,点击收藏操作
-            $('.collect').removeClass('far').addClass('fas')
-            //更新数据库收藏状态,变为已收藏
-             axios.post('/qiju/house/index', {
-              house_collect_status = 1,
+      if(response.data.code === -1){
+      //alert("Ooh,请先登录再操作哦");
+      //若用户未登录，不允许进行收藏操作，跳转至登录界面
+        $("#failCollect").show();//failCollect对应弹框无效操作提醒弹框的id
+        setTimeout(function(){
+        $("#failCollect").hide();
+        },1000);
+       location.href = '../user/login.html';
+       }
+
+       //如果用户已登录
+      else{
+        //获取当前房屋id和收藏状态并传输至后端
+        axios.post('/qiju/house/index', {
               house_id = $(this).attr("id"),
-              user_id = user_id
+              house_collect_status = house_collect_status
             })
             .then(function(response) {
               console.log(response);
-              if(response.data.code === 1) alert('收藏成功');
-              else alter('收藏失败');
+              //传输对应房屋id的收藏状态
+              if(response.data.code === 1)
+              alter('收藏成功啦');
             })
             .catch(function(error) {
               console.log(error);
             });
-           }
-           else{
-            //数据库存在收藏,点击删除收藏操作
-            $('.collect').removeClass('far').addClass('fas')
-            //更新数据库收藏状态，变为未收藏
-            axios.post('/qiju/house/index', {
-              collect_status = 0,
-              house_id = $(this).attr("id"),
-              user_id = user_id
-            })
-            .then(function(response) {
-              console.log(response);
-            })
-            .catch(function(error) {
-              console.log(error);
-            });
-           }
+
         }
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+       
        });
   /*效果演示代码
    var isclick = 0;
@@ -449,43 +437,6 @@
  
   });
 });
-  </script>
-
-  <script type="text/javascript">
-  //TO DO:通过获取房屋出租状态下架房源，下面只写了一个对应的处理状态。下架房源不止一个，循环？
-  $(document).ready(function(){ 
-       var house_rent_status;
-       var house_id;
-       //对应服务端获取数据 
-      const urlModule3 = require('url/*含有房屋状态的url*/');
-      let params3 = urlModule3.parse(request.url, true).query;//解析数据 获得Json对象
-      let house_rent_status = params3.house_rent_status;//通过参数名称获得参数值
-       //如果房屋已经出租了状态为1，未租为-1
-       if(house_rent_status == 1){
-         // 创建删除请求
-        axios.post('qiju/house/index')
-        .then(function (response) {
-            console.log(response);
-            if(response.data.code === 1 ){
-               //从服务端获取数据house_id 
-              const urlModule4 = require('url');
-              let params4 = urlModule4.parse(request.url, true).query;//解析数据 获得Json对象
-              let house_id = params4.house_id;//通过参数名称获得参数值
-                  $('#house' + house_id + '').remove();
-            }
-            else{
-            //如果删除失败了怎么办？即该下架的房源仍然在页面显示。
-            //方案之一：在对应house显示模块上蒙上一层div显示下架
-            //$('#house' + house_id + '').html(...);
-          }
-      })
-      .catch(function (error) {
-            console.log(error);
-      });
-    }else{
-        //未租仍然显示，不作处理
-    }
-  });
   </script>
 </body>
 
