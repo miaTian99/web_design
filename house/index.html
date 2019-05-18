@@ -59,7 +59,7 @@
         <div class="col-md-12">
           <form class="form-inline">
             <div class="input-group w-75">
-              <input type="text" class="form-control form-control-lg" placeholder="关键词：地区，地点，设施等~" draggable="true">
+              <input type="text" id="search" class="form-control form-control-lg" placeholder="关键词：地区，地点，设施等~" draggable="true">
               <div class="input-group-append"><button class="btn btn-primary px-3" type="button">搜 &nbsp; 索</button> </div>
             </div>
           </form>
@@ -321,65 +321,65 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
   <script type="text/javascript">
-   //TO DO：点击收藏、取消收藏；前段记录收藏的状态
-   //点击奇数次收藏，偶数次取消收藏，下次访问index不会显示已经收藏的内容
-   var  house_collect_status;
+   //TO DO:获取"最近上新"数据数组中的收藏状态字段house_collect_status
+   //TO DO:获取用户当前登录状态信息，先用login_status表示
+   //两个接口：收藏(true)/取消收藏(false)
+   //捕捉用户点击按钮的次数
    var isclick = 0;
    $(".isclick").click(function(){
-    isclick++;
-    if(isclick%2 == 0){
-    $('.collect').removeClass('fas').addClass('far')
-    house_collect_status = 0;
-  }
-   else{
-   $('.collect').removeClass('far').addClass('fas')
-    house_collect_status = 1;
-   }
- });
+      isclick++;
+   });
    //-----------------------房源收藏----------------------//
    $(".collect").click(function(){
-      //获取用户当前登录状态  
-     axios.get('/qiju/user/login', {
-          phone_email,
-          data
-     }).then(function(response) {
-       console.log(response);
-      //如果用户未登录
-
-      if(response.data.code === -1){
+     var login_status = false;
+     if(!login_staus){
+      //若用户未登录，不允许进行收藏操作，但允许浏览。跳转至登录界面
       //alert("Ooh,请先登录再操作哦");
-      //若用户未登录，不允许进行收藏操作，跳转至登录界面
-        $("#failCollect").show();//failCollect对应弹框无效操作提醒弹框的id
+      $("#failCollect").show();//failCollect对应弹框无效操作提醒弹框的id
         setTimeout(function(){
         $("#failCollect").hide();
         },1000);
        location.href = '../user/login.html';
-       }
-
-       //如果用户已登录
-      else{
-        //获取当前房屋id和收藏状态并传输至后端
-        axios.post('/qiju/house/index', {
+     }
+     else{
+     //如果用户已登录, 获取当前房屋id并将当前修改的收藏状态传输至后端
+     axios.post('/qiju/house/index', {
               house_id = $(this).attr("id"),
-              house_collect_status = house_collect_status
+              //house_collect_status = house_collect_status
             })
             .then(function(response) {
               console.log(response);
-              //传输对应房屋id的收藏状态
-              if(response.data.code === 1)
-              alter('收藏成功啦');
+              //如果房子未收藏
+              if(!house_collect_status)
+              {
+                if(isclick%2 == 0){
+                  $('.collect').removeClass('fas').addClass('far')
+                }
+                 else{
+                  $('.collect').removeClass('far').addClass('fas')
+                  house_collect_status = true;
+                 
+                 }
+
+              }
+               //如果房子已经收藏
+              else{
+
+
+              }
+              //传修改的房子状态的值
+               axois.post()
             })
             .catch(function(error) {
               console.log(error);
             });
 
-        }
-            })
-            .catch(function(error) {
-              console.log(error);
-            });
-       
-       });
+
+     }
+
+   });
+
+
   /*效果演示代码
    var isclick = 0;
    $(".isclick").click(function(){
@@ -395,6 +395,7 @@
 
   <script type="text/javascript">
   //TO DO:搜索框通过关键字筛选房源
+   var keyword = $('#search').val;
 
   </script>
 
