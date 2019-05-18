@@ -324,13 +324,13 @@
    //TO DO:获取并显示"最近上新"数据，一次最多显示6个
    //获取后端传来的数据数组
     axios.get('url', {
-          houseList,
+          newList,
      }).then(function(response) {
        console.log(response);
      }).catch(function(error) {
        console.log(error);
     }); 
-   houseList.forEach(element => {
+   newList.forEach(element => {
       
     });
 
@@ -382,7 +382,6 @@
                   $('.collect').removeClass('fas').addClass('far')
                   house_collect = false;
                  }
-
               }
           })
          .catch(function(error) {
@@ -390,8 +389,6 @@
       });
      }
    });
-
-
   /*效果演示代码
    var isclick = 0;
    $(".isclick").click(function(){
