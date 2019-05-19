@@ -54,15 +54,43 @@
           <img url="" src="../gif/364.gif" width="50"> </button>
       </div>
     </div>
-    <div class="container mt-5">
-      <div class="row" style="margin-top:380px;margin-left:160px;">
-        <div class="col-md-12">
-          <form class="form-inline">
+    <div class="container" style="margin-top:350px;">
+      <div class="row" style="margin-left:100px;">
+        <div class="col-md-12 ">
+          <form class="form-inline mb-0" style="width:1100px">
             <div class="input-group w-75">
-              <input type="text" id="search" class="form-control form-control-lg" placeholder="关键词：地区，地点，设施等~" draggable="true">
-              <div class="input-group-append"><button class="btn btn-primary px-3" type="button">搜 &nbsp; 索</button> </div>
+              <input type="text" id="search" class="form-control form-control-lg" placeholder="关键词：地区，地点，设施等~">
+              <select id="box" class="px-1"> </select>
+              <div class="input-group-append"><button class="btn btn-primary px-3" type="button" id="anniu">搜 &nbsp; 索</button> </div>
             </div>
           </form>
+        </div>
+        <div class="col-md-12 mt-0 pt-0">
+          <div id="selectBox" style="width: 707px; height: 80px; background-color: white; display: none;" class="mt-0 py-0">
+            <ul style="list-style: none;" class="my-0">
+              <li style="float:left;" class="mr-3">地区</li>
+              <li style="float:left;" class="mx-2"><input type="checkbox" value="荣昌"> 荣昌</li>
+              <li style="float:left;" class="ml-3 mr-5"><input type="checkbox" value="北碚"> 北碚</li>
+              <li style="float:left;" class="mr-3 ml-5"> 宠物</li>
+              <li style="float:left;" class="mx-2"><input type="checkbox" value="可以"> 可养</li>
+              <li style="float:left;" class="mx-2"><input type="checkbox" value="不可"> 不可</li>
+            </ul>
+            <br>
+            <ul style="list-style: none;" class="my-0">
+              <li style="float:left;" class="mr-3"> 价格</li>
+              <li style="float:left;" class="mx-2"><input type="checkbox" value="低"> 0~300</li>
+              <li style="float:left;" class="ml-2 mr-1"><input type="checkbox" value="中"> 300~500</li>
+              <li style="float:left;" class="mx-2"><input type="checkbox" value="高"> 500以上</li>
+            </ul>
+            <br>
+            <ul style="list-style: none;">
+              <li style="float:left;" class="mr-3"> 设施</li>
+              <li style="float:left;" class="mx-2"><input type="checkbox" value="中国"> 空调</li>
+              <li style="float:left;" class="mx-2 ml-3"><input type="checkbox" value="英国"> 无线</li>
+              <li style="float:left;" class="mx-2 ml-4"><input type="checkbox" value="中国"> 独卫</li>
+              <li style="float:left;" class="mx-2 ml-3"><input type="checkbox" value="英国"> 书桌</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -211,7 +239,7 @@
             <div class="card-body pt-1 pb-1">
               <h5 class="">荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
               <i class="fa fa-jpy d-inline" aria-hidden="true"> 300/月（可砍价）</i>
-              <div class="align-items-center d-flex mb-1"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2"></button>
+              <div class="align-items-center d-flex mb-1"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-0"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2"></button>
               </div>
             </div>
           </div>
@@ -316,139 +344,155 @@
         </div>
       </div>
     </footer>
-  <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
-  <script type="text/javascript">
-   //TO DO:获取并显示"最近上新"数据，一次最多显示6个
-   //获取后端传来的数据数组
-    axios.get('url', {
-          newList,
-     }).then(function(response) {
-       console.log(response);
-     }).catch(function(error) {
-       console.log(error);
-    }); 
-   newList.forEach(element => {
-      
-    });
-
-   //TO DO:获取用户当前登录状态信息，先用login_status表示
-   //共用一个接口：收藏(true)/取消收藏(false)
-   //捕捉用户点击按钮的次数
-   var isclick = 0;
-   $(".isclick").click(function(){
-      isclick++;
-   });
-   //-----------------------房源收藏----------------------//
-   $(".collect").click(function(){
-     var login_status = false;
-     if(!login_staus){
-      //若用户未登录，不允许进行收藏操作，但允许浏览。跳转至登录界面
-      //alert("Ooh,请先登录再操作哦");
-      $("#failCollect").show();//failCollect对应弹框无效操作提醒弹框的id
-        setTimeout(function(){
-        $("#failCollect").hide();
-        },1000);
-       location.href = '../user/login.html';
-     }
-     else{
-     //如果用户已登录, 获取当前房屋id并将当前修改后端的收藏状态
-     axios.post('/qiju/house/index', {
-              house_id = $(this).attr("id"),              
-              house_collect //请求收藏或者取消收藏
-            })
-            .then(function(response) {
-              console.log(response);
-              //如果房子未收藏，请求收藏
-             if(!house_collect)
-              {
-                if(isclick%2 == 0){
-                  $('.collect').removeClass('fas').addClass('far')
-                }
-                 else{
-                  $('.collect').removeClass('far').addClass('fas')
-                  house_collect = true;
-                 }
-
-              }
-               //如果房子已经收藏，请求取消
-              else{
-                if(isclick%2 == 0){
-                  $('.collect').removeClass('far').addClass('fas')
-                }
-                 else{
-                  $('.collect').removeClass('fas').addClass('far')
-                  house_collect = false;
-                 }
-              }
-          })
-         .catch(function(error) {
-          console.log(error);
+    <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <script type="text/javascript" language="Javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.1.min.js"></script>
+    <script language="javascript" type="text/javascript">
+      var arr = []; //定义一个数组用来接收多选框的值
+      //初始化让下拉列表不显示
+      $(function() {
+        $('#selectBox').hide();
+      })
+      //单击下拉列表时显示/隐藏下拉列表
+      $('#box').click(function() {
+        $('#selectBox').toggle();
+      })
+      //监听checkbox的value值 改变则执行下列操作
+      $("input").change(function() {
+        if ($(this).prop("checked")) {
+          arr.push($(this).val()); //将选中的选项添加到数组中
+        } else {
+          var index = getIndex(arr, $(this).val()) //找到没有选中的选项在数组中的索引
+          arr.splice(index, 1); //在数组中删除该选项
+        }
+      })
+      //这个函数用于获取指定值在数组中的索引
+      function getIndex(arr, value) {
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i] == value) {
+            return i
+          }
+        }
+      }
+      //点击按钮是弹出数组 这里可能要修改一下！！！
+      $('button').click(function() {
+        alert(arr)
+      })
+    </script>
+    <script type="text/javascript" >
+      //TO DO:获取并显示"最近上新"数据，一次最多显示6个
+      //获取后端传来的数据数组
+      axios.get('url', {
+        newList,
+      }).then(function(response) {
+        console.log(response);
+      }).catch(function(error) {
+        console.log(error);
       });
-     }
-   });
-  /*效果演示代码
-   var isclick = 0;
-   $(".isclick").click(function(){
-      isclick++;
-      if(isclick%2 == 0){
-        $('.collect').removeClass('fas').addClass('far')
-      }
-      else{
-        $('.collect').removeClass('far').addClass('fas')
-      }
-   });*/
-  </script>
-
-  <script type="text/javascript">
-  //TO DO:搜索框通过关键字筛选房源
-  //TO DO:文字模式匹配/联想
-
-  //传值
-   axios.post('/qiju/house/index', {
-      keyword = $('#search').val,
-     }).then(function(response) {
-       console.log(response);
-     }).catch(function(error) {
-       console.log(error);
-    });   
-    //TO DO:获取后端传来的数据数组houseList
-    axios.get('url', {
-          houseList,
-     }).then(function(response) {
-       console.log(response);
-     }).catch(function(error) {
-       console.log(error);
-    }); 
-
-    //TO DO:渲染数据
-     houseList.forEach(function(value,i){  
-        console.log(i+value);  
-    });
-
-  </script>
-
-  <script type="text/javascript">
-  //TO DO:通过勾选复选框筛选房源(价格/地区)
-  $(document).ready(function(){ 
-    var array = new Array();
-        $check_boxes.each(function(){
-            var array_push = new Array();
-            array_push.push($(this).val());
-            array_push.push(2);
-            array.push(array_push);
-   var region = $('#region').prop('checked');//获取数组编码
-   var price = $('#price').prop('checked');//获取数组编码
-   if(region=='00'){
-      
-
-   }
- 
-  });
-});
-  </script>
+      newList.forEach(element => {});
+      //TO DO:获取用户当前登录状态信息，先用login_status表示
+      //共用一个接口：收藏(true)/取消收藏(false)
+      //捕捉用户点击按钮的次数
+      var isclick = 0;
+      $(".isclick").click(function() {
+        isclick++;
+      });
+      //-----------------------房源收藏----------------------//
+      $(".collect").click(function() {
+        var login_status = false;
+        if (!login_staus) {
+          //若用户未登录，不允许进行收藏操作，但允许浏览。跳转至登录界面
+          //alert("Ooh,请先登录再操作哦");
+          $("#failCollect").show(); //failCollect对应弹框无效操作提醒弹框的id
+          setTimeout(function() {
+            $("#failCollect").hide();
+          }, 1000);
+          location.href = '../user/login.html';
+        } else {
+          //如果用户已登录, 获取当前房屋id并将当前修改后端的收藏状态
+          axios.post('/qiju/house/index', {
+            house_id = $(this).attr("id"),
+            house_collect //请求收藏或者取消收藏
+          }).then(function(response) {
+            console.log(response);
+            //如果房子未收藏，请求收藏
+            if (!house_collect) {
+              if (isclick % 2 == 0) {
+                $('.collect').removeClass('fas').addClass('far')
+              } else {
+                $('.collect').removeClass('far').addClass('fas')
+                house_collect = true;
+              }
+            }
+            //如果房子已经收藏，请求取消
+            else {
+              if (isclick % 2 == 0) {
+                $('.collect').removeClass('far').addClass('fas')
+              } else {
+                $('.collect').removeClass('fas').addClass('far')
+                house_collect = false;
+              }
+            }
+          }).catch(function(error) {
+            console.log(error);
+          });
+        }
+      });
+      /*效果演示代码
+       var isclick = 0;
+       $(".isclick").click(function(){
+          isclick++;
+          if(isclick%2 == 0){
+            $('.collect').removeClass('fas').addClass('far')
+          }
+          else{
+            $('.collect').removeClass('far').addClass('fas')
+          }
+       });*/
+    </script>
+    <script type="text/javascript">
+      //TO DO:搜索框通过关键字筛选房源
+      //TO DO:文字模式匹配/联想
+      //传值
+      axios.post('/qiju/house/index', {
+        keyword = $('#search').val,
+      }).then(function(response) {
+        console.log(response);
+      }).catch(function(error) {
+        console.log(error);
+      });
+      //TO DO:获取后端传来的数据数组houseList
+      axios.get('url', {
+        houseList,
+      }).then(function(response) {
+        console.log(response);
+      }).catch(function(error) {
+        console.log(error);
+      });
+      //TO DO:渲染数据
+      houseList.forEach(function(value, i) {
+        console.log(i + value);
+      });
+    </script>
+    <script type="text/javascript">
+      //TO DO:通过勾选复选框筛选房源(价格/地区)
+      $(document).ready(function() {
+        var array = new Array();
+        $check_boxes.each(function() {
+          var array_push = new Array();
+          array_push.push($(this).val());
+          array_push.push(2);
+          array.push(array_push);
+          var region = $('#region').prop('checked'); //获取数组编码
+          var price = $('#price').prop('checked'); //获取数组编码
+          if (region == '00') {}
+        });
+      });
+    </script>
+  </div>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
 </body>
 
 </html>
