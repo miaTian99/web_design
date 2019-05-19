@@ -413,19 +413,18 @@
         for(var i=0;i<length;i++){
           var thisHouse = houseList[i];
           $('#suggest.row').append(`<div class="col-md-4 p-3">
-            <div class="card box-shadow"> <a data-toggle="modal" data-target=".white" href="onehouse.html">
+            <div class="card box-shadow"> <a data-toggle="modal" data-target=".white" href="onehouse.html" class="text-decoration-none">
                 <img class="card-img-top" src="${thisHouse.house_image}" height="220px">
-              </a>
-              <div class="card-body pt-1 pb-1">
-                  <a data-toggle="modal" data-target=".white" href="onehouse.html" class="text-decoration-none">
+                <div class="card-body pt-1 pb-1"> 
                 <h5>${thisHouse.address}</h5>
                 <i class="fas fa-jpy d-inline"><h7>${thisHouse.price}</h7><h7>（可砍价）</h7></i>
                 <!--<div class="align-items-center d-flex mb-1">
                 <button data-id="${thisHouse.house_id}" onclick="toKonwMore(this)" class="fa bg-secondary mr-5 mt-2 py-1 px-1 know-more" type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>-->
+                </a>
                 <div class="pb-1">
-                <b>收藏数：${thisHouse.collect_number}</b>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button data-id="${thisHouse.house_id}" onclick="toCollectHouse(this)" type="button" class="${thisHouse.house_collect_status ? 'fas' : 'far'} fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>
+                <b>收藏数：${thisHouse.collect_number}</b>&nbsp;&nbsp;&nbsp;
+                <button type="button" data-id="${thisHouse.house_id}" class="btn btn-primary px-2 ml-5" onclick="toCollectHouse(this)"><i class="collect far fa-star fa-1x fa-fw py-1 ${thisHouse.house_collect_status ? 'fas' : 'far'}"></i></button>
+                <!-- <button data-id="${thisHouse.house_id}" onclick="toCollectHouse(this)" type="button" class="${thisHouse.house_collect_status ? 'fas' : 'far'} fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>-->
                 </div>
               </div>
             </div>
@@ -459,7 +458,7 @@
       // 已登录
       // 切换收藏状态
       if(response.data.code === 1 ) {
-        var thisHouseCollect = $(ele);
+        var thisHouseCollect = $(ele).find("i");
         if (thisHouseCollect.hasClass('far')) {
           thisHouseCollect.removeClass('far').addClass('fas')
         } else {
