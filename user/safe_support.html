@@ -421,7 +421,19 @@
     <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
     <!--随机验证码生成，验证码不匹配时自动更改-->
     <script>
-      //TO DO:发送邮箱验证码
+       //TO DO:发送邮箱验证码
+       $('#valid_mail').click(function () {
+        axios.post('/qiju/email/sendvercode', {
+        /*传值？*/
+      }).then(function(response) {
+        console.log(response);
+        if (response.data.code === 1) alert("发送成功"); //location.href="/login.html";
+        else alert("发送失败，请稍后再试");
+      }).catch(function(error) {
+        console.log(error);
+      });  
+    });
+     
 
       // //短信验证码
       // var regMsg = /111111/;
