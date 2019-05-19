@@ -4,9 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- PAGE settings -->
-  <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
-  <title>Index</title>
+  <title>栖居</title>
   <!-- CSS dependencies -->
   <link rel="stylesheet" href="../css/all.css" type="text/css">
   <link rel="stylesheet" href="../css/wireframe.css">
@@ -94,17 +92,28 @@
         </div>
       </div>
     </div>
+    <div class="container mt-5">
+      <div class="row" style="margin-top:380px;margin-left:160px;">
+        <div class="col-md-12">
+          <form class="form-inline">
+            <div class="input-group w-75">
+              <input type="text" id="keyword" class="form-control form-control-lg" placeholder="关键词：地区，地点，设施等~" draggable="true">
+              <div class="input-group-append"><button class="btn btn-primary px-3" type="button" id="search">搜 &nbsp; 索</button> </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="py-4" style="background-image: url(../img/dynamic-style.png);">
     <div class="container ">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="bg-secondary pl-2 pb-1">最近上新</h1>
+          <h1 class="bg-secondary pl-2 pb-1" id="latest">最近上新</h1>
         </div>
-        <div class="col-md-4 p-3">
-          <div class="card box-shadow"> <a data-toggle="modal" data-target=".white">
-              <img class="card-img-top" src="../img/living-room-1.jpg" height="220px">
-            </a>
+        <div class="col-md-4 p-3" >
+          <div class="card box-shadow"> 
+              <img class="card-img-top pic" src="../img/living-room-1.jpg" height="220px">
             <div class="card-body pt-1 pb-1">
               <h5>荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
               <i class="fas fa-jpy d-inline" aria-hidden="true"> <h7>300/月</h7><h7>（可砍价）</h7></i>
@@ -250,7 +259,7 @@
             <div class="card-body pt-1 pb-1">
               <h5 class="">荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
               <i class="fa fa-jpy d-inline" aria-hidden="true"> 300/月（可砍价）</i>
-              <div class="align-items-center d-flex mb-1"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-0"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2"></button>
+              <div class="align-items-center d-flex mb-1"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2"></button>
               </div>
             </div>
           </div>
@@ -267,32 +276,20 @@
             </div>
           </div>
         </div>
-        <div class="container" style="margin-top:150px">
-          <div class="row">
-            <div class="col-md-12 text-center pb-0"><a class="">
-                <p class="mb-1 h6 text-muted">© 2018-2019 发际线保卫队</p>
-              </a>
-              <ul class="list-inline text-muted"><a>
-                </a>
-                <li class="list-inline-item text-white"><a>
-                  </a><a href="#" class="text-info h6">Privacy</a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#" class="text-info h6">Terms</a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#" class="text-info h6">Support</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
         <a data-toggle="modal" data-target=".white" href="">
         </a>
       </div><a data-toggle="modal" data-target=".white" href="">
       </a>
-    </div><a data-toggle="modal" data-target=".white" href="">
-    </a>
+    </div>
+    <div class="container">
+      <div id="suggest" class="row">
+        <div class="col-md-12">
+          <h1 class="bg-secondary pl-2 pb-1">最近上新</h1>
+        </div>
+      </div>
+    </div>
+    <a data-toggle="modal" data-target=".white" href=""></a>
+  </div>
     <footer class="text-muted"><a data-toggle="modal" data-target=".white" href="">
       </a>
       <div class="modal fade white ">
@@ -355,7 +352,28 @@
         </div>
       </div>
     </footer>
-    <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+  <div style="box-sizing: border-box; background-image: url(../img/dynamic-style.png);padding:150px 0 40px">
+    <div>
+      <div class="col-md-12 text-center pb-0"><a class="">
+          <p class="mb-1 h6 text-muted">© 2018-2019 发际线保卫队</p>
+        </a>
+        <ul class="list-inline text-muted"><a>
+          </a>
+          <li class="list-inline-item text-white"><a>
+            </a><a href="#" class="text-info h6">Privacy</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#" class="text-info h6">Terms</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#" class="text-info h6">Support</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script src="https://g.alicdn.com/mui/jquery/4.0.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
@@ -394,101 +412,86 @@
     </script>
 
   <script type="text/javascript">
+  // 点击 Konw More的操作
+  function toKonwMore(ele) {
+    // 房子id
+    alert(ele.dataset.id);
+  }
+  
    //TO DO:获取并显示"最近上新"数据
    //获取后端传来的数据数组
-    axios.get('/qiju/house/recent', {
-          //newList,//二维数组
-       newList = response.data.data.list,
-     }).then(function(response) {
-       console.log(response);
-       if(response.data.code === 1){
+    axios.get('/qiju/house/recent')
+    .then(function(res) {
+      if(res.data.code === 1) {
         //渲染数据
-        var i;
-        var length = newList.length;
-         for( i=0;i<length;i++){
-        //传过来的第一个字段是house_id  
-          $("#latest").after('<div class="col-md-4 p-3" id="#house_' + newList[i][0] + '"><div class="card box-shadow"><img class="card-img-top" src=&quot;'+ newList[i][1] +'&quot; height="220px"><div class="card-body pt-1 pb-1"><h5>'+newList[i][2]+'</h5><i class="fas fa-jpy d-inline" aria-hidden="true"> <h7>'+newList[i][3]+'/月</h7><h7>（'+newList[i][4]+'）</h7></i><div class="align-items-center d-flex mb-1"><div class="align-items-center d-flex mb-1"><a data-toggle="modal" data-target=".white/*#house_' + newList[i][0] + '*/" href="display.html"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect isclick"></button></div></div></div></div>')      
-         }
-       }else alter('暂无数据');
+        var houseList = res.data.data.list;
+        var length = houseList.length;
+        for(var i=0;i<length;i++){
+          var thisHouse = houseList[i];
+          $('#suggest.row').append(`<div class="col-md-4 p-3">
+            <div class="card box-shadow"> <a data-toggle="modal" data-target=".white">
+                <img class="card-img-top" src="${thisHouse.house_image}" height="220px">
+              </a>
+              <div class="card-body pt-1 pb-1">
+                <h5>${thisHouse.address}</h5>
+                <i class="fa fa-jpy d-inline" aria-hidden="true">${thisHouse.price}（可砍价）</i>
+                <div class="align-items-center d-flex mb-1">
+                <button data-id="${thisHouse.house_id}" onclick="toKonwMore(this)" class="fa bg-secondary mr-5 mt-2 py-1 px-1 know-more" type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                <button data-id="${thisHouse.house_id}" onclick="toCollectHouse(this)" type="button" class="${thisHouse.house_collect_status ? 'fas' : 'far'} fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>
+                </div>
+              </div>
+            </div>
+          </div>`);
+        }
+      } else {
+        alter('暂无数据')
+      };
      }).catch(function(error) {
        console.log(error);
     }); 
-  
-   //TO DO:获取用户当前登录状态信息online
-   //共用一个接口：收藏(true)/取消收藏(false)
-   //捕捉用户点击按钮的次数
-  /* var isclick = 0;
-   $(".isclick").click(function(){
-      isclick++;
-   });
-   var click_status = false;
-   if(isclick != 0)
-     click_status = true;*/
+
    //-----------------------房源收藏----------------------//
-   $(".collect").click(function(){
-     //var login_status = false;
-     if(!online){
+   function toCollectHouse(ele){
+    axios.post('/qiju/user/collectHouse', {
+      house_id: ele.dataset.id,              
+    })
+    .then(function(response) {
+      console.log(response);
+      // 未登录
+      if(response.data.code === -1 && response.data.message === '需要验证'){
       //若用户未登录，不允许进行收藏操作，但允许浏览。跳转至登录界面
-      //alert("Ooh,请先登录再操作哦");
+      alert("Ooh,请先登录再操作哦");
       $("#failCollect").show();//failCollect对应弹框无效操作提醒弹框的id
         setTimeout(function(){
-        $("#failCollect").hide();
+          $("#failCollect").hide();
         },1000);
-       location.href = '../user/login.html';
-     }
-     else{
-     //如果用户已登录, 获取当前房屋id并将当前修改后端的收藏状态
-      var list = response.data.data.list;
-      for(var house of list){
-        //若未收藏，点击后变为收藏
-        if(house.house_collect_status){
-          $(this).removeClass('far').addClass('fas')  
-        }else{
-        //若已收藏，点击后取消收藏
-          $(this).removeClass('fas').addClass('far')
+        location.href = '../user/login.html';
+        return;
+      }
+      // 已登录
+      // 切换收藏状态
+      if(response.data.code === 1 ) {
+        var thisHouseCollect = $(ele);
+        if (thisHouseCollect.hasClass('far')) {
+          thisHouseCollect.removeClass('far').addClass('fas')
+        } else {
+          thisHouseCollect.removeClass('fas').addClass('far');
         }
       }
-    
-    //  axios.post('/user/collectHouse', {
-    //           house_id = $(this).attr("id"),   
-    //           house_collect_status           
-    //         })
-    //         .then(function(response) {
-    //           console.log(response); 
-    //           //房子未收藏，收藏 
-    //          if(house_collect_status)
-    //           {   
-    //             if(isclick%2 == 0){
-    //               $('.collect').removeClass('fas').addClass('far')
-    //             }
-    //              else{
-    //               $('.collect').removeClass('far').addClass('fas')
-    //              }
-    //           }
-    //           else{
-    //           //房子已经收藏，取消收藏 
-    //              if(isclick%2 == 0){
-    //               $('.collect').removeClass('far').addClass('fas')
-    //             }
-    //              else{
-    //               $('.collect').removeClass('fas').addClass('far')
-    //            }
-    //           }
-    //       })
-    //        .catch(function(error) {
-    //          console.log(error);
-    //       }); 
-        }
-   });
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+   };
   /*效果演示代码
    var isclick = 0;
    $(".isclick").click(function(){
       isclick++;
       if(isclick%2 == 0){
-        $('.collect').removeClass('fas').addClass('far')
+        thisHouse.removeClass('fas').addClass('far')
       }
       else{
-        $('.collect').removeClass('far').addClass('fas')
+        thisHouse.removeClass('far').addClass('fas')
       }
    });*/
   </script>
@@ -500,7 +503,7 @@
   //传值
   $('#search').click(function(){
    axios.post('/qiju/house/index', {
-      keyword = $('#keyword').val,
+      keyword: $('#keyword').val,
      }).then(function(response) {
        console.log(response);
      }).catch(function(error) {
@@ -508,7 +511,7 @@
     });  
     //TO DO:获取后端传来的数据数组houseList
       axios.get('/house/houseSearch', {
-        houseList = response.data.data.list,
+          // houseList,
      }).then(function(response) {
        console.log(response);
        if(response.data.code === 1){
@@ -524,8 +527,14 @@
      }).catch(function(error) {
        console.log(error);
     }); 
+  
+
   });
+   
+
+
   </script>
+
 </body>
 
 </html>
