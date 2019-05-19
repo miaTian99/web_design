@@ -84,7 +84,7 @@
                 <button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>
               </a>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 
-              <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect isclick"></button>
+              <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>
               </div>
             </div>
           </div>
@@ -327,8 +327,9 @@
   <script type="text/javascript">
    //TO DO:获取并显示"最近上新"数据
    //获取后端传来的数据数组
-    axios.get('url', {
-          newList,//二维数组
+    axios.get('/qiju/house/recent', {
+          //newList,//二维数组
+       newList = response.data.data.list,
      }).then(function(response) {
        console.log(response);
        if(response.data.code === 1){
@@ -344,21 +345,20 @@
        console.log(error);
     }); 
   
-
-   //TO DO:获取用户当前登录状态信息，先用login_status表示
+   //TO DO:获取用户当前登录状态信息online
    //共用一个接口：收藏(true)/取消收藏(false)
    //捕捉用户点击按钮的次数
-   var isclick = 0;
+  /* var isclick = 0;
    $(".isclick").click(function(){
       isclick++;
    });
    var click_status = false;
    if(isclick != 0)
-     click_status = true;
+     click_status = true;*/
    //-----------------------房源收藏----------------------//
    $(".collect").click(function(){
-     var login_status = false;
-     if(!login_staus){
+     //var login_status = false;
+     if(!online){
       //若用户未登录，不允许进行收藏操作，但允许浏览。跳转至登录界面
       //alert("Ooh,请先登录再操作哦");
       $("#failCollect").show();//failCollect对应弹框无效操作提醒弹框的id
@@ -369,35 +369,47 @@
      }
      else{
      //如果用户已登录, 获取当前房屋id并将当前修改后端的收藏状态
-     axios.post('/user/collectHouse', {
-              house_id = $(this).attr("id"),              
-            })
-            .then(function(response) {
-              console.log(response);
-              //房子已经收藏，取消收藏
-             if(response.data.code === 1 )
-              {    if(isclick%2 == 0){
-                  $('.collect').removeClass('far').addClass('fas')
-                }
-                 else{
-                  $('.collect').removeClass('fas').addClass('far')
-               }
-              }
-               
-              else{
-                 //房子未收藏，收藏 
-                if(isclick%2 == 0){
-                  $('.collect').removeClass('fas').addClass('far')
-                }
-                 else{
-                  $('.collect').removeClass('far').addClass('fas')
-                 }
-              }
-          })
-         .catch(function(error) {
-          console.log(error);
-      });
-     }
+      var list = response.data.data.list;
+      for(var house of list){
+        //若未收藏，点击后变为收藏
+        if(house.house_collect_status){
+          $(this).removeClass('far').addClass('fas')  
+        }else{
+        //若已收藏，点击后取消收藏
+          $(this).removeClass('fas').addClass('far')
+        }
+      }
+    
+    //  axios.post('/user/collectHouse', {
+    //           house_id = $(this).attr("id"),   
+    //           house_collect_status           
+    //         })
+    //         .then(function(response) {
+    //           console.log(response); 
+    //           //房子未收藏，收藏 
+    //          if(house_collect_status)
+    //           {   
+    //             if(isclick%2 == 0){
+    //               $('.collect').removeClass('fas').addClass('far')
+    //             }
+    //              else{
+    //               $('.collect').removeClass('far').addClass('fas')
+    //              }
+    //           }
+    //           else{
+    //           //房子已经收藏，取消收藏 
+    //              if(isclick%2 == 0){
+    //               $('.collect').removeClass('far').addClass('fas')
+    //             }
+    //              else{
+    //               $('.collect').removeClass('fas').addClass('far')
+    //            }
+    //           }
+    //       })
+    //        .catch(function(error) {
+    //          console.log(error);
+    //       }); 
+        }
    });
   /*效果演示代码
    var isclick = 0;
@@ -427,7 +439,7 @@
     });  
     //TO DO:获取后端传来的数据数组houseList
       axios.get('/house/houseSearch', {
-          houseList,
+        houseList = response.data.data.list,
      }).then(function(response) {
        console.log(response);
        if(response.data.code === 1){
@@ -443,18 +455,13 @@
      }).catch(function(error) {
        console.log(error);
     }); 
-  
-
   });
-   
-
-
   </script>
 
-  <!-- <script type="text/javascript">
+  <script type="text/javascript">
   //TO DO:通过勾选复选框筛选房源(价格/地区)
-  $(document).ready(function(){ 
-    var array = new Array();
+    $(document).ready(function(){ 
+      var array = new Array();
         $check_boxes.each(function(){
             var array_push = new Array();
             array_push.push($(this).val());
@@ -463,13 +470,11 @@
    var region = $('#region').prop('checked');//获取数组编码
    var price = $('#price').prop('checked');//获取数组编码
    if(region=='00'){
-      
 
    }
- 
   });
 });
-  </script> -->
+  </script>
 </body>
 
 </html>
