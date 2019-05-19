@@ -463,7 +463,7 @@
         // 已登录
         // 切换收藏状态
         if (response.data.code === 1) {
-          var thisHouseCollect = $(ele);
+          var thisHouseCollect = $(ele).find("i");
           if (thisHouseCollect.hasClass('far')) {
             thisHouseCollect.removeClass('far').addClass('fas')
           } else {
