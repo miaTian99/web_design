@@ -107,8 +107,18 @@
             </a>
             <div class="card-body pt-1 pb-1">
               <h5>荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
+<<<<<<< HEAD
               <i class="fas fa-jpy d-inline" aria-hidden="true"> 300/月（可砍价）</i>
               <div class="align-items-center d-flex mb-1"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2"></button>
+=======
+              <i class="fas fa-jpy d-inline" aria-hidden="true"> <h7>300/月</h7><h7>（可砍价）</h7></i>
+              <div class="align-items-center d-flex mb-1">
+                  <a data-toggle="modal" data-target=".white" href="display.html">
+                <button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>
+              </a>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 
+              <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>
+>>>>>>> 842fb9caea45b36d5c91ef595984b99f9ac0c009
               </div>
             </div>
           </div>
@@ -344,6 +354,7 @@
         </div>
       </div>
     </footer>
+<<<<<<< HEAD
     <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -493,6 +504,163 @@
     </script>
   </div>
   <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
+=======
+  <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+  <script type="text/javascript">
+   //TO DO:获取并显示"最近上新"数据
+   //获取后端传来的数据数组
+    axios.get('/qiju/house/recent', {
+          //newList,//二维数组
+       newList = response.data.data.list,
+     }).then(function(response) {
+       console.log(response);
+       if(response.data.code === 1){
+        //渲染数据
+        var i;
+        var length = newList.length;
+         for( i=0;i<length;i++){
+        //传过来的第一个字段是house_id  
+          $("#latest").after('<div class="col-md-4 p-3" id="#house_' + newList[i][0] + '"><div class="card box-shadow"><img class="card-img-top" src=&quot;'+ newList[i][1] +'&quot; height="220px"><div class="card-body pt-1 pb-1"><h5>'+newList[i][2]+'</h5><i class="fas fa-jpy d-inline" aria-hidden="true"> <h7>'+newList[i][3]+'/月</h7><h7>（'+newList[i][4]+'）</h7></i><div class="align-items-center d-flex mb-1"><div class="align-items-center d-flex mb-1"><a data-toggle="modal" data-target=".white/*#house_' + newList[i][0] + '*/" href="display.html"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect isclick"></button></div></div></div></div>')      
+         }
+       }else alter('暂无数据');
+     }).catch(function(error) {
+       console.log(error);
+    }); 
+  
+   //TO DO:获取用户当前登录状态信息online
+   //共用一个接口：收藏(true)/取消收藏(false)
+   //捕捉用户点击按钮的次数
+  /* var isclick = 0;
+   $(".isclick").click(function(){
+      isclick++;
+   });
+   var click_status = false;
+   if(isclick != 0)
+     click_status = true;*/
+   //-----------------------房源收藏----------------------//
+   $(".collect").click(function(){
+     //var login_status = false;
+     if(!online){
+      //若用户未登录，不允许进行收藏操作，但允许浏览。跳转至登录界面
+      //alert("Ooh,请先登录再操作哦");
+      $("#failCollect").show();//failCollect对应弹框无效操作提醒弹框的id
+        setTimeout(function(){
+        $("#failCollect").hide();
+        },1000);
+       location.href = '../user/login.html';
+     }
+     else{
+     //如果用户已登录, 获取当前房屋id并将当前修改后端的收藏状态
+      var list = response.data.data.list;
+      for(var house of list){
+        //若未收藏，点击后变为收藏
+        if(house.house_collect_status){
+          $(this).removeClass('far').addClass('fas')  
+        }else{
+        //若已收藏，点击后取消收藏
+          $(this).removeClass('fas').addClass('far')
+        }
+      }
+    
+    //  axios.post('/user/collectHouse', {
+    //           house_id = $(this).attr("id"),   
+    //           house_collect_status           
+    //         })
+    //         .then(function(response) {
+    //           console.log(response); 
+    //           //房子未收藏，收藏 
+    //          if(house_collect_status)
+    //           {   
+    //             if(isclick%2 == 0){
+    //               $('.collect').removeClass('fas').addClass('far')
+    //             }
+    //              else{
+    //               $('.collect').removeClass('far').addClass('fas')
+    //              }
+    //           }
+    //           else{
+    //           //房子已经收藏，取消收藏 
+    //              if(isclick%2 == 0){
+    //               $('.collect').removeClass('far').addClass('fas')
+    //             }
+    //              else{
+    //               $('.collect').removeClass('fas').addClass('far')
+    //            }
+    //           }
+    //       })
+    //        .catch(function(error) {
+    //          console.log(error);
+    //       }); 
+        }
+   });
+  /*效果演示代码
+   var isclick = 0;
+   $(".isclick").click(function(){
+      isclick++;
+      if(isclick%2 == 0){
+        $('.collect').removeClass('fas').addClass('far')
+      }
+      else{
+        $('.collect').removeClass('far').addClass('fas')
+      }
+   });*/
+  </script>
+
+  <script type="text/javascript">
+  //TO DO:搜索框通过关键字筛选房源
+  //TO DO:文字模式匹配/联想
+
+  //传值
+  $('#search').click(function(){
+   axios.post('/qiju/house/index', {
+      keyword = $('#keyword').val,
+     }).then(function(response) {
+       console.log(response);
+     }).catch(function(error) {
+       console.log(error);
+    });  
+    //TO DO:获取后端传来的数据数组houseList
+      axios.get('/house/houseSearch', {
+        houseList = response.data.data.list,
+     }).then(function(response) {
+       console.log(response);
+       if(response.data.code === 1){
+          //TO DO:渲染数据
+          var i;
+          var length = houseList.length;
+          for( i=0;i<length;i++){
+          //传过来的第一个字段是house_id  
+          $("#latest").after('<div class="col-md-4 p-3" id="#house_' + houseList[i][0] + '"><div class="card box-shadow"><img class="card-img-top" src=&quot;'+ houseList[i][1] +'&quot; height="220px"><div class="card-body pt-1 pb-1"><h5>'+houseList[i][2]+'</h5><i class="fas fa-jpy d-inline" aria-hidden="true"> <h7>'+houseList[i][3]+'/月</h7><h7>（'+houseList[i][4]+'）</h7></i><div class="align-items-center d-flex mb-1"><div class="align-items-center d-flex mb-1"><a data-toggle="modal" data-target=".white/*#house_' + houseList[i][0] + '*/" href="display.html"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect isclick"></button></div></div></div></div>')      
+          }
+       }else
+       alter('暂无数据');
+     }).catch(function(error) {
+       console.log(error);
+    }); 
+  });
+  </script>
+
+  <script type="text/javascript">
+  //TO DO:通过勾选复选框筛选房源(价格/地区)
+    $(document).ready(function(){ 
+      var array = new Array();
+        $check_boxes.each(function(){
+            var array_push = new Array();
+            array_push.push($(this).val());
+            array_push.push(2);
+            array.push(array_push);
+   var region = $('#region').prop('checked');//获取数组编码
+   var price = $('#price').prop('checked');//获取数组编码
+   if(region=='00'){
+
+   }
+  });
+});
+  </script>
+>>>>>>> 842fb9caea45b36d5c91ef595984b99f9ac0c009
 </body>
 
 </html>
