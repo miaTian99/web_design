@@ -65,30 +65,33 @@
             </div>
           </form>
         </div>
-        <div class="col-md-12 mt-0 pt-0">
-          <div id="selectBox" style="width: 707px; height: 80px; background-color: white; display: none;" class="mt-0 py-0">
-            <ul style="list-style: none;" class="my-0">
+        <div class="col-md-12 mt-0 pt-0" style="z-index:8;">
+          <div id="selectBox" style="width: 707px; height: 100px; background-color: white; display: none;" class="mt-0 py-0">
+            <ul style="list-style: none;" class="my-0" id="regionBox">
               <li style="float:left;" class="mr-3">地区</li>
               <li style="float:left;" class="mx-2"><input type="checkbox" value="荣昌"> 荣昌</li>
               <li style="float:left;" class="ml-3 mr-5"><input type="checkbox" value="北碚"> 北碚</li>
-              <li style="float:left;" class="mr-3 ml-5"> 宠物</li>
-              <li style="float:left;" class="mx-2"><input type="checkbox" value="可以"> 可以</li>
-              <li style="float:left;" class="mx-2"><input type="checkbox" value="不可"> 不可</li>
             </ul>
             <br>
-            <ul style="list-style: none;" class="my-0">
+            <ul style="list-style: none;" id="petBox" class="my-0">
+                <li style="float:left;" class="mr-3"> 宠物</li>
+                <li style="float:left;" class="mx-2"><input type="checkbox" value="可携"> 可携</li>
+                <li style="float:left;" class="ml-3 mr-5"><input type="checkbox" value="不可"> 不可</li>
+            </ul>
+            <br>
+            <ul style="list-style: none;" id="priceBox" class="my-0">
               <li style="float:left;" class="mr-3"> 价格</li>
               <li style="float:left;" class="mx-2"><input type="checkbox" value="低"> 0~300</li>
-              <li style="float:left;" class="ml-2 mr-1"><input type="checkbox" value="中"> 300~500</li>
-              <li style="float:left;" class="mx-2"><input type="checkbox" value="高"> 500以上</li>
+              <li style="float:left;" class="ml-2"><input type="checkbox" value="中"> 300~500</li>
+              <li style="float:left;" class="ml-3"><input type="checkbox" value="高"> 500以上</li>
             </ul>
             <br>
             <ul style="list-style: none;">
               <li style="float:left;" class="mr-3"> 设施</li>
-              <li style="float:left;" class="mx-2"><input type="checkbox" value="中国"> 空调</li>
-              <li style="float:left;" class="mx-2 ml-3"><input type="checkbox" value="英国"> 无线</li>
-              <li style="float:left;" class="mx-2 ml-4"><input type="checkbox" value="中国"> 独卫</li>
-              <li style="float:left;" class="mx-2 ml-3"><input type="checkbox" value="英国"> 书桌</li>
+              <li style="float:left;" class="mx-2"><input type="checkbox" value="空调"> 空调</li>
+              <li style="float:left;" class="ml-3"><input type="checkbox" value="无线"> 无线</li>
+              <li style="float:left;" class="ml-3"><input type="checkbox" value="独卫"> 独卫</li>
+              <li style="float:left;" class="ml-3"><input type="checkbox" value="书桌"> 书桌</li>
             </ul>
           </div>
         </div>
@@ -372,38 +375,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
   <script type="text/javascript" language="Javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.1.min.js"></script>
-  <script language="javascript" type="text/javascript">
-    var arr = []; //定义一个数组用来接收多选框的值
-    //初始化让下拉列表不显示
-    $(function() {
-      $('#selectBox').hide();
-    })
-    //单击下拉列表时显示/隐藏下拉列表
-    $('#box').click(function() {
-      $('#selectBox').toggle();
-    })
-    //监听checkbox的value值 改变则执行下列操作
-    $("input").change(function() {
-      if ($(this).prop("checked")) {
-        arr.push($(this).val()); //将选中的选项添加到数组中
-      } else {
-        var index = getIndex(arr, $(this).val()) //找到没有选中的选项在数组中的索引
-        arr.splice(index, 1); //在数组中删除该选项
-      }
-    })
-    //这个函数用于获取指定值在数组中的索引
-    function getIndex(arr, value) {
-      for (var i = 0; i < arr.length; i++) {
-        if (arr[i] == value) {
-          return i
-        }
-      }
-    }
-    //点击按钮是弹出数组 这里可能要修改一下！！！
-    $('search').click(function() {
-      alert(arr)
-    })
-  </script>
+  <!--上新数据渲染js-->
   <script type="text/javascript">
     // 点击 Konw More的操作
     function toKonwMore(ele) {
@@ -430,7 +402,7 @@
                 </a>
                 <div class="pb-1">
                 <b>收藏数：${thisHouse.collect_number}</b>&nbsp;&nbsp;&nbsp;
-                <button type="button" data-id="${thisHouse.house_id}" class="btn btn-primary px-2 ml-5" onclick="toCollectHouse(this)"><i class="collect far fa-star fa-1x fa-fw py-1 ${thisHouse.house_collect_status ? 'fas' : 'far'}"></i></button>
+                <button type="button" data-id="${thisHouse.house_id}" class="btn btn-primary px-2 ml-5" onclick="toCollectHouse(this)"><i class="collect fa-star fa-1x fa-fw py-1 ${thisHouse.house_collect_status ? 'fas' : 'far'}"></i></button>
                 <!-- <button data-id="${thisHouse.house_id}" onclick="toCollectHouse(this)" type="button" class="${thisHouse.house_collect_status ? 'fas' : 'far'} fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>-->
                 </div>
               </div>
@@ -443,7 +415,7 @@
     }).catch(function(error) {
       console.log(error);
     });
-    //-----------------------房源收藏----------------------//
+    //-----------------------房源收藏js----------------------//
     function toCollectHouse(ele) {
       axios.post('/qiju/user/collectHouse', {
         house_id: ele.dataset.id,
@@ -486,6 +458,7 @@
         }
      });*/
   </script>
+  <!--搜索框js-->
   <script type="text/javascript" >
     //TO DO:搜索框通过关键字筛选房源
     //TO DO:文字模式匹配/联想
@@ -517,6 +490,79 @@
       });
     });
   </script>
+  <!--下拉框样式js-->
+ <script language="javascript" type="text/javascript">
+  //var arr = []; //定义一个数组用来接收多选框的值
+  //初始化让下拉列表不显示
+  $(function() {
+    $('#selectBox').hide();
+  })
+  //单击下拉列表时显示/隐藏下拉列表
+  $('#box').click(function() {
+    $('#selectBox').toggle();
+  })
+  //前三项复选框单选限制
+  //勾记复选框传值至搜索框中
+  $(function () {
+    var regionBox = $("#regionBox input:checkbox");
+    var petBox = $("#petBox input:checkbox");
+    var priceBox = $("#priceBox input:checkbox");
+    var fancilityBox = $("#fancilityBox input:checkbox"); 
+        regionBox.click(function () {
+        if(this.checked || this.checked =='checked'){      
+          $("#regionBox").find('input[type=checkbox]').not(this).attr("checked", false);
+          }
+        });
+        petBox.click(function () {
+        if(this.checked || this.checked=='checked'){
+          $("#petBox").find('input[type=checkbox]').not(this).attr("checked", false);
+          }
+        });
+        priceBox.click(function () {
+        if(this.checked || this.checked=='checked'){
+          $("#priceBox").find('input[type=checkbox]').not(this).attr("checked", false);
+          }
+        });
+        $(function(){    
+          $("#selectBox input").change(function(){        
+          var result="";        
+          $("input:checked").each(function(){               
+            result+=$(this).val()+',';        
+            });       
+             if(result!=""){            
+               result=result.substring(0,result.lastIndexOf(','));        
+               }       
+         $("#keyword").val(result);         
+         }); 
+         })
+      }); 
+
+
+
+  // //监听checkbox的value值 改变则执行下列操作
+  // $("input").change(function() {
+  //   if ($(this).prop("checked")) {
+  //     arr.push($(this).val()); //将选中的选项添加到数组中
+  //   } else {
+  //     var index = getIndex(arr, $(this).val()) //找到没有选中的选项在数组中的索引
+  //     arr.splice(index, 1); //在数组中删除该选项
+  //   }
+  // })
+  
+  // //这个函数用于获取指定值在数组中的索引
+  // function getIndex(arr, value) {
+  //   for (var i = 0; i < arr.length; i++) {
+  //     if (arr[i] == value) {
+  //       return i
+  //     }
+  //   }
+  // }
+  // //点击按钮是弹出数组 这里可能要修改一下！！！
+  
+  // $('search').click(function() {
+  //   alert(arr)
+  // })
+</script>
 </body>
 
 </html>
