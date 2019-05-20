@@ -102,7 +102,7 @@
     <div class="container ">
       <div class="row" id="suggest">
         <div class="col-md-12">
-          <h1 class="bg-secondary pl-2 pb-1" id="latest">最近上新</h1>
+          <h1 class="bg-secondary pl-2 pb-1">最近上新</h1>
         </div>
         
        <!-- <div class="col-md-4 p-3" >
@@ -401,7 +401,7 @@
                 <button data-id="${thisHouse.house_id}" onclick="toKonwMore(this)" class="fa bg-secondary mr-5 mt-2 py-1 px-1 know-more" type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>-->
                 </a>
                 <div class="pb-1">
-                <b>收藏数：${thisHouse.collect_number}</b>&nbsp;&nbsp;&nbsp;
+                <b>收藏数：${thisHouse.collect_times || 0}</b>&nbsp;&nbsp;&nbsp;
                 <button type="button" data-id="${thisHouse.house_id}" class="btn btn-primary px-2 ml-5" onclick="toCollectHouse(this)"><i class="collect fa-star fa-1x fa-fw py-1 ${thisHouse.house_collect_status ? 'fas' : 'far'}"></i></button>
                 <!-- <button data-id="${thisHouse.house_id}" onclick="toCollectHouse(this)" type="button" class="${thisHouse.house_collect_status ? 'fas' : 'far'} fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>-->
                 </div>
@@ -462,36 +462,56 @@
   <script type="text/javascript" >
     //TO DO:搜索框通过关键字筛选房源
     //TO DO:文字模式匹配/联想
-    //传值
+    //传值，修改标题内容
     $('#search').click(function() {
       axios.post('/qiju/house/index', {
         keyword: $('#keyword').val,
       }).then(function(response) {
         console.log(response);
+        if(response.data.code === 1){
+          $('#suggest').find('h1').replaceWith('搜索结果');
+        }
       }).catch(function(error) {
         console.log(error);
       });
-      //TO DO:获取后端传来的数据数组houseList
-      axios.get('/house/houseSearch', {
-        // houseList,
-      }).then(function(response) {
-        console.log(response);
-        if (response.data.code === 1) {
-          //TO DO:渲染数据
-          var i;
-          var length = houseList.length;
-          for (i = 0; i < length; i++) {
-            //传过来的第一个字段是house_id  
-            $("#latest").after('<div class="col-md-4 p-3" id="#house_' + houseList[i][0] + '"><div class="card box-shadow"><img class="card-img-top" src=&quot;' + houseList[i][1] + '&quot; height="220px"><div class="card-body pt-1 pb-1"><h5>' + houseList[i][2] + '</h5><i class="fas fa-jpy d-inline" aria-hidden="true"> <h7>' + houseList[i][3] + '/月</h7><h7>（' + houseList[i][4] + '）</h7></i><div class="align-items-center d-flex mb-1"><div class="align-items-center d-flex mb-1"><a data-toggle="modal" data-target=".white/*#house_' + houseList[i][0] + '*/" href="display.html"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect isclick"></button></div></div></div></div>')
-          }
-        } else alter('暂无数据');
-      }).catch(function(error) {
-        console.log(error);
-      });
+
+      //获取后端传来的搜索结果数组houseList
+      axios.get('/house/houseSearch').then(function(res) {
+        if (res.data.code === 1) {
+        //渲染数据
+        var houseList = res.data.data.list;
+        var length = houseList.length;
+        for (var i = 0; i < length; i++) {
+          var thisHouse = houseList[i];
+          $('#suggest.row').append(`<div class="col-md-4 p-3">
+            <div class="card box-shadow"> <a data-toggle="modal" data-target=".white" href="onehouse.html" class="text-decoration-none">
+                <img class="card-img-top" src="${thisHouse.house_image}" height="220px">
+                <div class="card-body pt-1 pb-1"> 
+                <h5>${thisHouse.address}</h5>
+                <i class="fas fa-jpy d-inline"><h7>${thisHouse.price}</h7><h7>（可砍价）</h7></i>
+                <!--<div class="align-items-center d-flex mb-1">
+                <button data-id="${thisHouse.house_id}" onclick="toKonwMore(this)" class="fa bg-secondary mr-5 mt-2 py-1 px-1 know-more" type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>-->
+                </a>
+                <div class="pb-1">
+                <b>收藏数：${thisHouse.collect_times || 0}</b>&nbsp;&nbsp;&nbsp;
+                <button type="button" data-id="${thisHouse.house_id}" class="btn btn-primary px-2 ml-5" onclick="toCollectHouse(this)"><i class="collect fa-star fa-1x fa-fw py-1 ${thisHouse.house_collect_status ? 'fas' : 'far'}"></i></button>
+                <!-- <button data-id="${thisHouse.house_id}" onclick="toCollectHouse(this)" type="button" class="${thisHouse.house_collect_status ? 'fas' : 'far'} fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>-->
+                </div>
+              </div>
+            </div>
+          </div>`);
+        }
+      } else {
+        alter('暂无数据')
+      };
+    }).catch(function(error) {
+      console.log(error);
     });
+  });
+
   </script>
   <!--下拉框样式js-->
- <script language="javascript" type="text/javascript">
+ <script>
   //var arr = []; //定义一个数组用来接收多选框的值
   //初始化让下拉列表不显示
   $(function() {
@@ -536,9 +556,6 @@
          }); 
          })
       }); 
-
-
-
   // //监听checkbox的value值 改变则执行下列操作
   // $("input").change(function() {
   //   if ($(this).prop("checked")) {
