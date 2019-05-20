@@ -5,28 +5,29 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+  <link rel="stylesheet" href="../css/all.css" type="text/css">
+  <link rel="stylesheet" href="../scss/theme.css">
 </head>
 
-<body>
+<body style="background-image: url(../img/dynamic-style.png);">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="carousel slide" data-ride="carousel" id="carousel">
           <div class="carousel-inner">
-            <div class="carousel-item active"> <img class="d-block img-fluid w-100" src="https://static.pingendo.com/cover-bubble-dark.svg">
+            <div class="carousel-item active"> <img class="d-block w-100" src="../img/living-room-1.jpg" height="650px">
               <div class="carousel-caption">
                 <h5 class="m-0">Carousel</h5>
                 <p>with controls</p>
               </div>
             </div>
-            <div class="carousel-item"> <img class="d-block img-fluid w-100" src="https://static.pingendo.com/cover-bubble-light.svg">
+            <div class="carousel-item"> <img class="d-block w-100" src="../img/preview16.jpg" height="650px">
               <div class="carousel-caption">
                 <h5 class="m-0">Carousel</h5>
                 <p>with controls</p>
               </div>
             </div>
-            <div class="carousel-item"> <img class="d-block img-fluid w-100" src="https://static.pingendo.com/cover-moon.svg">
+            <div class="carousel-item"> <img class="d-block w-100" src="../img/living-room-11.jpg" height="650px">
               <div class="carousel-caption">
                 <h5 class="m-0">Carousel</h5>
                 <p>with controls</p>
@@ -46,10 +47,10 @@
           <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
               <li class="nav-item">
-                <a class="nav-link active show" data-toggle="tab" data-target="#tabone">详细信息</a>
+                <a class="nav-link show active" data-toggle="tab" data-target="#tabone">详细信息</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" data-target="#tabthree">Contact</a>
+                <a class="nav-link" data-toggle="tab" data-target="#tabthree">联系方式和评价</a>
               </li>
               <li class="nav-item">
                 <a class="btn btn-primary px-3 isclick" href="#"><i class="collect far fa-star fa-fw fa-1x py-1"></i></a>
@@ -59,10 +60,65 @@
           <div class="card-body h-75">
             <div class="tab-content mt-2">
               <div class="tab-pane fade active show" id="tabone" role="tabpanel">
-                <b class="text-left"> 详细的地址： </b><textarea style="" class="w-25 border"></textarea>
+                <div class="row border-bottom">
+                  <div class="col-md-2">
+                    <h5 class="pt-2"> 租金 ：</h5>
+                  </div>
+                  <div class="col-md-2 text-left">
+                    <p class="pt-2"> 310/月 </p>
+                  </div>
+                  <div class="col-md-2 pt-2">
+                    <h5> 是否可养宠物：</h5>
+                  </div>
+                  <div class="col-md-2">
+                    <p class="text-left pt-2"> 可以 </p>
+                  </div>
+                  <div class="col-md-2">
+                    <h5 class="pt-2"> 地区： </h5>
+                  </div>
+                  <div class="col-md-2">
+                    <p class="text-left pt-2"> 荣昌 </p>
+                  </div>
+                </div>
+                <div class="row border-bottom">
+                  <div class="col-md-4 pt-2">
+                    <h5>详细的地址：</h5>
+                  </div>
+                  <div class="col-md-8">
+                    <p class="pt-2 text-left"> 重庆市荣昌区学院路158号，启昌财富广场 </p>
+                  </div>
+                </div>
+                <div class="row border-bottom">
+                  <div class="col-md-4 pt-2">
+                    <h5> 房中设备： </h5>
+                  </div>
+                  <div class="col-md-8">
+                    <p class="pt-2 text-left"> 洗衣机，热水器，空调，衣柜，无线，独卫</p>
+                  </div>
+                </div>
               </div>
               <div class="tab-pane fade" id="tabthree" role="tabpanel">
-                <p class="">联系方式，弹出来的二维码，这样比较便利，做不到的话直接写微信号或者扣扣号也是很好的</p>
+                <div class="row border-bottom">
+                  <div class="col-md-4">
+                    <h5 class="pt-2"> 联系方式： </h5>
+                  </div>
+                  <div class="col-md-8">
+                    <p class="pt-2 text-left"> QQ:123456789/wechat:netmug/手机号：12345678912 </p>
+                  </div>
+                </div>
+                <div class="row border-bottom">
+                  <div class="col-md-12">
+                    <h3 class="pt-2"> 评价 </h3>
+                  </div>
+                </div>
+                <div class="row border-bottom">
+                  <div class="col-md-4">
+                    <h5 class="pt-2"> 某位不知名用户： </h5>
+                  </div>
+                  <div class="col-md-8">
+                    <p class="pt-2 text-left"> 可以，房子很好，房主人也很好，当然这个网站也是非常OK，很方便：) </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
