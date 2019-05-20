@@ -2,22 +2,34 @@
 <html>
 
 <head>
-   <title>xianzhi</title>
-   <meta charset="utf-8">
-	<style >
-	a{
+  <title>xianzhi</title>
+  <meta charset="utf-8">
+  <style> @font-face{
+      font-family:hudie;
+      src:url('../webfonts/fa-brands-400.ttf');
+    }
+    html, body{
+      height:100%;
+     width:100%;
+     margin:0px;
+     padding:0px;
+    }
+    a{
 		text-decoration: none;
 		color: black;
-	}
+	  }
 	
-	a:hover{
+	   a:hover{
 		color: rgb(192,142,175);
-	}
-	.pt-perspective {
+	   }
+    h1{
+    font-family:hudie;
+    }
+	  .pt-perspective {
     position: relative;
     width: 100%;
     height: 100%;
-    perspective: 1200px;
+    
     transform-style: preserve-3d;
     } 
    .pt-page {
@@ -56,7 +68,7 @@
 		width: 100%;
 		height: 100%;
 		background-color: rgb(255,255,255);
-		margin:0px;
+		margin:0;
 		padding: 0px;
 
 	}
@@ -68,14 +80,14 @@
 		margin:0px;
 		padding: 0px；
 		background-color:rgb(158,204,171);
-        box-shadow: -5px -5px 20px rgb(216,227,231) inset;
+        box-shadow: -5px -5px 20px rgba(248,223,114,0.5) inset;
         text-align: center;
         animation: fadeIN 1s 0s linear forwards;
     }
    
 	.img{   height:200px;
 		    width: 200px;
-		    border-radius: 50%;
+		   
 		    overflow: hidden;
 		    margin:0 auto;
 		    margin-top: 50px;
@@ -85,55 +97,71 @@
     	to{opacity: 1;transform: scale(1);}
     }
 	</style>
+</head>
 
 <body>
-<div class="container">
-    <div class="first" >
-       <a href="#"> <div class="img" >
-              <img src="../svgs/2.svg">
-        </div>
-        <h2>book</h2></a>
-    </div>
-    
+  <div class="container">
     <div class="first">
-       <a href="#"> <div class="img">
-              <img src="../img/1.png">
+      <a href="#">
+        <div class="img">
+          <img src="../img/book.png" width="210" class="border-top-0">
         </div>
-        <h2>daily necessities</h2></a>
+        <h1 contenteditable="true">书</h1>
+      </a>
     </div>
     <div class="first">
-        <a href="#"><div class="img">
-              <img src="../img/1.png">
+      <a href="#">
+        <div class="img">
+          <img src="../img/san.png" width="150">
         </div>
-        <h2>furniture</h2></a>
+        <h1>日用品</h1>
+      </a>
     </div>
     <div class="first">
-        <a href="#"><div class="img">
-              <img src="../img/1.png">
+      <a href="#">
+        <div class="img">
+          <img src="../img/chair.png" width="200">
         </div>
-        <h2>equipment</h2></a>
+        <h1>家具</h1>
+      </a>
     </div>
     <div class="first">
-        <a href="#"><div class="img">
-              <img src="../img/1.png">
+      <a href="#">
+        <div class="img">
+          <img src="../img/run.png" width="200">
         </div>
-        <h2>vehicle</h2></a>
+        <h1>健身器材</h1>
+      </a>
     </div>
     <div class="first">
-        <a href="#"><div class="img">
-              <img src="../img/3.svg">
+      <a href="#">
+        <div class="img">
+          <img src="../img/zxc.png" width="200">
         </div>
-        <h2>musical instrument</h2></a>
+        <h1 contenteditable="true">交通工具</h1>
+      </a>
     </div>
-</div>
- </body>
- <script type="text/javascript">
-		var _submit = document.getElementById("submit");
-		function mousedown(){
-			document.getElementById("submit").className="submit_1";
-		}
-		function mouseup(){
-			document.getElementById("submit").className="submit";
-		}
-	</script>
- </html>
+    <div class="first">
+      <a href="#">
+        <div class="img">
+          <img src="../img/guitar.png" height="200">
+        </div>
+        <h1 contenteditable="true">乐器</h1>
+      </a>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var _submit = document.getElementById("submit");
+
+    function mousedown() {
+      document.getElementById("submit").className = "submit_1";
+    }
+
+    function mouseup() {
+      document.getElementById("submit").className = "submit";
+    }
+  </script>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
+</body>
+
+</html>
