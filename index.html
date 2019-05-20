@@ -1,13 +1,567 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta http-equiv="refresh" content="0; url=house/index.html">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>栖居</title>
+  <!-- CSS dependencies -->
+  <link rel="stylesheet" href="../css/all.css" type="text/css">
+  <link rel="stylesheet" href="../css/wireframe.css">
+  <link rel="stylesheet" href="../scss/theme.css">
+  <style> a:link{text-decoration:none;}
+  </style>
 </head>
+
 <body>
-  <script>window.location.href = 'house/index.html'</script>
+  <div class="in collapse" style="background-image: url(&quot;../img/dynamic-style.png&quot;);" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="py-4 col-md-4">
+          <a href="../user/login.html" class="text-decoration-none">
+            <h1>Login</h1>
+            <h5>Click here to login</h5>
+          </a>
+        </div>
+        <div class="py-4 col-md-4">
+          <a href="xianzhi.html" class="text-decoration-none">
+            <h1>Idle Swapping</h1>
+            <h5>Do you want to know more? Click here</h5>
+          </a>
+        </div>
+        <div class="col-md-4  py-4">
+          <h1>About us</h1>
+          <ul class="list-unstyled">
+            <li class="shadow-none">
+              <a href="#" class="text-decoration-none">Follow on Weibo</a>
+            </li>
+            <li class="">
+              <a href="#" class="text-decoration-none">Like on Wechat</a>
+            </li>
+            <li class="">
+              <a href="#" class="text-decoration-none">Email me</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center text-md-right h-75 py-0" style="background-image: url(&quot;../img/living-room-5.jpg&quot;); background-position: right bottom; background-size: cover; background-repeat: repeat; background-attachment: fixed;">
+    <div class="navbar">
+      <div class="container d-flex justify-content-between">
+        <a href="#" class="navbar-brand d-flex align-items-center"> <i class="d-block far fa-lg fa-building text-body"></i> <strong>Qiju</strong> </a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-expanded="false">
+          <img url="" src="../gif/364.gif" width="50"> </button>
+      </div>
+    </div>
+    <div class="container" style="margin-top:350px;">
+      <div class="row" style="margin-left:100px;">
+        <div class="col-md-12 ">
+          <form class="form-inline mb-0" style="width:1100px">
+            <div class="input-group w-75">
+              <input type="text" id="keyword" class="form-control form-control-lg" placeholder="关键词：地区，地点，设施等~">
+              <select id="box"> </select>
+              <div class="input-group-append"><button class="btn btn-primary px-3" type="button" id="search">搜 &nbsp; 索</button> </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-12 mt-0 pt-0" style="z-index:8;">
+          <div id="selectBox" style="width: 707px; height: 100px; background-color: white; display: none;" class="mt-0 py-0">
+            <ul style="list-style: none;" class="my-0" id="regionBox">
+              <li style="float:left;" class="mr-3">地区</li>
+              <li style="float:left;" class="mx-2"><input type="checkbox" value="荣昌"> 荣昌</li>
+              <li style="float:left;" class="ml-3 mr-5"><input type="checkbox" value="北碚"> 北碚</li>
+            </ul>
+            <br>
+            <ul style="list-style: none;" id="petBox" class="my-0">
+                <li style="float:left;" class="mr-3"> 宠物</li>
+                <li style="float:left;" class="mx-2"><input type="checkbox" value="可携"> 可携</li>
+                <li style="float:left;" class="ml-3 mr-5"><input type="checkbox" value="不可"> 不可</li>
+            </ul>
+            <br>
+            <ul style="list-style: none;" id="priceBox" class="my-0">
+              <li style="float:left;" class="mr-3"> 价格</li>
+              <li style="float:left;" class="mx-2"><input type="checkbox" value="低"> 0~300</li>
+              <li style="float:left;" class="ml-2"><input type="checkbox" value="中"> 300~500</li>
+              <li style="float:left;" class="ml-3"><input type="checkbox" value="高"> 500以上</li>
+            </ul>
+            <br>
+            <ul style="list-style: none;">
+              <li style="float:left;" class="mr-3"> 设施</li>
+              <li style="float:left;" class="mx-2"><input type="checkbox" value="空调"> 空调</li>
+              <li style="float:left;" class="ml-3"><input type="checkbox" value="无线"> 无线</li>
+              <li style="float:left;" class="ml-3"><input type="checkbox" value="独卫"> 独卫</li>
+              <li style="float:left;" class="ml-3"><input type="checkbox" value="书桌"> 书桌</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-4" style="background-image: url(../img/dynamic-style.png);">
+    <div class="container ">
+      <div class="row" id="suggest">
+        <div class="col-md-12">
+          <h1 class="bg-secondary pl-2 pb-1" id="latest">最近上新</h1>
+        </div>
+        
+       <!-- <div class="col-md-4 p-3" >
+          <div class="card box-shadow"> 
+              <img class="card-img-top pic" src="../img/living-room-1.jpg" height="220px">
+            <div class="card-body pt-1 pb-1">
+              <h5>荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
+              <i class="fas fa-jpy d-inline" aria-hidden="true"> <h7>300/月</h7><h7>（可砍价）</h7></i>
+              <div class="align-items-center d-flex mb-1">
+                  <a data-toggle="modal" data-target=".white" href="display.html">
+                <button type="button" onclick="toKonwMore(this)" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>
+              </a>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 
+              <button type="button" onclick="toCollectHouse(this)" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 p-3">
+          <div class="card box-shadow"> <a data-toggle="modal" data-target=".white">
+              <img class="card-img-top" src="../img/living-room-2.jpg" height="220px">
+            </a>
+            <div class="card-body pt-1 pb-1">
+              <h5>荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
+              <i class="fas fa-jpy d-inline" aria-hidden="true"> 300/月（可砍价）</i>
+              <div class="align-items-center d-flex mb-1">
+                <button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 p-3">
+          <div class="card box-shadow"> <a data-toggle="modal" data-target=".white">
+              <img class="card-img-top" src="../img/living-room-3.jpg" height="220px">
+            </a>
+            <div class="card-body pt-1 pb-1">
+              <h5>荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
+              <i class="fas fa-jpy d-inline" aria-hidden="true"> 300/月（可砍价）</i>
+              <div class="align-items-center d-flex mb-1">
+                <button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 p-3">
+          <div class="card box-shadow"> <a data-toggle="modal" data-target=".white">
+              <img class="card-img-top" src="../img/living-room-4.jpg" height="220px">
+            </a>
+            <div class="card-body pt-1 pb-1">
+              <h5>荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
+              <i class="fas fa-jpy d-inline" aria-hidden="true"> 300/月（可砍价）</i>
+              <div class="align-items-center d-flex mb-1"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 p-3">
+          <div class="card box-shadow"> <a data-toggle="modal" data-target=".white">
+              <img class="card-img-top" src="../img/living-room-5.jpg" height="220px">
+            </a>
+            <div class="card-body pt-1 pb-1">
+              <h5>荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
+              <i class="fas fa-jpy d-inline" aria-hidden="true"> 300/月（可砍价）</i>
+              <div class="align-items-center d-flex mb-1"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 p-3">
+          <div class="card box-shadow"> <a data-toggle="modal" data-target=".white">
+              <img class="card-img-top" src="../img/living-room-6.jpg" height="220px">
+            </a>
+            <div class="card-body pt-1 pb-1">
+              <h5>荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
+              <i class="fa fa-jpy d-inline" aria-hidden="true"> 300/月（可砍价）</i>
+              <div class="align-items-center d-flex mb-1"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2"></button>
+              </div>
+            </div>
+          </div>
+        </div>-->
+      </div><a data-toggle="modal" data-target=".white" href="">
+      </a>
+    </div><a data-toggle="modal" data-target=".white" href="">
+    </a>
+ 
+  </div>
+
+  <div class="py-4 bg-light" style="background-image: url(../img/dynamic-style.png);">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="bg-secondary pl-2 pb-1">精品推荐</h1>
+        </div>
+        <div class="col-md-4 p-3">
+          <div class="card box-shadow"> <a data-toggle="modal" data-target=".white">
+              <img class="card-img-top" src="../img/living-room-7.jpg" height="220px">
+            </a>
+            <div class="card-body pt-1 pb-1">
+              <h5>荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
+              <i class="fa fa-jpy d-inline" aria-hidden="true"> 300/月（可砍价）</i>
+              <div class="align-items-center d-flex mb-1"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 p-3">
+          <div class="card box-shadow"> <a data-toggle="modal" data-target=".white">
+              <img class="card-img-top" src="../img/living-room-8.jpg" height="220px">
+            </a>
+            <div class="card-body pt-1 pb-1">
+              <h5>荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
+              <i class="fa fa-jpy d-inline" aria-hidden="true"> 300/月（可砍价）</i>
+              <div class="align-items-center d-flex mb-1"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 p-3">
+          <div class="card box-shadow"> <a data-toggle="modal" data-target=".white">
+              <img class="card-img-top" src="../img/living-room-9.jpg" height="220px">
+            </a>
+            <div class="card-body pt-1 pb-1">
+              <h5>荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
+              <i class="fa fa-jpy d-inline" aria-hidden="true"> 300/月（可砍价）</i>
+              <div class="align-items-center d-flex mb-1"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 p-3">
+          <div class="card box-shadow"> <a data-toggle="modal" data-target=".white">
+              <img class="card-img-top" src="../img/living-room-10.jpg" height="220px">
+            </a>
+            <div class="card-body pt-1 pb-1">
+              <h5>荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
+              <i class="fa fa-jpy d-inline" aria-hidden="true"> 300/月（可砍价）</i>
+              <div class="align-items-center d-flex mb-1"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 p-3">
+          <div class="card box-shadow"> <a data-toggle="modal" data-target=".white">
+              <img class="card-img-top" src="../img/living-room-11.jpg" height="220px">
+            </a>
+            <div class="card-body pt-1 pb-1">
+              <h5 class="">荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
+              <i class="fa fa-jpy d-inline" aria-hidden="true"> 300/月（可砍价）</i>
+              <div class="align-items-center d-flex mb-1"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 p-3">
+          <div class="card box-shadow"> <a data-toggle="modal" data-target=".white">
+              <img class="card-img-top" src="../img/living-room-1.jpg" height="220px">
+            </a>
+            <div class="card-body pt-1 pb-1">
+              <h5>荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
+              <i class="fa fa-jpy d-inline" aria-hidden="true"> 300/月（可砍价）</i>
+              <div class="align-items-center d-flex mb-1"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a data-toggle="modal" data-target=".white" href="">
+        </a>
+      </div><a data-toggle="modal" data-target=".white" href="">
+      </a>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="pagination pt-5" style="margin-left:41.5%;">
+            <li class="page-item"> <a class="page-link" href="#"> <span>«</span></a> </li>
+            <li class="page-item active"> <a class="page-link" href="#">1</a> </li>
+            <li class="page-item"> <a class="page-link" href="#">2</a> </li>
+            <li class="page-item"> <a class="page-link" href="#">3</a> </li>
+            <li class="page-item"> <a class="page-link" href="#">4</a> </li>
+            <li class="page-item"> <a class="page-link" href="#"> <span>»</span></a> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin-top:80px">
+      <div class="row">
+        <div class="col-md-12 text-center"><a>
+            <p class="mb-1 h6 text-muted">© 2018-2019 发际线保卫队</p>
+          </a>
+          <ul class="list-inline text-muted"><a>
+            </a>
+            <li class="list-inline-item text-white"><a>
+              </a><a href="#" class="text-info h6">Privacy</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="text-info h6">Terms</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="text-info h6">Support</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="text-muted"><a data-toggle="modal" data-target=".white" href="">
+    </a>
+    <div class="modal fade white" style="display: none;" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-light">
+            <h5 class="modal-title"><b>White</b> - Consultant</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+          </div>
+          <div class="modal-body bg-light w-100 h-50">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="carousel slide mx-2" data-ride="carousel" id="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active"> <img class="d-block img-fluid w-100" src="https://static.pingendo.com/cover-bubble-dark.svg">
+                    </div>
+                    <div class="carousel-item"> <img class="d-block img-fluid w-100" src="https://static.pingendo.com/cover-bubble-light.svg">
+                    </div>
+                    <div class="carousel-item"> <img class="d-block img-fluid w-100" src="https://static.pingendo.com/cover-moon.svg">
+                    </div>
+                  </div> <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carousel" role="button" data-slide="next"> <span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span> </a>
+                </div>
+              </div>
+            </div>
+            <div class="container h-50">
+              <div class="row h-75">
+                <div class="col-md-12 col-lg-12 mt-1">
+                  <div class="row">
+                  </div>
+                  <div class="card text-center">
+                    <div class="card-header">
+                      <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                          <a class="nav-link active show" data-toggle="tab" data-target="#tabone">Explicate</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-toggle="tab" data-target="#tabthree">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="btn btn-primary px-3 isclick" href="#"><i class="collect far fa-star fa-fw fa-1x py-1"></i></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card-body h-75">
+                      <div class="tab-content mt-2">
+                        <div class="tab-pane fade active show" id="tabone" role="tabpanel">
+                          <p class="text-justify">这里我先假装我正在借助这个网站出租房子，我先要大概说明房子地点，能住几个人，房子的条件怎么样，有无无线，电视，空调，做饭的设施，需不需要和别人一起住以及大概的价格，这里大概的格式还没想好的</p>
+                        </div>
+                        <div class="tab-pane fade" id="tabthree" role="tabpanel">
+                          <p class="">联系方式，弹出来的二维码，这样比较便利，做不到的话直接写微信号或者扣扣号也是很好的</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://g.alicdn.com/mui/jquery/4.0.1/jquery.js"></script>
+  <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+  <!--上新数据渲染js-->
+  <script type="text/javascript">
+    // 点击 Konw More的操作
+    function toKonwMore(ele) {
+      // 房子id
+      alert(ele.dataset.id);
+    }
+    //TO DO:获取并显示"最近上新"数据
+    //获取后端传来的数据数组
+    axios.get('/qiju/house/recent').then(function(res) {
+      if (res.data.code === 1) {
+        //渲染数据
+        var houseList = res.data.data.list;
+        var length = houseList.length;
+        for (var i = 0; i < length; i++) {
+          var thisHouse = houseList[i];
+          $('#suggest.row').append(`<div class="col-md-4 p-3">
+            <div class="card box-shadow"> <a data-toggle="modal" data-target=".white" href="onehouse.html" class="text-decoration-none">
+                <img class="card-img-top" src="${thisHouse.house_image}" height="220px">
+                <div class="card-body pt-1 pb-1"> 
+                <h5>${thisHouse.address}</h5>
+                <i class="fas fa-jpy d-inline"><h7>${thisHouse.price}</h7><h7>（可砍价）</h7></i>
+                <!--<div class="align-items-center d-flex mb-1">
+                <button data-id="${thisHouse.house_id}" onclick="toKonwMore(this)" class="fa bg-secondary mr-5 mt-2 py-1 px-1 know-more" type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>-->
+                </a>
+                <div class="pb-1">
+                <b>收藏数：${thisHouse.collect_times || 0}</b>&nbsp;&nbsp;&nbsp;
+                <button type="button" data-id="${thisHouse.house_id}" class="btn btn-primary px-2 ml-5" onclick="toCollectHouse(this)"><i class="collect fa-star fa-1x fa-fw py-1 ${thisHouse.house_collect_status ? 'fas' : 'far'}"></i></button>
+                <!-- <button data-id="${thisHouse.house_id}" onclick="toCollectHouse(this)" type="button" class="${thisHouse.house_collect_status ? 'fas' : 'far'} fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>-->
+                </div>
+              </div>
+            </div>
+          </div>`);
+        }
+      } else {
+        alter('暂无数据')
+      };
+    }).catch(function(error) {
+      console.log(error);
+    });
+    //-----------------------房源收藏js----------------------//
+    function toCollectHouse(ele) {
+      axios.post('/qiju/user/collectHouse', {
+        house_id: ele.dataset.id,
+      }).then(function(response) {
+        console.log(response);
+        // 未登录
+        if (response.data.code === -1 && response.data.message === '需要验证') {
+          //若用户未登录，不允许进行收藏操作，但允许浏览。跳转至登录界面
+          alert("Ooh,请先登录再操作哦");
+          $("#failCollect").show(); //failCollect对应弹框无效操作提醒弹框的id
+          setTimeout(function() {
+            $("#failCollect").hide();
+          }, 1000);
+          location.href = '../user/login.html';
+          return;
+        }
+        // 已登录
+        // 切换收藏状态
+        if (response.data.code === 1) {
+          var thisHouseCollect = $(ele).find("i");
+          if (thisHouseCollect.hasClass('far')) {
+            thisHouseCollect.removeClass('far').addClass('fas')
+          } else {
+            thisHouseCollect.removeClass('fas').addClass('far');
+          }
+        }
+      }).catch(function(error) {
+        console.log(error);
+      });
+    };
+    /*效果演示代码
+     var isclick = 0;
+     $(".isclick").click(function(){
+        isclick++;
+        if(isclick%2 == 0){
+          thisHouse.removeClass('fas').addClass('far')
+        }
+        else{
+          thisHouse.removeClass('far').addClass('fas')
+        }
+     });*/
+  </script>
+  <!--搜索框js-->
+  <script type="text/javascript" >
+    //TO DO:搜索框通过关键字筛选房源
+    //TO DO:文字模式匹配/联想
+    //传值
+    $('#search').click(function() {
+      axios.post('/qiju/house/index', {
+        keyword: $('#keyword').val,
+      }).then(function(response) {
+        console.log(response);
+      }).catch(function(error) {
+        console.log(error);
+      });
+      //TO DO:获取后端传来的数据数组houseList
+      axios.get('/house/houseSearch', {
+        // houseList,
+      }).then(function(response) {
+        console.log(response);
+        if (response.data.code === 1) {
+          //TO DO:渲染数据
+          var i;
+          var length = houseList.length;
+          for (i = 0; i < length; i++) {
+            //传过来的第一个字段是house_id  
+            $("#latest").after('<div class="col-md-4 p-3" id="#house_' + houseList[i][0] + '"><div class="card box-shadow"><img class="card-img-top" src=&quot;' + houseList[i][1] + '&quot; height="220px"><div class="card-body pt-1 pb-1"><h5>' + houseList[i][2] + '</h5><i class="fas fa-jpy d-inline" aria-hidden="true"> <h7>' + houseList[i][3] + '/月</h7><h7>（' + houseList[i][4] + '）</h7></i><div class="align-items-center d-flex mb-1"><div class="align-items-center d-flex mb-1"><a data-toggle="modal" data-target=".white/*#house_' + houseList[i][0] + '*/" href="display.html"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect isclick"></button></div></div></div></div>')
+          }
+        } else alter('暂无数据');
+      }).catch(function(error) {
+        console.log(error);
+      });
+    });
+  </script>
+  <!--下拉框样式js-->
+ <script language="javascript" type="text/javascript">
+  //var arr = []; //定义一个数组用来接收多选框的值
+  //初始化让下拉列表不显示
+  $(function() {
+    $('#selectBox').hide();
+  })
+  //单击下拉列表时显示/隐藏下拉列表
+  $('#box').click(function() {
+    $('#selectBox').toggle();
+  })
+  //前三项复选框单选限制
+  //勾记复选框传值至搜索框中
+  $(function () {
+    var regionBox = $("#regionBox input:checkbox");
+    var petBox = $("#petBox input:checkbox");
+    var priceBox = $("#priceBox input:checkbox");
+    var fancilityBox = $("#fancilityBox input:checkbox"); 
+        regionBox.click(function () {
+        if(this.checked || this.checked =='checked'){      
+          $("#regionBox").find('input[type=checkbox]').not(this).attr("checked", false);
+          }
+        });
+        petBox.click(function () {
+        if(this.checked || this.checked=='checked'){
+          $("#petBox").find('input[type=checkbox]').not(this).attr("checked", false);
+          }
+        });
+        priceBox.click(function () {
+        if(this.checked || this.checked=='checked'){
+          $("#priceBox").find('input[type=checkbox]').not(this).attr("checked", false);
+          }
+        });
+        $(function(){    
+          $("#selectBox input").change(function(){        
+          var result="";        
+          $("input:checked").each(function(){               
+            result+=$(this).val()+',';        
+            });       
+             if(result!=""){            
+               result=result.substring(0,result.lastIndexOf(','));        
+               }       
+         $("#keyword").val(result);         
+         }); 
+         })
+      }); 
+
+
+
+  // //监听checkbox的value值 改变则执行下列操作
+  // $("input").change(function() {
+  //   if ($(this).prop("checked")) {
+  //     arr.push($(this).val()); //将选中的选项添加到数组中
+  //   } else {
+  //     var index = getIndex(arr, $(this).val()) //找到没有选中的选项在数组中的索引
+  //     arr.splice(index, 1); //在数组中删除该选项
+  //   }
+  // })
+  
+  // //这个函数用于获取指定值在数组中的索引
+  // function getIndex(arr, value) {
+  //   for (var i = 0; i < arr.length; i++) {
+  //     if (arr[i] == value) {
+  //       return i
+  //     }
+  //   }
+  // }
+  // //点击按钮是弹出数组 这里可能要修改一下！！！
+  
+  // $('search').click(function() {
+  //   alert(arr)
+  // })
+</script>
 </body>
+
 </html>
