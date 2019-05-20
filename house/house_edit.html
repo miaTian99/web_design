@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- PAGE settings -->
+  <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
+  <title>HouseEdit</title>
+  <!-- CSS dependencies -->
+  <link rel="stylesheet" href="../css/all.css" type="text/css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/wireframe.css">
+  <link rel="stylesheet" href="../scss/theme.css">
+</head>
+
+<body class="bg-light">
+  <div class="text-white bg-secondary" style="position: relative; overflow: hidden;">
+    <div class="container">
+      <div class="row">
+            <img class="img-fluid" src="../gif/dog.gif" style="background-repeat:no-repeat;background-position: -374px; height:100%;width:100%;">
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row" style="text-align:center;">
+            <div class="order-md-1 col-md-8" style="left:18%">
+              <h4 class="mb-2 text-center"><b>Edit your house here.</b></h4>
+              <form class="needs-validation" id="reg-form" novalidate="">
+                <div class="mb-1 form-group has-feedback text-left">
+                  <label for="username" class="text-left">用户名</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend"> <span class="input-group-text">@</span> </div>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" easyform="length:4-16;char-normal;real-time;" message="用户名必须为4—16位的英文字母或数字" easytip="disappear:lost-focus;theme:blue;" ajax-message="Ooh，该用户名已存在哦" required="" autofocus="">
+                  </div>
+                </div>
+                <div class="mb-1 text-left"> <label for="email" contenteditable="true">邮箱<span class="text-muted"></span></label>
+                  <input type="text" class="form-control" id="email" name="email" placeholder="you@example.com" easyform="email;real-time;" message="Email格式要正确哦" easytip="disappear:lost-focus;theme:blue;" ajax-message="这个Email地址已经被注册过啦，换一个试试哦">
+                </div>
+                <div class="mb-1 text-left">
+                  <label for="phone" contenteditable="true">电话<span class="text-muted"></span></label>
+                  <input type="text" class="form-control" id="phone" name="phone" placeholder="输入手机号码(11位)" maxlength="11" easyform="phone;length:11;real-time;" message="电话格式要正确哦，请输入11位数字" easytip="disappear:lost-focus;theme:blue;" ajax-message="这个电话号码已经被注册过啦，换一个试试哦" required="">
+                  <div class="invalid-feedback"> 请输入一个有效的电话号码 </div>
+                  <span style="display: none;" class="tips text-danger"></span>
+                  <span style="display: none;" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                  <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-1 text-left">
+                    <label for="gender">性别</label>
+                    <select class="custom-select d-block w-100" id="gender" required="">
+                      <option value="not_choose">Choose...</option>
+                      <option value="male">male</option>
+                      <option value="female">female</option>
+                    </select>
+                    <div class="invalid-feedback"> 请选择性别. </div>
+                  </div>
+                  <div class="col-md-6 mb-1 text-left">
+                    <label for="region">校区</label>
+                    <select class="custom-select d-block w-100" id="region" required="required">
+                      <option value="not_choose">Choose...</option>
+                      <option value="rongchang">荣昌校区</option>
+                      <option value="beibei">北碚校区</option>
+                      <option value="other">其他(含提供住房信息的非校内人员)</option>
+                    </select>
+                    <div class="invalid-feedback"> 请选择一个具体校区. </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 form-group has-feedback">
+                    <div class="form-group text-left"> <label for="password">密码</label>
+                      <input type="password" class="form-control" placeholder="Password" id="password" easyform="length:6-16;" message="密码必须为6—16位" easytip="disappear:lost-focus;theme:blue;" maxlength="20" required="">
+                    </div>
+                  </div>
+                  <div class="col-md-6 form-group has-feedback">
+                    <div class="form-group text-left"> <label for="ConfirmPassword">确认密码</label>
+                      <input type="password" class="form-control" id="ConfirmPassword" maxlength="20" required="" easyform="length:6-16;equal:#password;" message="两次密码输入要一致" easytip="disappear:lost-focus;theme:blue;">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="save-info" value="on"> <label class="custom-control-label" for="save-info" required="">我同意这些条款和条件 &amp; 知识产权政策 </label> </div>
+                </div>
+                <div class="buttons">
+                  <input value="注 册" type="submit" class="btn btn-lg btn-block btn-primary" id="submit">
+                </div>
+                <br class="clear">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center pt-1">
+          <p class="mb-1">© 2018-2019 发际线保卫队</p>
+          <ul class="list-inline">
+            <li class="list-inline-item text-white">
+              <a href="#" class="text-dark">Privacy</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="text-dark">Terms</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="text-dark">Support</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+  <script src="../js/easyform.js"></script>
+  <!--<script type="text/javascript">
+    $(document).ready(function() {
+      $('#reg-form').easyform();
+    });
+  </script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
+  <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+ <script>
+
+      $(document).ready(function() {
+
+        var success_flag = false;
+
+        var easyform = $('#reg-form').easyform();
+
+        easyform.error = function() {
+
+          success_flag = false;
+
+        };
+
+        easyform.success = function() {
+
+          success_flag = true;
+
+        };
+
+
+
+        $('#submit').click(function() {
+
+          if (!success_flag) {
+
+            return;
+
+          }
+
+          var permit = $('#save-info').prop('checked');
+
+          if (!permit) {
+
+            alert('请勾选服务协议');
+
+            return;
+
+          }
+
+          // 提交注册数据
+
+          axios
+
+            .post('/qiju/user/register', {
+
+              username: $('#username').val(),
+
+              email: $('#email').val(),
+
+              phone: $('#phone').val(),
+
+              gender: $('#gender option:selected').val(),
+
+              region: $('#region option:selected').val(),
+
+              password: $('#password').val()
+
+            })
+
+            .then(function(response) {
+
+              console.log(response);
+
+              if (response.data.code === 1) location.href = 'login.html';
+
+              else alert('Ooh，注册失败了，请稍后再试'); //TO DO:如果失败的话建议给个提示，比如弹个框之类的
+
+            })
+
+            .catch(function(error) {
+
+              console.log(error);
+
+            });
+
+        });
+
+      });
+  //TO DO:如果用户已经注册过，再次尝试注册，注册失败
+    </script>
+</body>
+
+</html>
