@@ -74,9 +74,9 @@
             </ul>
             <br>
             <ul style="list-style: none;" id="petBox" class="my-0">
-                <li style="float:left;" class="mr-3"> 宠物</li>
-                <li style="float:left;" class="mx-2"><input type="checkbox" value="可携"> 可携</li>
-                <li style="float:left;" class="ml-3 mr-5"><input type="checkbox" value="不可"> 不可</li>
+              <li style="float:left;" class="mr-3"> 宠物</li>
+              <li style="float:left;" class="mx-2"><input type="checkbox" value="可携"> 可携</li>
+              <li style="float:left;" class="ml-3 mr-5"><input type="checkbox" value="不可"> 不可</li>
             </ul>
             <br>
             <ul style="list-style: none;" id="priceBox" class="my-0">
@@ -104,8 +104,7 @@
         <div class="col-md-12">
           <h1 class="bg-secondary pl-2 pb-1">最近上新</h1>
         </div>
-        
-       <!-- <div class="col-md-4 p-3" >
+        <!-- <div class="col-md-4 p-3" >
           <div class="card box-shadow"> 
               <img class="card-img-top pic" src="../img/living-room-1.jpg" height="220px">
             <div class="card-body pt-1 pb-1">
@@ -187,9 +186,7 @@
       </a>
     </div><a data-toggle="modal" data-target=".white" href="">
     </a>
- 
   </div>
-
   <div class="py-4 bg-light" style="background-image: url(../img/dynamic-style.png);">
     <div class="container">
       <div class="row">
@@ -314,57 +311,8 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header bg-light">
-            <h5 class="modal-title"><b>White</b> - Consultant</h5>
+            <h4 class="modal-title py-2 ml-2"><b>请先登陆再进行此操作：）</b></h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
-          </div>
-          <div class="modal-body bg-light w-100 h-50">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="carousel slide mx-2" data-ride="carousel" id="carousel">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active"> <img class="d-block img-fluid w-100" src="https://static.pingendo.com/cover-bubble-dark.svg">
-                    </div>
-                    <div class="carousel-item"> <img class="d-block img-fluid w-100" src="https://static.pingendo.com/cover-bubble-light.svg">
-                    </div>
-                    <div class="carousel-item"> <img class="d-block img-fluid w-100" src="https://static.pingendo.com/cover-moon.svg">
-                    </div>
-                  </div> <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carousel" role="button" data-slide="next"> <span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span> </a>
-                </div>
-              </div>
-            </div>
-            <div class="container h-50">
-              <div class="row h-75">
-                <div class="col-md-12 col-lg-12 mt-1">
-                  <div class="row">
-                  </div>
-                  <div class="card text-center">
-                    <div class="card-header">
-                      <ul class="nav nav-tabs card-header-tabs">
-                        <li class="nav-item">
-                          <a class="nav-link active show" data-toggle="tab" data-target="#tabone">Explicate</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" data-toggle="tab" data-target="#tabthree">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="btn btn-primary px-3 isclick" href="#"><i class="collect far fa-star fa-fw fa-1x py-1"></i></a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="card-body h-75">
-                      <div class="tab-content mt-2">
-                        <div class="tab-pane fade active show" id="tabone" role="tabpanel">
-                          <p class="text-justify">这里我先假装我正在借助这个网站出租房子，我先要大概说明房子地点，能住几个人，房子的条件怎么样，有无无线，电视，空调，做饭的设施，需不需要和别人一起住以及大概的价格，这里大概的格式还没想好的</p>
-                        </div>
-                        <div class="tab-pane fade" id="tabthree" role="tabpanel">
-                          <p class="">联系方式，弹出来的二维码，这样比较便利，做不到的话直接写微信号或者扣扣号也是很好的</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -374,9 +322,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
-  <script type="text/javascript" language="Javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.1.min.js"></script>
+  
   <!--上新数据渲染js-->
-  <script type="text/javascript">
+  <script type="text/javascript" style="">
     // 点击 Konw More的操作
     function toKonwMore(ele) {
       // 房子id
@@ -459,7 +407,7 @@
      });*/
   </script>
   <!--搜索框js-->
-  <script type="text/javascript" >
+  <script type="text/javascript">
     //TO DO:搜索框通过关键字筛选房源
     //TO DO:文字模式匹配/联想
     //传值，修改标题内容
@@ -531,17 +479,28 @@
         regionBox.click(function () {
         if(this.checked || this.checked =='checked'){      
           $("#regionBox").find('input[type=checkbox]').not(this).attr("checked", false);
-          }
-        });
-        petBox.click(function () {
-        if(this.checked || this.checked=='checked'){
+        }
+      });
+      petBox.click(function() {
+        if (this.checked || this.checked == 'checked') {
           $("#petBox").find('input[type=checkbox]').not(this).attr("checked", false);
-          }
-        });
-        priceBox.click(function () {
-        if(this.checked || this.checked=='checked'){
+        }
+      });
+      priceBox.click(function() {
+        if (this.checked || this.checked == 'checked') {
           $("#priceBox").find('input[type=checkbox]').not(this).attr("checked", false);
+        }
+      });
+      $(function() {
+        $("#selectBox input").change(function() {
+          var result = "";
+          $("input:checked").each(function() {
+            result += $(this).val() + ',';
+          });
+          if (result != "") {
+            result = result.substring(0, result.lastIndexOf(','));
           }
+          $("#keyword").val(result);
         });
         $(function(){    
           $("#selectBox input").change(function(){        
@@ -556,6 +515,7 @@
          }); 
          })
       }); 
+  });
   // //监听checkbox的value值 改变则执行下列操作
   // $("input").change(function() {
   //   if ($(this).prop("checked")) {
