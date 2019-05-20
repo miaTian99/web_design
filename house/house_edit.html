@@ -12,14 +12,25 @@
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/wireframe.css">
   <link rel="stylesheet" href="../scss/theme.css">
+<!--修改用户头像图片预览-->
+<style type="text/css">
+  #preview {
+    float: left;
+    border: none;
+  }
+
+  #preview img {
+    margin-right: 10px;
+    width: 150px;
+    height: 150px;
+  }
+</style>
 </head>
 
-<body class="bg-light">
-  <div class="text-white bg-secondary" style="position: relative; overflow: hidden;">
-    <div class="container">
-      <div class="row">
-            <img class="img-fluid" src="../gif/dog.gif" style="background-repeat:no-repeat;background-position: -374px; height:100%;width:100%;">
-      </div>
+<body>
+  <div class="text-dark bg-secondary" style="position: relative; overflow: hidden;">
+    <img class="img-fluid" src="../gif/dog.gif" style=" background-repeat:no-repeat;width:100%">
+    <div style="background-color: #feea96;">
       <div class="row">
         <div class="col-md-12">
           <div class="row" style="text-align:center;">
@@ -27,32 +38,25 @@
               <h4 class="mb-2 text-center"><b>Edit your house here.</b></h4>
               <form class="needs-validation" id="reg-form" novalidate="">
                 <div class="mb-1 form-group has-feedback text-left">
-                  <label for="username" class="text-left">用户名</label>
+                  <label for="address" class="text-left">详细地址</label>
                   <div class="input-group">
-                    <div class="input-group-prepend"> <span class="input-group-text">@</span> </div>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" easyform="length:4-16;char-normal;real-time;" message="用户名必须为4—16位的英文字母或数字" easytip="disappear:lost-focus;theme:blue;" ajax-message="Ooh，该用户名已存在哦" required="" autofocus="">
+                   <!-- <div class="input-group-prepend"> <span class="input-group-text">@</span> </div>-->
+                    <input type="text" class="form-control" id="address" placeholder="Address" required>
                   </div>
                 </div>
-                <div class="mb-1 text-left"> <label for="email" contenteditable="true">邮箱<span class="text-muted"></span></label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="you@example.com" easyform="email;real-time;" message="Email格式要正确哦" easytip="disappear:lost-focus;theme:blue;" ajax-message="这个Email地址已经被注册过啦，换一个试试哦">
-                </div>
-                <div class="mb-1 text-left">
-                  <label for="phone" contenteditable="true">电话<span class="text-muted"></span></label>
-                  <input type="text" class="form-control" id="phone" name="phone" placeholder="输入手机号码(11位)" maxlength="11" easyform="phone;length:11;real-time;" message="电话格式要正确哦，请输入11位数字" easytip="disappear:lost-focus;theme:blue;" ajax-message="这个电话号码已经被注册过啦，换一个试试哦" required="">
-                  <div class="invalid-feedback"> 请输入一个有效的电话号码 </div>
-                  <span style="display: none;" class="tips text-danger"></span>
-                  <span style="display: none;" class="glyphicon glyphicon-remove form-control-feedback"></span>
-                  <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
+                <div class="mb-1 text-left"> 
+                  <label for="fancility">房屋设施</label>
+                  <input type="text" class="form-control" id="fancility" placeholder="如：空调、无线、独卫、书桌" easyform="email;real-time;" message="Email格式要正确哦" easytip="disappear:lost-focus;theme:blue;" ajax-message="这个Email地址已经被注册过啦，换一个试试哦">
                 </div>
                 <div class="row">
                   <div class="col-md-6 mb-1 text-left">
-                    <label for="gender">性别</label>
+                    <label for="gender">是否允许养宠物</label>
                     <select class="custom-select d-block w-100" id="gender" required="">
                       <option value="not_choose">Choose...</option>
-                      <option value="male">male</option>
-                      <option value="female">female</option>
+                      <option value="yes-unlimited">可以养，无品种限定</option>
+                      <option value="yes-limited">可以养但有品种限定</option>
+                      <option value="no">不可以养</option>
                     </select>
-                    <div class="invalid-feedback"> 请选择性别. </div>
                   </div>
                   <div class="col-md-6 mb-1 text-left">
                     <label for="region">校区</label>
@@ -67,33 +71,52 @@
                 </div>
                 <div class="row">
                   <div class="col-md-6 form-group has-feedback">
-                    <div class="form-group text-left"> <label for="password">密码</label>
-                      <input type="password" class="form-control" placeholder="Password" id="password" easyform="length:6-16;" message="密码必须为6—16位" easytip="disappear:lost-focus;theme:blue;" maxlength="20" required="">
+                    <div class="form-group text-left"> <label for="price">价格</label>
+                      <input type="text" class="form-control" placeholder="定价(如300元/月)" id="price" required>
                     </div>
                   </div>
                   <div class="col-md-6 form-group has-feedback">
-                    <div class="form-group text-left"> <label for="ConfirmPassword">确认密码</label>
-                      <input type="password" class="form-control" id="ConfirmPassword" maxlength="20" required="" easyform="length:6-16;equal:#password;" message="两次密码输入要一致" easytip="disappear:lost-focus;theme:blue;">
+                    <div class="form-group text-left"> <label for="negotiable">价格是否可议</label>
+                      <select class="custom-select d-block w-100" id="negotiable" required="required">
+                          <option value="not_choose">Choose...</option>
+                          <option value="negotiable">可议</option>
+                          <option value="nonnegotiable">不可议</option>
+                        </select>
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="save-info" value="on"> <label class="custom-control-label" for="save-info" required="">我同意这些条款和条件 &amp; 知识产权政策 </label> </div>
-                </div>
+                <!--上传房屋图片-->
+                <div class="col-md-3 ml-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="pb-2 form-group img-fluid d-block 
+                          rounded-circle d-inline-flex" id="preview">
+                          <img class="img-fluid d-block rounded-circle d-inline-flex" src="../svgs/img-placeholder-3.svg" width="150">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="input-group">
+                      <span class="" style="z-index:2">
+                        <input type="file" style=" opacity: 0;filter: alpha(opacity=0);
+                        width:12rem" accept="image/*" id="userimage">
+                        <input id="user_image_url" type="hidden">
+                      </span>
+                      <div style="z-index:1;position:fixed;float: left;min-width:9.2rem;
+                        width:auto;padding-top: .5rem;" class=" text-center btn btn-outline-dark 
+                        navbar-btn" id="upload">浏 览 </div>
+                    </div>
+                  </div>
                 <div class="buttons">
-                  <input value="注 册" type="submit" class="btn btn-lg btn-block btn-primary" id="submit">
+                  <input value="提 交 修 改" type="submit" class="btn btn-lg btn-block btn-primary" id="submit">
                 </div>
-                <br class="clear">
               </form>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="container">
+    
       <div class="row">
-        <div class="col-md-12 text-center pt-1">
+        <div class="col-md-12 text-center pt-4">
           <p class="mb-1">© 2018-2019 发际线保卫队</p>
           <ul class="list-inline">
             <li class="list-inline-item text-white">
@@ -110,7 +133,7 @@
       </div>
     </div>
   </div>
-  <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
   <script src="../js/easyform.js"></script>
   <!--<script type="text/javascript">
     $(document).ready(function() {
