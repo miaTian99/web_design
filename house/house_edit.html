@@ -15,7 +15,7 @@
    <link rel="stylesheet" href="../css/LineIcons.css">
     <!--====== Style css ======-->
     <link rel="stylesheet" href="../css/nav-style.css">
-   <!--<link rel="stylesheet" href="../scss/theme.css">-->
+    <link rel="stylesheet" href="../scss/theme.css">
 <!--修改用户头像图片预览-->
 <style type="text/css">
   #preview {
@@ -110,30 +110,33 @@
                         navbar-btn" id="upload">浏 览 </div>
                     </div>
                   </div>-->
-                        <div class="row pt-4">
+  
+                        <div class="row">
                             <div class="col-lg-3 col-md-4">
                                 <!--上传按钮-->
-                                <div class="row">
-                                  <div class="col-md-12">
-                                    <div class="pb-2 form-group img-fluid d-block 
-                                      rounded-circle d-inline-flex" id="preview">
-                                      <img class="img-fluid d-block rounded-circle d-inline-flex" src="../svgs/img-placeholder-3.svg" width="150">
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="input-group">
-                                  <span class="" style="z-index:2">
-                                    <input type="file" style=" opacity: 0;filter: alpha(opacity=0);
-                                    width:12rem" accept="image/*" id="userimage">
-                                    <input id="user_image_url" type="hidden">
-                                  </span>
-                                  <div style="z-index:1;position:fixed;float: left;min-width:9.2rem;
-                                    width:auto;padding-top: .5rem;" class=" text-center btn btn-outline-dark 
-                                    navbar-btn" id="upload">浏 览 </div>
-                                </div>
                              
+                                 <!-- <div class="row">
+                                    <div class="col-md-12">
+                                      <div class="pb-2 form-group img-fluid d-block 
+                                        rounded-circle d-inline-flex" id="preview">
+                                        <img class="img-fluid d-block rounded-circle d-inline-flex" src="../svgs/img-placeholder-3.svg" width="150">
+                                      </div>
+                                    </div>
+                                  </div>-->
+                                  <div class="row ml-1">
+                                      <label for="house_image">房屋图片</label>
+                                  <div style="z-index:1;float: left;min-width:9.2rem;width:auto;"id="upload"> 
+                                    <img class="img-fluid d-block d-inline-flex" src="../img/plus.jpg" width="180"> 
+                                    </div>
+                                     <div style="position:absolute;z-index:2;float: left;">
+                                      <input type="file" style=" opacity: 0;filter: alpha(opacity=0);
+                                      width:9rem;height: 9rem" accept="image/*" id="house_image">
+                                      <input id="user_image_url" type="hidden">
+                                    </div>
+                                  
+                                  </div>
                             </div>
-                            <div class="col-lg-9 col-md-8">
+                            <div class="col-lg-9 col-md-8 pt-3">
                                 <div class="tab-content" id="v-pills-tabContent">
                                     <div class="tab-pane fade show active" id="v-pills-furniture" role="tabpanel" aria-labelledby="v-pills-furniture-tab">
                                         <div class="product-items mt-30">
@@ -141,7 +144,7 @@
                                                 <div class="col-md-4">
                                                     <div class="single-product-items">
                                                         <div class="product-item-image">
-                                                            <img class="img-fluid d-block d-inline-flex" src="../img/photo-1.jpg" alt="Product" width="150">
+                                                            <img class="img-fluid d-block d-inline-flex" src="../img/photo-1.jpg" alt="Product" width="180">
                                                             <div class="product-discount-tag">
                                                                <p>01</p>
                                                             </div>
@@ -154,7 +157,7 @@
                                                 <div class="col-md-4">
                                                     <div class="single-product-items">
                                                         <div class="product-item-image">
-                                                           <img class="img-fluid d-block d-inline-flex" src="../img/photo-1.jpg" alt="Product" width="150">
+                                                           <img class="img-fluid d-block d-inline-flex" src="../img/photo-1.jpg" alt="Product" width="180">
                                                         <div class="product-item-content text-center mt-30">
                                                             <h5 class="product-title"><br><br></h5>
                                                         </div>
@@ -164,7 +167,7 @@
                                                 <div class="col-md-4">
                                                     <div class="single-product-items">
                                                         <div class="product-item-image">
-                                                            <img class="img-fluid d-block d-inline-flex" src="../img/photo-1.jpg" alt="Product" width="150">
+                                                            <img class="img-fluid d-block d-inline-flex" src="../img/photo-1.jpg" alt="Product" width="180">
                                                         </div>
                                                         <div class="product-item-content text-center mt-30">
                                                             <h5 class="product-title"><br><br></h5>
@@ -174,7 +177,7 @@
                                                 <div class="col-md-4">
                                                     <div class="single-product-items">
                                                         <div class="product-item-image">
-                                                           <img class="img-fluid d-block d-inline-flex" src="../img/photo-1.jpg" alt="Product" width="150">
+                                                           <img class="img-fluid d-block d-inline-flex" src="../img/photo-1.jpg" alt="Product" width="180">
                                                         </div>
                                                         <div class="product-item-content text-center mt-30">
                                                             <h5 class="product-title"><br><br></h5>
@@ -184,7 +187,7 @@
                                                 <div class="col-md-4">
                                                     <div class="single-product-items">
                                                         <div class="product-item-image">
-                                                            <img class="img-fluid d-block d-inline-flex" src="../img/photo-1.jpg" width="150">
+                                                            <img class="img-fluid d-block d-inline-flex" src="../img/photo-1.jpg" alt="Product" width="180">
                                                         </div>
                                                         <div class="product-item-content text-center mt-30">
                                                             <h5 class="product-title"><br><br></h5>
