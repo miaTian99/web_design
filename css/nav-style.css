@@ -484,11 +484,11 @@ p {
      
   .product-items-active .slick-arrow i {
     font-size: 18px;
-    color: #000;
+    color: #f9e367;
     width: 50px;
     line-height: 48px;
     border-radius: 50%;
-    border: 1px solid #000;
+    border: 2px solid #f9e367;
     background-color: #fff;
     text-align: center;
     cursor: pointer;

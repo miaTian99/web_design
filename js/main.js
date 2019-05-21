@@ -176,13 +176,6 @@ $(function() {
     });
     
     
-    //====== Magnific Popup
-    
-    $('.Video-popup').magnificPopup({
-        type: 'iframe'
-        // other options
-    });
-    
     
     //===== Back to top
     
@@ -218,12 +211,6 @@ $(function() {
     });
     
     
-    //====== Nice Number
-    
-    $('input[type="number"]').niceNumber({
-        
-    });
-
     
     //=====  Rating selection
     
