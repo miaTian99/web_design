@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="../css/wireframe.css">
   <link rel="stylesheet" href="../css/all.css" type="text/css">
+  <link rel="stylesheet" href="../scss/theme.css">
 </head>
 
 <body>
@@ -53,11 +54,11 @@
         <img url="" src="../gif/364.gif" width="50"> </button>
     </div>
   </div>
-  <div class="pt-5">
+  <div class="pt-5" style="background-image: url(&quot;../img/floor-tile.png&quot;);">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <ul class="breadcrumb">
+          <ul class="breadcrumb p-2">
             <li class="breadcrumb-item"> <a href="#">Home</a> </li>
             <li class="breadcrumb-item active">Link</li>
             <li class="breadcrumb-item active">Link</li>
@@ -71,14 +72,12 @@
       <div class="row">
         <div class="col-md-4 p-3">
           <div class="card box-shadow"> <a data-toggle="modal" data-target=".white">
-              <img class="card-img-top" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" style=""></a>
-            <div class="card-body" style="	border-bottom-left-radius: 50px;	border-bottom-right-radius: 50px;	border-top-left-radius: 50px;	border-top-right-radius: 50px;">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div> <small class="text-muted">9 mins</small>
+              <img class="card-img-top" src="../img/hudie.png" height="240px">
+            </a>
+            <div class="card-body pt-1 pb-1">
+              <h5>自行车奇狮24寸通勤车，功能完好，成色如图，带锁</h5>
+              <i class="fa fa-jpy d-inline" aria-hidden="true"> 11.90</i>
+              <div class="align-items-center d-flex mb-2"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1"> 想要</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-5 mt-2"></button>
               </div>
             </div>
           </div>
@@ -232,23 +231,23 @@
       </div>
     </div>
   </div>
-  <footer class="text-muted py-5"><a data-toggle="modal" data-target=".white" href="">
+  <footer class="text-muted"><a data-toggle="modal" data-target=".white" href="">
     </a>
     <div class="modal fade white" style="">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-          <div class="modal-header bg-light">
+          <div class="modal-header bg-light" style="">
             <h5 class="modal-title"><b>White</b> - Consultant</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
           </div>
-          <div class="modal-body bg-light w-100 h-50">
+          <div class="modal-body bg-light w-100 ">
             <div class="row">
               <div class="col-md-12">
                 <div class="carousel slide mx-2" data-ride="carousel" id="carousel">
                   <div class="carousel-inner">
                     <div class="carousel-item"> <img class="d-block img-fluid w-100" src="https://static.pingendo.com/cover-bubble-dark.svg">
                     </div>
-                    <div class="carousel-item active"> <img class="d-block img-fluid w-100" src="https://static.pingendo.com/cover-bubble-light.svg">
+                    <div class="carousel-item active"> <img class="d-block img-fluid w-100" src="../img/chair.png">
                     </div>
                     <div class="carousel-item"> <img class="d-block img-fluid w-100" src="https://static.pingendo.com/cover-moon.svg">
                     </div>
@@ -256,11 +255,9 @@
                 </div>
               </div>
             </div>
-            <div class="container h-50">
-              <div class="row h-75">
-                <div class="col-md-12 col-lg-12 mt-1" style="">
-                  <div class="row">
-                  </div>
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-12 col-lg-12 mt-1">
                   <div class="card text-center">
                     <div class="card-header" style="">
                       <ul class="nav nav-tabs card-header-tabs">
@@ -275,13 +272,54 @@
                         </li>
                       </ul>
                     </div>
-                    <div class="card-body h-75" style="">
+                    <div class="card-body " style="">
                       <div class="tab-content mt-2">
                         <div class="tab-pane fade active show" id="tabone" role="tabpanel">
-                          <p class="text-justify">这里我先假装我正在借助这个网站出租房子，我先要大概说明房子地点，能住几个人，房子的条件怎么样，有无无线，电视，空调，做饭的设施，需不需要和别人一起住以及大概的价格，这里大概的格式还没想好的</p>
+                          <div class="col-md-12 bg-light b">
+                            <div class="row">
+                              <div class="col-md-4 border-bottom mt-0">
+                                <h5 class="pt-2">详细信息</h5>
+                              </div>
+                              <div class="col-md-8 border-bottom mt-0">
+                                <h5 class="pt-2 text-left">自行车，奇狮24寸通勤车，功能完好</h5>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4 border-bottom mt-0">
+                                <h5 class="pt-2" contenteditable="true">价格</h5>
+                              </div>
+                              <div class="col-md-2 border-bottom mt-0">
+                                <h5 class="pt-2 text-left">160/元</h5>
+                              </div>
+                              <div class="col-md-6 border-bottom mt-0">
+                                <h5 class="pt-2 text-left">可砍价</h5>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                         <div class="tab-pane fade" id="tabthree" role="tabpanel">
-                          <p class="">联系方式，弹出来的二维码，这样比较便利，做不到的话直接写微信号或者扣扣号也是很好的</p>
+                          <div class="col-md-12 bg-light">
+                            <div class="row">
+                              <div class="col-md-1 border-bottom mt-0">
+                                <h5 class="pt-2">QQ</h5>
+                              </div>
+                              <div class="col-md-3 border-bottom mt-0">
+                                <h5 class="pt-2 text-left">123456789</h5>
+                              </div>
+                              <div class="col-md-1 border-bottom mt-0">
+                                <h5 class="pt-2">微信</h5>
+                              </div>
+                              <div class="col-md-3 border-bottom mt-0">
+                                <h5 class="pt-2 text-left">netmug</h5>
+                              </div>
+                              <div class="col-md-1 border-bottom mt-0">
+                                <h5 class="pt-2">手机号</h5>
+                              </div>
+                              <div class="col-md-3 border-bottom mt-0">
+                                <h5 class="pt-2 text-left">12345678912</h5>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -296,7 +334,7 @@
   </footer>
   <script src="../js/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous" style=""></script>
   <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
 </body>
 
