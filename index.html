@@ -338,12 +338,13 @@
         var length = houseList.length;
         for (var i = 0; i < length; i++) {
           var thisHouse = houseList[i];
+          var price_discuss = thisHouse.price_discuss?"可议价":"不可议价"
           $('#suggest.row').append(`<div class="col-md-4 p-3">
             <div class="card box-shadow"> <a data-toggle="modal" data-target=".white" href="onehouse.html" class="text-decoration-none">
                 <img class="card-img-top" src="${thisHouse.house_image}" height="220px">
                 <div class="card-body pt-1 pb-1"> 
                 <h5>${thisHouse.address}</h5>
-                <i class="fas fa-jpy d-inline"><h7>${thisHouse.price}</h7><h7>（可砍价）</h7></i>
+                <i class="fas fa-jpy d-inline"><h7>${thisHouse.price}</h7><h7>（${price_discuss}）</h7></i>
                 <!--<div class="align-items-center d-flex mb-1">
                 <button data-id="${thisHouse.house_id}" onclick="toKonwMore(this)" class="fa bg-secondary mr-5 mt-2 py-1 px-1 know-more" type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>-->
                 </a>
