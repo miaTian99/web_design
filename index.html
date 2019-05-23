@@ -10,6 +10,10 @@
   <link rel="stylesheet" href="css/wireframe.css">
   <link rel="stylesheet" href="scss/theme.css">
   <style> a:link{text-decoration:none;}
+    @font-face{
+      font-family:qiju;
+        src:url('fonts/蔡云汉隶书书法字体.ttf');
+    }
   </style>
 </head>
 
@@ -24,7 +28,7 @@
           </a>
         </div>
         <div class="py-4 col-md-4">
-          <a href="xianzhi.html" class="text-decoration-none">
+          <a href="item/xianzhi.html" class="text-decoration-none">
             <h1>Idle Swapping</h1>
             <h5>Do you want to know more? Click here</h5>
           </a>
@@ -49,8 +53,10 @@
   <div class="text-center text-md-right h-75 py-0" style="background-image: url(&quot;img/living-room-5.jpg&quot;); background-position: right bottom; background-size: cover; background-repeat: repeat; background-attachment: fixed;">
     <div class="navbar">
       <div class="container d-flex justify-content-between">
-        <a href="#" class="navbar-brand d-flex align-items-center"> <i class="d-block far fa-lg fa-building text-body"></i> <strong>Qiju</strong> </a>
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-expanded="false">
+        <a href="#" class="navbar-brand d-flex align-items-center"> <i class="d-block far fa-lg fa-building text-body"></i>
+          <h1 style="font-family:qiju;" class="pb-0 mb-0">栖居</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-expanded="true">
           <img url="" src="gif/364.gif" width="50"> </button>
       </div>
     </div>
@@ -194,13 +200,14 @@
           <h1 class="bg-secondary pl-2 pb-1">精品推荐</h1>
         </div>
         <div class="col-md-4 p-3">
-          <div class="card box-shadow"> <a data-toggle="modal" data-target=".white">
-              <img class="card-img-top" src="img/living-room-7.jpg" height="220px">
+          <div class="card box-shadow">
+            <a href="house/onehouse.html"> <img class="card-img-top" src="img/living-room-7.jpg" height="220px">
             </a>
-            <div class="card-body pt-1 pb-1">
-              <h5>荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
+            <div class="card-body pt-1 pb-1"><a href="house/onehouse.html">
+                <h5>荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
+              </a>
               <i class="fa fa-jpy d-inline" aria-hidden="true"> 300/月（可砍价）</i>
-              <div class="align-items-center d-flex mb-1"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2"></button>
+              <div class="align-items-center d-flex mb-1"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <a data-toggle="modal" data-target=".white"><button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2"></button></a>
               </div>
             </div>
           </div>
@@ -265,7 +272,7 @@
             </div>
           </div>
         </div>
-        <a data-toggle="modal" data-target=".white" href="">
+        <a data-toggle="modal" data-target=".white" href="house/onehouse.html">
         </a>
       </div><a data-toggle="modal" data-target=".white" href="">
       </a>
@@ -338,7 +345,7 @@
         var length = houseList.length;
         for (var i = 0; i < length; i++) {
           var thisHouse = houseList[i];
-          var price_discuss = thisHouse.price_discuss?"可议价":"不可议价"
+          var price_discuss = thisHouse.price_discuss ? "可议价" : "不可议价"
           $('#suggest.row').append(`<div class="col-md-4 p-3">
             <div class="card box-shadow"> <a data-toggle="modal" data-target=".white" href="onehouse.html" class="text-decoration-none">
                 <img class="card-img-top" src="${thisHouse.house_image}" height="220px">

@@ -131,10 +131,11 @@
       </div>
     </div>
   </div>
-  <script src="../js/jquery-3.3.1.min.js"></script> <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" ></script>
-  <script >
+  <script src="../js/jquery-3.3.1.min.js"></script>
+  <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  <script>
     $(document).ready(function() {
       $(".right-target").show(0);
       $(".left-target").hide(0);
@@ -186,51 +187,28 @@
   </script>
   <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
   <script>
-
-      $('#submit').click(function(event) {
-
-        var phone_email = $('#phone_email').val();
-
-        var data = { password: $('#password').val() };
-
-        if (phone_email.indexOf('@') > 0) {
-
-          data.email = phone_email;
-
-        } else {
-
-          data.phone = phone_email;
-
-        }
-
-        axios
-
-          .post('/qiju/user/login', data)
-
-          .then(function(response) {
-
-            console.log(response);
-
-            if (response.data.code ===  1) location.href = '../index.html';
-           
-            else   alert('Ooh,密码和账户不匹配哦~');
-            // alert(JSON.stringify(response.data))
-
-          })
-
-          .catch(function(error) {
-
-            console.log(error);
-
-          
-
-          });
-
-        event.preventDefault();
-
+    $('#submit').click(function(event) {
+      var phone_email = $('#phone_email').val();
+      var data = {
+        password: $('#password').val()
+      };
+      if (phone_email.indexOf('@') > 0) {
+        data.email = phone_email;
+      } else {
+        data.phone = phone_email;
+      }
+      axios.post('/qiju/user/login', data).then(function(response) {
+        console.log(response);
+        if (response.data.code === 1) location.href = '../index.html';
+        else alert('Ooh,密码和账户不匹配哦~');
+        // alert(JSON.stringify(response.data))
+      }).catch(function(error) {
+        console.log(error);
       });
-
-    </script>
+      event.preventDefault();
+    });
+  </script>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
 </body>
 
 </html>
