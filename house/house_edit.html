@@ -50,7 +50,7 @@
                 </div>
                 <div class="mb-1 text-left"> 
                   <label for="facility">房屋设施</label>
-                  <input type="text" class="form-control" id="facility" placeholder="如：空调、无线、独卫、书桌" easyform="email;real-time;" message="Email格式要正确哦" easytip="disappear:lost-focus;theme:blue;" ajax-message="这个Email地址已经被注册过啦，换一个试试哦">
+                  <input type="text" class="form-control" id="facility" placeholder="如：空调、无线、独卫、书桌">
                 </div>
                 <div class="row">
                   <div class="col-md-6 mb-1 text-left">
@@ -131,10 +131,10 @@
                                 <div class="tab-content" id="v-pills-tabContent">
                                     <div class="tab-pane fade show active" id="v-pills-furniture" role="tabpanel" aria-labelledby="v-pills-furniture-tab">
                                         <div class="product-items mt-30">
-                                            <div class="row product-items-active">
+                                            <div class="row product-items-active" id="preview">
                                                 <div class="col-md-4">
                                                     <div class="single-product-items">
-                                                        <div class="product-item-image preview">
+                                                        <div class="product-item-image">
                                                             <img class="img-fluid d-block d-inline-flex" src="../img/living-room-10.jpg" alt="Product" width="180">
                                                         </div>
                                                         <div class="product-item-content text-center mt-30">
@@ -192,7 +192,7 @@
 
                    <!--上传房屋图片-->
                 <div class="buttons">
-                  <input value="提 交 修 改" type="submit" class="btn btn-lg btn-block btn-primary" id="save_house_info">
+                  <input value="提 交 编 辑" type="submit" class="btn btn-lg btn-block btn-primary" id="save_house_info">
                 </div>
               </form>
             </div>
@@ -231,7 +231,7 @@
 <script>
 //编辑房屋信息
 $('#save_house_info').click(function () {
-axios.post('/qiju/user/user_page', {
+axios.post('/user/houseEdit', {
   address: $("#address").val(),
   facility: $("#facility").val(),
   pet: $("#pet option:selected").val(),
@@ -242,9 +242,9 @@ axios.post('/qiju/user/user_page', {
 }).then(function(response) {
   console.log(response);
   if (response.data.code === 1) {
-    location.href="../index.html";
+    location.href="../user/user_page.html";//路由定位到我发布的房源模块
   } else {
-    alert("Ooh，修改失败了，请稍后再试");
+    alert("Ooh，编辑失败了，请稍后再试");
    }
   }).catch(function(error) {
   console.log(error); 
@@ -255,7 +255,7 @@ axios.post('/qiju/user/user_page', {
 $("#house_image").change(function(event) {
 // console.log(event)
 if (typeof(FileReader) != "undefined") {
-  var dvPreview = $(".preview");
+  var dvPreview = $("#preview");
   dvPreview.html("");
   var regex = /(.jpg|.jpeg|.gif|.png|.bmp)$/;
   $($(this)[0].files).each(function() {
@@ -263,9 +263,19 @@ if (typeof(FileReader) != "undefined") {
     if (regex.test(file[0].name.toLowerCase())) {
       var reader = new FileReader();
       reader.onload = function(e) {
-        var img = $("<img />");
+        var img = $(`<img class="img-fluid d-block d-inline-flex" alt="Product" width="180"/>`);
         img.attr("src", e.target.result);
-        dvPreview.append(img);
+        dvPreview.append(`<div class="col-md-4">
+          <div class="single-product-items">
+           <div class="product-item-image">
+            ` + img + `
+            <!--<img class="img-fluid d-block d-inline-flex" src="../img/living-room-10.jpg" alt="Product" width="180">-->
+          </div>
+         <div class="product-item-content text-center mt-30">
+         <h5 class="product-title"><br><br></h5>
+        </div>
+       </div> <!-- single house -->
+      </div>`);
       }
       reader.readAsDataURL(file[0]);
       // 上传至OSS
@@ -304,7 +314,7 @@ if (typeof(FileReader) != "undefined") {
     console.log(response.data);
     if (response.data.url) {
       $("#house_image_url").val(response.data.url)
-      $('.preview img').attr('src', response.data.url);
+      $('#preview img').attr('src', response.data.url);
     }
   });
  }
