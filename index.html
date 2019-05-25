@@ -9,11 +9,38 @@
   <link rel="stylesheet" href="css/all.css" type="text/css">
   <link rel="stylesheet" href="css/wireframe.css">
   <link rel="stylesheet" href="scss/theme.css">
+  <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <style> a:link{text-decoration:none;}
     @font-face{
       font-family:qiju;
         src:url('fonts/蔡云汉隶书书法字体.ttf');
     }
+    a.knowmore {
+	
+	text-transform: uppercase;
+	letter-spacing: 0.07rem;
+	color: white !important;
+	height:37px;
+	
+	display: block;
+	overflow: hidden;
+
+	background-repeat: no-repeat;
+
+	-webkit-transition: all 0.3s;
+	line-height: 20px;}
+a.knowmore:link{ text-decoration: none; }
+a.knowmore:hover,
+a.knowmore:focus {
+	color: black !important;
+	padding: 5px 5px 5px 5px;
+	background-color: #FFF;
+  
+	text-decoration: none !important;
+	-webkit-box-shadow: inset 0 0 0 0 #CCC;
+	-webkit-transition: all 0.3s;}
+
   </style>
 </head>
 
@@ -23,27 +50,27 @@
       <div class="row">
         <div class="py-4 col-md-4">
           <a href="user/login.html" class="text-decoration-none">
-            <h1>Login</h1>
-            <h5>Click here to login</h5>
+            <h1>登陆</h1>
+            <h5>试着点这里一下~</h5>
           </a>
         </div>
         <div class="py-4 col-md-4">
           <a href="item/xianzhi.html" class="text-decoration-none">
-            <h1>Idle Swapping</h1>
-            <h5>Do you want to know more? Click here</h5>
+            <h1>闲置物品</h1>
+            <h5>想知道能多吗？点这里</h5>
           </a>
         </div>
         <div class="col-md-4  py-4">
-          <h1>About us</h1>
+          <h1>关于我们</h1>
           <ul class="list-unstyled">
             <li class="shadow-none">
-              <a href="#" class="text-decoration-none">Follow on Weibo</a>
+              <a href="#" class="text-decoration-none">我们的微博</a>
             </li>
             <li class="">
-              <a href="#" class="text-decoration-none">Like on Wechat</a>
+              <a href="#" class="text-decoration-none">我们的微信</a>
             </li>
             <li class="">
-              <a href="#" class="text-decoration-none">Email me</a>
+              <a href="#" class="text-decoration-none">我们的邮箱</a>
             </li>
           </ul>
         </div>
@@ -110,7 +137,6 @@
         <div class="col-md-12">
           <h1 class="bg-secondary pl-2 pb-1" id="latest">最近上新</h1>
         </div>
-       
       </div><a data-toggle="modal" data-target=".white" href="">
       </a>
     </div><a data-toggle="modal" data-target=".white" href="">
@@ -126,11 +152,22 @@
           <div class="card box-shadow">
             <a href="house/onehouse.html"> <img class="card-img-top" src="img/living-room-7.jpg" height="220px">
             </a>
-            <div class="card-body pt-1 pb-1"><a href="house/onehouse.html">
-                <h5>荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
-              </a>
-              <i class="fa fa-jpy d-inline" aria-hidden="true"> 300/月（可砍价）</i>
-              <div class="align-items-center d-flex mb-1"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <a data-toggle="modal" data-target=".white"><button type="button" class="far fa-star py-1 px-2 bg-secondary ml-4 mt-2"></button></a>
+            <div class="card-body border-top px-2 pt-1 pb-1">
+              <div class="row">
+                <div class="col-md-12">
+                  <h5 class="text-left">荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 text-left">
+                  <i class="fa fa-jpy d-inline" aria-hidden="true"> 300/月 （不可议价）</i>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mt-2 mb-0 pl-3 pr-4"><a class="btn btn-primary isclick knowmore px-1" href="#">
+                    <p style="margin-top:1px;">知道更多</p>
+                  </a></div>
+                <div class="col-md-6 my-2" style=""><a class="btn btn-primary isclick knowmore ml-5 mr-2" href="#"><i class="collect far fa-star fa-fw fa-1x" style="margin-top:4px;"></i></a></div>
               </div>
             </div>
           </div>
@@ -236,7 +273,7 @@
     </div>
   </div>
   <footer class="text-muted">
-     <div class="modal fade white" style="display: none;" aria-hidden="true" id="failCollect">
+    <div class="modal fade white" style="display: none;" aria-hidden="true" id="failCollect">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header bg-light">
@@ -454,6 +491,7 @@
     //   alert(arr)
     // })
   </script>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
 </body>
 
 </html>

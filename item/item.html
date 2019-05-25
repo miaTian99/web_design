@@ -13,6 +13,32 @@
   <link rel="stylesheet" href="../css/all.css" type="text/css">
   <link rel="stylesheet" href="../scss/theme.css">
   <link href="../css/Home.css" rel="stylesheet" type="text/css">
+  <style> a.knowmore {
+	
+	text-transform: uppercase;
+	letter-spacing: 0.07rem;
+	color: white !important;
+	height:35px;
+	width:50px;
+	display: block;
+	overflow: hidden;
+
+	background-repeat: no-repeat;
+
+	-webkit-transition: all 0.3s;
+	line-height: 20px;}
+a.knowmore:link{ text-decoration: none; }
+a.knowmore:hover,
+a.knowmore:focus {
+	color: black !important;
+	padding: 5px 5px 5px 5px;
+	background-color: #FFF;
+  
+	text-decoration: none !important;
+	-webkit-box-shadow: inset 0 0 0 0 #CCC;
+	-webkit-transition: all 0.3s;}
+
+  </style>
 </head>
 
 <body style="background-image: url(&quot;../img/floor-tile.png&quot;);">
@@ -60,40 +86,40 @@
       <div class="col-md-12 col-lg-12 mt-1">
         <div class="card text-center">
           <!--<div class="card-header">-->
-            <!--  <ul class="nav nav-tabs card-header-tabs">-->
-           <ul class="nav nav-bar pt-2" style="background-color:#eee;" >
-              <li class="nav-item navigator">
-                <a class="nav-link active show" data-toggle="tab" data-target="#books" href="#">
-                  <h4 class="px-2">&nbsp;书&nbsp;</h4>
-                </a>
-              </li>
-              <li class="nav-item navigator">
-                <a class="nav-link" data-toggle="tab" data-target="#electric_appliance" href="#">
-                  <h4>电子用品</h4>
-                </a>
-              </li>
-              <li class="nav-item navigator">
-                <a class="nav-link" data-toggle="tab" data-target="#furniture" href="#">
-                  <h4 class="px-1">家具</h4>
-                </a>
-              </li>
-              <li class="nav-item navigator">
-                <a class="nav-link" data-toggle="tab" data-target="#sporting" href="#">
-                  <h4>运动器材</h4>
-                </a>
-              </li>
-              <li class="nav-item navigator">
-                <a class="nav-link" data-toggle="tab" data-target="#vehicle" href="#">
-                  <h4>交通工具</h4>
-                </a>
-              </li>
-              <li class="nav-item navigator">
-                <a class="nav-link" data-toggle="tab" data-target="#other" href="#">
-                  <h4>其他</h4>
-                </a>
-              </li>
-            </ul>
-         <!--</div>-->
+          <!--  <ul class="nav nav-tabs card-header-tabs">-->
+          <ul class="nav nav-bar pt-2" style="background-color:#eee;">
+            <li class="nav-item navigator">
+              <a class="nav-link active show" data-toggle="tab" data-target="#books" href="#">
+                <h4 class="px-2">&nbsp;书&nbsp;</h4>
+              </a>
+            </li>
+            <li class="nav-item navigator">
+              <a class="nav-link" data-toggle="tab" data-target="#electric_appliance" href="#">
+                <h4>电子用品</h4>
+              </a>
+            </li>
+            <li class="nav-item navigator">
+              <a class="nav-link" data-toggle="tab" data-target="#furniture" href="#">
+                <h4 class="px-1">家具</h4>
+              </a>
+            </li>
+            <li class="nav-item navigator">
+              <a class="nav-link" data-toggle="tab" data-target="#sporting" href="#">
+                <h4>运动器材</h4>
+              </a>
+            </li>
+            <li class="nav-item navigator">
+              <a class="nav-link" data-toggle="tab" data-target="#vehicle" href="#">
+                <h4>交通工具</h4>
+              </a>
+            </li>
+            <li class="nav-item navigator">
+              <a class="nav-link" data-toggle="tab" data-target="#other" href="#">
+                <h4>其他</h4>
+              </a>
+            </li>
+          </ul>
+          <!--</div>-->
           <div class="card-body">
             <div class="tab-content mt-2">
               <div class="tab-pane fade  active show" id="books" role="tabpanel">
@@ -121,15 +147,25 @@
                         <div class="card box-shadow"> <a data-toggle="modal" data-target="#item2">
                             <img class="card-img-top" src="../img/chair.png" height="250px">
                           </a>
-                          <div class="card-body pt-1 pb-1 px-1 border-top">
-                            <h5 class="text-left">自行车奇狮24寸通勤车，功能完好，成色如图，带锁</h5>
-                            <i class="fa fa-jpy d-inline" aria-hidden="true"> 11.90 （不可议价）</i>
-                            <div class="align-items-center d-flex mb-2"><button type="button" class="fa bg-secondary mr-5 mt-2 py-1"> 想要</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; <button type="button" class="far fa-star py-1 px-2 bg-secondary ml-5 mt-2"></button>
+                          <div class="card-body border-top px-2 pt-1 pb-1">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <h5 class="text-left">自行车奇狮24寸通勤车，功能完好，成色如图，带锁</h5>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12 text-left">
+                                <i class="fa fa-jpy d-inline" aria-hidden="true"> 11.90 （不可议价）</i>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6 mt-2 mb-0 pl-3 pr-5"><a class="btn btn-primary isclick knowmore py-1 px-1" href="#">想要</a></div>
+                              <div class="col-md-6 my-2" style=""><a class="btn btn-primary isclick knowmore ml-5 mr-4" href="#"><i class="collect far fa-star fa-fw fa-1x" style="margin-top:2px;"></i></a></div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-4 p-3">
+                      <div class="col-md-4">
                         <div class="card box-shadow"> <a data-toggle="modal" data-target="#item3">
                             <img class="card-img-top" src="../img/chair.png" height="250px">
                           </a>
@@ -762,19 +798,19 @@
                                   <h5 class="pt-2">QQ</h5>
                                 </div>
                                 <div class="col-md-3 border-bottom mt-0">
-                                  <h5 class="pt-2 text-left">123456789</h5>
+                                  <h5 class="pt-2 text-center">123456789</h5>
                                 </div>
                                 <div class="col-md-1 border-bottom mt-0">
                                   <h5 class="pt-2">微信</h5>
                                 </div>
                                 <div class="col-md-3 border-bottom mt-0">
-                                  <h5 class="pt-2 text-left">netmug</h5>
+                                  <h5 class="pt-2 text-center">netmug</h5>
                                 </div>
                                 <div class="col-md-1 border-bottom mt-0">
                                   <h5 class="pt-2">手机号</h5>
                                 </div>
                                 <div class="col-md-3 border-bottom mt-0">
-                                  <h5 class="pt-2 text-left">12345678912</h5>
+                                  <h5 class="pt-2 text-center">12345678912</h5>
                                 </div>
                               </div>
                             </div>
@@ -801,11 +837,11 @@
                 <div class="col-md-12">
                   <div class="carousel slide mx-2" data-ride="carousel" id="carousel">
                     <div class="carousel-inner">
-                      <div class="carousel-item active"> <img class="d-block w-100" src="../img/hudie.png" height="380px">
+                      <div class="carousel-item"> <img class="d-block img-fluid w-100" src="https://static.pingendo.com/cover-bubble-dark.svg">
                       </div>
                       <div class="carousel-item"> <img class="d-block w-100" src="../img/chair.png" height="380px">
                       </div>
-                      <div class="carousel-item"> <img class="d-block img-fluid w-100" src="https://static.pingendo.com/cover-moon.svg">
+                      <div class="carousel-item active"> <img class="d-block w-100" src="../img/black-bird_2x.jpg" height="380px">
                       </div>
                     </div> <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carousel" role="button" data-slide="next"> <span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span> </a>
                   </div>
@@ -818,19 +854,19 @@
                       <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
                           <li class="nav-item">
-                            <a class="nav-link active show" data-toggle="tab" data-target="#tabone" href="#">详情</a>
+                            <a class="nav-link active show" data-toggle="tab" data-target="#tabfive" href="#">详情</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" data-target="#tabthree" href="#">联系方式</a>
+                            <a class="nav-link" data-toggle="tab" data-target="#tabsix" href="#">联系方式</a>
                           </li>
                           <li class="nav-item">
-                            <a class="btn btn-primary px-3" onclick="toCollectHouse(this)" href="#"><i class="far fa-star fa-fw fa-1x py-1"></i></a>
+                            <a class="btn btn-primary px-3 " onclick="toCollectHouse(this)" href="#"><i class="far fa-star fa-fw fa-1x py-1"></i></a>
                           </li>
                         </ul>
                       </div>
-                      <div class="card-body">
+                      <div class="card-body ">
                         <div class="tab-content mt-2">
-                          <div class="tab-pane fade active show" id="tabone" role="tabpanel">
+                          <div class="tab-pane fade active show" id="tabfive" role="tabpanel">
                             <div class="col-md-12 bg-light b">
                               <div class="row">
                                 <div class="col-md-4 border-bottom mt-0">
@@ -853,26 +889,26 @@
                               </div>
                             </div>
                           </div>
-                          <div class="tab-pane fade" id="tabthree" role="tabpanel">
+                          <div class="tab-pane fade" id="tabsix" role="tabpanel">
                             <div class="col-md-12 bg-light">
                               <div class="row">
                                 <div class="col-md-1 border-bottom mt-0">
                                   <h5 class="pt-2">QQ</h5>
                                 </div>
                                 <div class="col-md-3 border-bottom mt-0">
-                                  <h5 class="pt-2 text-left">123456789</h5>
+                                  <h5 class="pt-2 text-center">123456789</h5>
                                 </div>
                                 <div class="col-md-1 border-bottom mt-0">
                                   <h5 class="pt-2">微信</h5>
                                 </div>
                                 <div class="col-md-3 border-bottom mt-0">
-                                  <h5 class="pt-2 text-left">netmug</h5>
+                                  <h5 class="pt-2 text-center">netmug</h5>
                                 </div>
                                 <div class="col-md-1 border-bottom mt-0">
                                   <h5 class="pt-2">手机号</h5>
                                 </div>
                                 <div class="col-md-3 border-bottom mt-0">
-                                  <h5 class="pt-2 text-left">12345678912</h5>
+                                  <h5 class="pt-2 text-center">12345678912</h5>
                                 </div>
                               </div>
                             </div>
@@ -900,30 +936,25 @@
     </footer>
     <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script>
-        $(document).ready(function() {
-            qRouter.init();
-            //TO DO：定位（尚未实现效果？？？）
-             /**
-             * 定位到Tab页面
-             * @param {String} id HTML元素的原始id
-             */
-             function switchTable(id) {
-              id = '#' + id;
-              $(id)
-                .addClass('active show')
-                .siblings().removeClass('active show');
-              $('.nav-link').removeClass('active');
-              $('.nav-link[data-target="' + id + '"]')
-                .addClass('active')
-                .siblings().removeClass('active');
-            }
-    
-            qRouter.on('/page/:id', function(req) {
-              switchTable(req.params.id);
-            });
-    }); 
+      $(document).ready(function() {
+        qRouter.init();
+        //TO DO：定位（尚未实现效果？？？）
+        /**
+         * 定位到Tab页面
+         * @param {String} id HTML元素的原始id
+         */
+        function switchTable(id) {
+          id = '#' + id;
+          $(id).addClass('active show').siblings().removeClass('active show');
+          $('.nav-link').removeClass('active');
+          $('.nav-link[data-target="' + id + '"]').addClass('active').siblings().removeClass('active');
+        }
+        qRouter.on('/page/:id', function(req) {
+          switchTable(req.params.id);
+        });
+      });
     </script>
     <script type="text/javascript">
       //TO DO：翻页js
@@ -986,7 +1017,6 @@
           console.log(error);
         });
       };
-
     </script>
   </div>
   <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
