@@ -60,39 +60,40 @@
       <div class="col-md-12 col-lg-12 mt-1">
         <div class="card text-center">
           <!--<div class="card-header">-->
-          <ul class="nav nav-bar pt-2" style="background-color:#eee;">
-            <li class="nav-item navigator">
-              <a class="nav-link active show" data-toggle="tab" data-target="#books" href="#">
-                <h4 class="px-2">&nbsp;书&nbsp;</h4>
-              </a>
-            </li>
-            <li class="nav-item navigator">
-              <a class="nav-link" data-toggle="tab" data-target="#electric_appliance" href="#">
-                <h4>电子用品</h4>
-              </a>
-            </li>
-            <li class="nav-item navigator">
-              <a class="nav-link" data-toggle="tab" data-target="#furniture" href="#">
-                <h4 class="px-1">家具</h4>
-              </a>
-            </li>
-            <li class="nav-item navigator">
-              <a class="nav-link" data-toggle="tab" data-target="#sporting" href="#">
-                <h4>运动器材</h4>
-              </a>
-            </li>
-            <li class="nav-item navigator">
-              <a class="nav-link" data-toggle="tab" data-target="#vehicle" href="#">
-                <h4>交通工具</h4>
-              </a>
-            </li>
-            <li class="nav-item navigator">
-              <a class="nav-link" data-toggle="tab" data-target="#other" href="#">
-                <h4>其他</h4>
-              </a>
-            </li>
-          </ul>
-          <!-- </div>-->
+            <!--  <ul class="nav nav-tabs card-header-tabs">-->
+           <ul class="nav nav-bar pt-2" style="background-color:#eee;" >
+              <li class="nav-item navigator">
+                <a class="nav-link active show" data-toggle="tab" data-target="#books" href="#">
+                  <h4 class="px-2">&nbsp;书&nbsp;</h4>
+                </a>
+              </li>
+              <li class="nav-item navigator">
+                <a class="nav-link" data-toggle="tab" data-target="#electric_appliance" href="#">
+                  <h4>电子用品</h4>
+                </a>
+              </li>
+              <li class="nav-item navigator">
+                <a class="nav-link" data-toggle="tab" data-target="#furniture" href="#">
+                  <h4 class="px-1">家具</h4>
+                </a>
+              </li>
+              <li class="nav-item navigator">
+                <a class="nav-link" data-toggle="tab" data-target="#sporting" href="#">
+                  <h4>运动器材</h4>
+                </a>
+              </li>
+              <li class="nav-item navigator">
+                <a class="nav-link" data-toggle="tab" data-target="#vehicle" href="#">
+                  <h4>交通工具</h4>
+                </a>
+              </li>
+              <li class="nav-item navigator">
+                <a class="nav-link" data-toggle="tab" data-target="#other" href="#">
+                  <h4>其他</h4>
+                </a>
+              </li>
+            </ul>
+         <!--</div>-->
           <div class="card-body">
             <div class="tab-content mt-2">
               <div class="tab-pane fade  active show" id="books" role="tabpanel">
@@ -899,7 +900,31 @@
     </footer>
     <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous" ></script>
+    <script>
+        $(document).ready(function() {
+            qRouter.init();
+            //TO DO：定位（尚未实现效果？？？）
+             /**
+             * 定位到Tab页面
+             * @param {String} id HTML元素的原始id
+             */
+             function switchTable(id) {
+              id = '#' + id;
+              $(id)
+                .addClass('active show')
+                .siblings().removeClass('active show');
+              $('.nav-link').removeClass('active');
+              $('.nav-link[data-target="' + id + '"]')
+                .addClass('active')
+                .siblings().removeClass('active');
+            }
+    
+            qRouter.on('/page/:id', function(req) {
+              switchTable(req.params.id);
+            });
+    }); 
+    </script>
     <script type="text/javascript">
       //TO DO：翻页js
       var hash = location.hash; //获取到跳转页面的参数
@@ -961,6 +986,7 @@
           console.log(error);
         });
       };
+
     </script>
   </div>
   <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
