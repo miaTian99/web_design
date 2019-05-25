@@ -79,7 +79,6 @@
 		float: left;
 		margin:0px;
 		padding: 0px;
-		background-color: rgb(158,204,171);
         box-shadow: -5px -5px 20px rgba(248,223,114,0.5) inset;
         text-align: center;
         animation: fadeIN 1s 0s linear forwards;
@@ -101,23 +100,23 @@
 
 <body>
   <div class="container">
-    <div class="first" id="books">
-      <a href="#">
+    <div class="first">
+      <a href="item.html#tabtwo">
         <div class="img">
           <img src="../img/book.png" width="210" class="border-top-0">
         </div>
-        <h1>书</h1>
+        <h1 contenteditable="true">书</h1>
       </a>
     </div>
-    <div class="first" id="electric_appliance">
+    <div class="first">
       <a href="#">
         <div class="img">
-          <img src="../img/guitar.png" height="200">
+          <img src="../img/san.png" width="150">
         </div>
-        <h1>电子用品</h1>
+        <h1>日用品</h1>
       </a>
     </div>
-    <div class="first" id="furniture">
+    <div class="first">
       <a href="#">
         <div class="img">
           <img src="../img/chair.png" width="200">
@@ -125,7 +124,7 @@
         <h1>家具</h1>
       </a>
     </div>
-    <div class="first" id="sporting">
+    <div class="first">
       <a href="#">
         <div class="img">
           <img src="../img/run.png" width="200">
@@ -133,46 +132,35 @@
         <h1>健身器材</h1>
       </a>
     </div>
-    <div class="first" id="vehicle">
+    <div class="first">
       <a href="#">
         <div class="img">
           <img src="../img/zxc.png" width="200">
         </div>
-        <h1>交通工具</h1>
+        <h1 contenteditable="true">交通工具</h1>
       </a>
     </div>
-    <div class="first" id="other">
+    <div class="first">
       <a href="#">
         <div class="img">
-          <img src="../img/san.png" width="150">
+          <img src="../img/guitar.png" height="200">
         </div>
-        <h1>其他</h1>
+        <h1 contenteditable="true">乐器</h1>
       </a>
     </div>
-    
   </div>
- <script type="text/javascript">
-    $("#books").click(function(){
-      location.href="item.html";//路由定位到闲置物品相应展示模块
-    }); 
-    $("#electric_appliance").click(function(){
-  location.href="item.html";//路由定位到闲置物品相应展示模块
-}); 
-    $("#furniture").click(function(){
-      location.href="item.html";//路由定位到闲置物品相应展示模块
-    }); 
-    $("#vehicle").click(function(){
-      location.href="item.html";//路由定位到闲置物品相应展示模块
-    }); 
-    $("#sporting").click(function(){
-      location.href="item.html";//路由定位到闲置物品相应展示模块
-  }); 
-  $("#other").click(function(){
-    location.href="item.html";//路由定位到闲置物品相应展示模块
+  <script type="text/javascript">
+    var _submit = document.getElementById("submit");
 
-});
+    function mousedown() {
+      document.getElementById("submit").className = "submit_1";
+    }
 
+    function mouseup() {
+      document.getElementById("submit").className = "submit";
+    }
   </script>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
 </body>
 
 </html>
