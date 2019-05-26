@@ -11,7 +11,8 @@
   <link rel="stylesheet" href="scss/theme.css">
   <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <style> a:link{text-decoration:none;}
+  <style> 
+  a:link{text-decoration:none;}
     @font-face{
       font-family:qiju;
         src:url('fonts/蔡云汉隶书书法字体.ttf');
@@ -29,6 +30,7 @@
 	background-repeat: no-repeat;
 
 	-webkit-transition: all 0.3s;
+  transition: all 0.3s;
 	line-height: 20px;}
 a.knowmore:link{ text-decoration: none; }
 a.knowmore:hover,
@@ -39,6 +41,8 @@ a.knowmore:focus {
   
 	text-decoration: none !important;
 	-webkit-box-shadow: inset 0 0 0 0 #CCC;
+  box-shadow: inset 0 0 0 0 #CCC;
+  transition: all 0.3s;
 	-webkit-transition: all 0.3s;}
 
   </style>
@@ -48,29 +52,35 @@ a.knowmore:focus {
   <div class="in collapse" style="background-image: url(&quot;img/dynamic-style.png&quot;);" id="navbarHeader">
     <div class="container">
       <div class="row">
-        <div class="py-4 col-md-4">
+        <div class="py-4 col-md-3">
           <a href="user/login.html" class="text-decoration-none">
-            <h1>登陆</h1>
-            <h5>试着点这里一下~</h5>
+            <h2>登录</h2>
+            <h5>点这里~</h5>
           </a>
         </div>
-        <div class="py-4 col-md-4">
+        <div class="py-4 col-md-3">
+          <a href="user/user_page.html" class="text-decoration-none">
+            <h2>个人中心</h2>
+            <h5>请先登录哦</h5>
+          </a>
+        </div>
+        <div class="py-4 col-md-3">
           <a href="item/xianzhi.html" class="text-decoration-none">
-            <h1>闲置物品</h1>
-            <h5>想知道能多吗？点这里</h5>
+            <h2>闲置物品</h2>
+            <h5>便捷处理闲置物品</h5>
           </a>
         </div>
-        <div class="col-md-4  py-4">
-          <h1>关于我们</h1>
+        <div class="col-md-3  py-4">
+          <h2>关于我们</h2>
           <ul class="list-unstyled">
             <li class="shadow-none">
-              <a href="#" class="text-decoration-none">我们的微博</a>
+              <a href="#" class="text-decoration-none">官方微博</a>
             </li>
             <li class="">
-              <a href="#" class="text-decoration-none">我们的微信</a>
+              <a href="#" class="text-decoration-none">官方微信</a>
             </li>
             <li class="">
-              <a href="#" class="text-decoration-none">我们的邮箱</a>
+              <a href="#" class="text-decoration-none">官方邮箱</a>
             </li>
           </ul>
         </div>
@@ -167,7 +177,7 @@ a.knowmore:focus {
                 <div class="col-md-6 mt-2 mb-0 pl-3 pr-4"><a class="btn btn-primary isclick knowmore px-1" href="#">
                     <p style="margin-top:1px;">知道更多</p>
                   </a></div>
-                <div class="col-md-6 my-2" style=""><a class="btn btn-primary isclick knowmore ml-5 mr-2" href="#"><i class="collect far fa-star fa-fw fa-1x" style="margin-top:4px;"></i></a></div>
+                <div class="col-md-6 my-2"><a class="btn btn-primary isclick knowmore ml-5 mr-2" href="#"><i class="collect far fa-star fa-fw fa-1x" style="margin-top:4px;"></i></a></div>
               </div>
             </div>
           </div>
@@ -491,7 +501,7 @@ a.knowmore:focus {
     //   alert(arr)
     // })
   </script>
-  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
+
 </body>
 
 </html>
