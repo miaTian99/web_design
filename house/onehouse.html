@@ -272,12 +272,13 @@
                       class="row mt-4 border-bottom border-top"
                     >
                       <div class="col-md-4 mt-3">
-                        <h5 v-cloak class="pt-2">{{ remark.user_name }}：</h5>
+                        <h5 v-cloak class="pt-2">{{ remark.user_name || remark.user_id }}：</h5>
                       </div>
                       <div class="col-md-8 mt-3">
                         <p
                           v-text="remark.remark_content"
                           class="pt-2 text-left"
+                          style="white-space:pre;"
                         ></p>
                       </div>
                     </div>
@@ -390,7 +391,7 @@
                 console.log(response);
                 this.remark_content = '';
                 if (response.data.code === 1) {
-                  this.remarkList.push({
+                  this.remarkList.unshift({
                     user_name: '我',
                     remark_content
                   });
