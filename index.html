@@ -48,42 +48,74 @@
         color: black !important;
         padding: 5px 5px 5px 5px;
         background-color: #fff;
-
+      }
+    </style>
 <body>
-  <div class="in collapse" style="background-image: url(https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/dynamic-style.png);" id="navbarHeader">
-    <div class="container">
-      <div class="row" >
-        <div class="py-4 col-md-3 navigator">
-          <a href="user/login.html" class="text-decoration-none" id="switchLoginOrLogout">
-            <h2>登录</h2>
-            <h5>点这里~</h5>
-          </a>
+  <div
+      class="in collapse"
+      style="background-image: url(https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/dynamic-style.png);"
+      id="navbarHeader"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="py-4 col-md-3">
+            <a id="switchLoginOrLogout" href="user/login.html" class="text-decoration-none">
+              <h2>登录</h2>
+              <h5>点这里~</h5>
+            </a>
+          </div>
+          <div id="userPageEnter" class="py-4 col-md-3" hidden>
+            <a href="user/user_page.html" class="text-decoration-none">
+              <h2>个人中心</h2>
+              <h5>请先登录哦</h5>
+            </a>
+          </div>
+          <div class="py-4 col-md-3">
+            <a href="item/xianzhi.html" class="text-decoration-none">
+              <h2>闲置物品</h2>
+              <h5>便捷处理闲置物品</h5>
+            </a>
+          </div>
+          <div class="col-md-3  py-4">
+            <h2>关于我们</h2>
+            <ul class="list-unstyled">
+              <li class="shadow-none">
+                <a href="#" class="text-decoration-none">官方微博</a>
+              </li>
+              <li class="">
+                <a href="#" class="text-decoration-none">官方微信</a>
+              </li>
+              <li class="">
+                <a href="#" class="text-decoration-none">官方邮箱</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="py-4 col-md-3 navigator" id="userCenter">
-          <a href="user/user_page.html" class="text-decoration-none">
-            <h2>个人中心</h2>
-            <h5>请先登录哦</h5>
+      </div>
+    </div>
+    <div
+      class="text-center text-md-right h-75 py-0"
+      style="background-image: url('https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/living-room-5.jpg'); background-position: right bottom; background-size: cover; background-repeat: repeat; background-attachment: fixed;"
+    >
+      <div class="navbar">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <i class="d-block far fa-lg fa-building text-body"></i>
+            <h1 style="font-family:qiju;" class="pb-0 mb-0">栖居</h1>
           </a>
-        </div>
-        <div class="py-4 col-md-3 navigator">
-          <a href="item/xianzhi.html" class="text-decoration-none">
-            <h2>闲置物品</h2>
-            <h5>便捷处理闲置物品</h5>
-          </a>
-        </div>
-        <div class="col-md-3 navigator py-4">
-          <h2>关于我们</h2>
-          <ul class="list-unstyled">
-            <li class="shadow-none">
-              <a href="#" class="text-decoration-none">官方微博</a>
-            </li>
-            <li class="">
-              <a href="#" class="text-decoration-none">官方微信</a>
-            </li>
-            <li class="">
-              <a href="#" class="text-decoration-none">官方邮箱</a>
-            </li>
-          </ul>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarHeader"
+            aria-expanded="true"
+          >
+            <img
+              url=""
+              src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/gif/364.gif"
+              width="50"
+            />
+          </button>
         </div>
       </div>
       <div class="container" style="margin-top:350px;">
@@ -211,30 +243,31 @@
       </div>
       <a data-toggle="modal" data-target=".white" href=""> </a>
     </div>
-  </div>
-  <div class="py-4" style="background-image: url(https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/dynamic-style.png);">
-    <div class="container ">
-      <div class="row" id="suggest">
-        <div class="col-md-12">
-          <h1 class="bg-secondary pl-2 pb-1" id="latest">最近上新</h1>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="py-4 bg-light" style="background-image: url(https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/dynamic-style.png);">
-    <div class="container">
-      <div class="row" id="rank">
-        <div class="col-md-12">
-          <h1 class="bg-secondary pl-2 pb-1">精品推荐</h1>
-        </div>
-        <div class="col-md-4 p-3">
-          <div class="card box-shadow">
-            <a href="house/onehouse.html"> <img class="card-img-top" src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/living-room-7.jpg" height="220px">
-            </a>
-            <div class="card-body border-top px-2 pt-1 pb-1">
-              <div class="row">
-                <div class="col-md-12">
-                  <h5 class="text-left">荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！</h5>
+    <div
+      class="py-4 bg-light"
+      style="background-image: url(https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/dynamic-style.png);"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="bg-secondary pl-2 pb-1">精品推荐</h1>
+          </div>
+          <div class="col-md-4 p-3">
+            <div class="card box-shadow">
+              <a href="house/onehouse.html">
+                <img
+                  class="card-img-top"
+                  src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/living-room-7.jpg"
+                  height="220px"
+                />
+              </a>
+              <div class="card-body border-top px-2 pt-1 pb-1">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h5 class="text-left">
+                      荣昌区-学院路-万隆小区-整套房子出租-离学校非常近！
+                    </h5>
+                  </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12 text-left">
@@ -470,96 +503,17 @@
         </div>
       </div>
     </footer>
+  </div>
     <script src="https://g.alicdn.com/mui/jquery/4.0.1/jquery.js"></script>
     <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
     <script src="/static/js/jq-paginator.min.js"></script>
-    <!--上新数据渲染js-->
     <script type="text/javascript">
       function renderHouses(containerCssSelector, thisHouse, dataBox) {
         var online = dataBox.online;
-        $(containerCssSelector).append(`<div class="col-md-4 p-3">
-            <div class="card box-shadow"> <a ${
-              online ? '' : 'data-toggle="modal" data-target=".white"'
-            } href="house/onehouse.html#/page/${
-          thisHouse.house_id
-        }" class="text-decoration-none">
-                <img class="card-img-top" src="${
-                  thisHouse.house_image[0]
-                }" height="220px">
-    </div>
-    <div class="modal fade white" style="display: none;" aria-hidden="true" id="LogoutSuccess">
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header bg-light">
-              <h4 class="modal-title py-2 ml-2"><b>成功登出: )</b></h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
-            </div>
-          </div>
-        </div>
-      </div>
-  </footer>
-  <script src="https://g.alicdn.com/mui/jquery/4.0.1/jquery.js"></script>
-  <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.min.js"></script>
-  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
-  <!--上新数据渲染js-->
-  <script type="text/javascript">
-    // 点击 Konw More的操作
-    function toKonwMore(ele) {
-      // 房子id
-      alert(ele.dataset.id);
-    }
-    //登录登出切换
-    axios.get('/qiju/user/online').then(function(res) {
-      if (res.data.code === 1) {
-        var online = res.data.data.online;
-        var nav = $('.navigator');
-          if (online) {
-          var switchLoginOrLogout = $('#switchLoginOrLogout');
-          switchLoginOrLogout.attr('href', '');
-          switchLoginOrLogout.find('h2').html('登出');
-          switchLoginOrLogout.click(function () {
-            axios.get('/qiju/user/logout').then(resp => {
-              if (resp.data.code === 1) {
-                // 提示已登出
-               // alter("登出成功");.
-               online ? '' : 'data-toggle="modal" data-target="#LogoutSuccess"';
-                setTimeout(() => {
-                  window.location.reload();
-                }, 500);
-                //隐藏个人中心
-                  nav.removeClass('col-md-3').addClass('col-md-4');
-                  $('#userCenter').hide();
-              }
-            })
-          })
-        }else{
-          //显示个人中心
-          nav.removeClass('col-md-4').addClass('col-md-3');
-          $('#userCenter').show();
-          }
-        } else {
-          alert("Ooh,失败了,请稍后再试");
-        }
-      }).catch(function(error) {
-        console.log(error);
-      });
-    
-
-    // "最近上新"
-    //获取后端传来的数据数组
-    axios.get('/qiju/house/recent').then(function(res) {
-      if (res.data.code === 1) {
-        //渲染数据
-        var houseList = res.data.data.list;
-        var online = res.data.data.online;
-        var length = houseList.length;
-        for (var i = 0; i < length; i++) {
-          var thisHouse = houseList[i];
-          var price_discuss = thisHouse.price_discuss ? "可议价" : "不可议价"
-          $('#suggest.row').append(`<div class="col-md-4 p-3">
+        var price_discuss = thisHouse.price_discuss ? "可议价" : "不可议价"
+          $(containerCssSelector).append(`<div class="col-md-4 p-3">
             <div class="card box-shadow"> <a ${online ? '' : 'data-toggle="modal" data-target="#failCollect"'} href="house/onehouse.html#/page/${thisHouse.house_id}" class="text-decoration-none">
                 <img class="card-img-top" src="${thisHouse.house_image[0]}" height="220px">
                 <div class="card-body pt-1 pb-1"> 
@@ -579,95 +533,11 @@
                 <!-- <button data-id="${thisHouse.house_id}" onclick="toCollectHouse(this)" type="button" class="${thisHouse.house_collect_status ? 'fas' : 'far'} fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>-->
                 </div>
               </div>
-            </div>
-          </div>`);
-        }
-      } else {
-        alter('暂无数据')
-      };
-    }).catch(function(error) {
-      console.log(error);
-    });
-    //TO DO:精品推荐(按照rank排名，从高到低)
-     //获取后端传来的数据数组
-     axios.get('/house/markedRank').then(function(res) {
-      if (res.data.code === 1) {
-        //渲染数据
-        var houseList = res.data.data.list;
-        var online = res.data.data.online;
-        var length = houseList.length;
-        for (var i = 0; i < length; i++) {
-          var thisHouse = houseList[i];
-          var price_discuss = thisHouse.price_discuss ? "可议价" : "不可议价"
-          $('#rank.row').append(`<div class="col-md-4 p-3">
-            <div class="card box-shadow"> <a ${online ? '' : 'data-toggle="modal" data-target="#failCollect"'} href="house/onehouse.html#/page/${thisHouse.house_id}" class="text-decoration-none">
-                <img class="card-img-top" src="${thisHouse.house_image[0]}" height="220px">
-                <div class="card-body pt-1 pb-1"> 
-                <h5>${thisHouse.address}</h5>
-                <i class="fas fa-jpy d-inline"><h7>${
-                  thisHouse.price
-                }</h7><h7>（${
-          thisHouse.price_discuss ? '' : '不'
-        }可议价）</h7></i>
-                <!--<div class="align-items-center d-flex mb-1">
-                <button data-id="${
-                  thisHouse.house_id
-                }" onclick="toKonwMore(this)" class="fa bg-secondary mr-5 mt-2 py-1 px-1 know-more" type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>-->
-                </a>
-                <div class="pb-1">
-                <b>收藏数：${thisHouse.collect_times || 0}</b>&nbsp;&nbsp;&nbsp;
-                <button type="button" data-id="${
-                  thisHouse.house_id
-                }" class="btn btn-primary px-2 ml-5" onclick="toCollectHouse(this)"><i class="collect fa-star fa-1x fa-fw py-1 ${
-          thisHouse.house_collect_status ? 'fas' : 'far'
-        }"></i></button>
-                <!-- <button data-id="${
-                  thisHouse.house_id
-                }" onclick="toCollectHouse(this)" type="button" class="${
-          thisHouse.house_collect_status ? 'fas' : 'far'
-        } fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>-->
-                <div class="col-md-6 mt-2 mb-0 pl-1 pr-4 pt-1"><b>收藏数：${thisHouse.collect_times || 0}</b></div>
-                <div class="pb-1 row">
-                    <div class="col-md-6 mt-2 mb-0 pl-2 pr-4"><a class="btn btn-primary knowmore px-1"  ${online ? '' : 'data-toggle="modal" data-target="#failCollect"'} href="house/onehouse.html#/page/${thisHouse.house_id}">
-                    <p style="margin-top:1px;">知道更多</p>
-                  </a></div>
-                <div class="col-md-6 my-2"><a data-id="${thisHouse.house_id}" class="btn btn-primary ml-5 mr-2 knowmore" onclick="toCollectHouse(this)"  ${online ? '' : 'data-toggle="modal" data-target="#failCollect"'}><i class="collect fa-star fa-fw fa-1x ${thisHouse.house_collect_status ? 'fas' : 'far'}" style="margin-top:4px;"></i></a></div>
-                <!--<button type="button" data-id="${thisHouse.house_id}" class="btn btn-primary ml-5 " onclick="toCollectHouse(this)"><i class="collect fa-star fa-1x fa-fw py-1 ${thisHouse.house_collect_status ? 'fas' : 'far'}"></i></button>-->
-                <!-- <button data-id="${thisHouse.house_id}" onclick="toCollectHouse(this)" type="button" class="${thisHouse.house_collect_status ? 'fas' : 'far'} fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>-->
-                </div>
-              </div>
-            </div>
-          </div>`);
-      }
-      // 点击 Konw More的操作
-      function toKonwMore(ele) {
-        // 房子id
-        alert(ele.dataset.id);
-      }
-      // "最近上新"
-      //获取后端传来的数据数组
-      axios
-        .get('/qiju/house/recent')
-        .then(function(res) {
-          if (res.data.code === 1) {
-            //渲染数据
-            var houseList = res.data.data.list;
-            var length = houseList.length;
-            for (var i = 0; i < length; i++) {
-              var thisHouse = houseList[i];
-              renderHouses('#suggest.row', thisHouse, {
-                online: res.data.data.online
-              });
-            }
-          } else {
-            // alter('暂无数据');
-          }
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-      //-----------------------房源收藏js----------------------//
-      function toCollectHouse(ele) {
+            </div>`);
+    }
+
+          //-----------------------房源收藏js----------------------//
+          function toCollectHouse(ele) {
         axios
           .post('/qiju/user/collectHouse', {
             house_id: ele.dataset.id
@@ -703,20 +573,83 @@
             console.log(error);
           });
       }
-      /*效果演示代码
-     var isclick = 0;
-     $(".isclick").click(function(){
-        isclick++;
-        if(isclick%2 == 0){
-          thisHouse.removeClass('fas').addClass('far')
+  </script>
+  <script type="text/javascript">
+    // 点击 Konw More的操作
+    function toKonwMore(ele) {
+      // 房子id
+      alert(ele.dataset.id);
+    }
+    //登录登出切换
+    axios.get('/qiju/user/online').then(function(res) {
+      if (res.data.code === 1) {
+        // var online = res.data.data.online;
+        var nav = $('.navigator');
+          // if (online) {
+          var switchLoginOrLogout = $('#switchLoginOrLogout');
+          switchLoginOrLogout.attr('href', '');
+          switchLoginOrLogout.find('h2').html('登出');
+          switchLoginOrLogout.click(function () {
+            axios.get('/qiju/user/logout').then(resp => {
+              if (resp.data.code === 1) {
+                // 提示已登出
+               // alter("登出成功");.
+               online ? '' : 'data-toggle="modal" data-target="#LogoutSuccess"';
+                setTimeout(() => {
+                  window.location.reload();
+                }, 500);
+                //隐藏个人中心
+                  nav.removeClass('col-md-3').addClass('col-md-4');
+                  $('#userCenter').hide();
+              }
+            })
+          });
+          $('#userPageEnter').removeAttr('hidden');
+      }
+        
+      }).catch(function(error) {
+        console.log(error);
+      });
+    
+     axios.get('/qiju/house/markedRank').then(function(res) {
+      if (res.data.code === 1) {
+        //渲染数据
+        var houseList = res.data.data.list;
+        var online = res.data.data.online;
+        var length = houseList.length;
+        for (var i = 0; i < length; i++) {
+          var thisHouse = houseList[i];
+          var price_discuss = thisHouse.price_discuss ? "可议价" : "不可议价";
+          // 渲染数据
         }
-        else{
-          thisHouse.removeClass('far').addClass('fas')
-        }
-     });*/
+      }
+     });
+      // "最近上新"
+      //获取后端传来的数据数组
+      axios
+        .get('/qiju/house/recent')
+        .then(function(res) {
+          if (res.data.code === 1) {
+            //渲染数据
+            var houseList = res.data.data.list;
+            var length = houseList.length;
+            for (var i = 0; i < length; i++) {
+              var thisHouse = houseList[i];
+              renderHouses('#suggest.row', thisHouse, {
+                online: res.data.data.online
+              });
+            }
+          } else {
+            // alter('暂无数据');
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+
     </script>
     <!--下拉框样式js-->
-    <script language="javascript" type="text/javascript">
+    <script>
       //var arr = []; //定义一个数组用来接收多选框的值
       //初始化让下拉列表不显示
       $(function() {
@@ -739,37 +672,8 @@
               .find('input[type=checkbox]')
               .not(this)
               .attr('checked', false);
-      //获取后端传来的搜索结果数组houseList
-      axios.get('/house/houseSearch').then(function(res) {
-        if (res.data.code === 1) {
-          //渲染数据
-          var houseList = res.data.data.list;
-          var length = houseList.length;
-          for (var i = 0; i < length; i++) {
-            var thisHouse = houseList[i];
-            $('#suggest.row').append(`<div class="col-md-4 p-3">
-            <div class="card box-shadow"> <a ${online ? '' : 'data-toggle="modal" data-target="#failCollect"'} href="house/onehouse.html#/page/${thisHouse.house_id}" class="text-decoration-none">
-                <img class="card-img-top" src="${thisHouse.house_image[0]}" height="220px">
-                <div class="card-body pt-1 pb-1"> 
-                <h5>${thisHouse.address}</h5>
-                <i class="fas fa-jpy d-inline"><h7>${thisHouse.price}</h7><h7>（${price_discuss}）</h7></i>
-                <!--<div class="align-items-center d-flex mb-1">
-                <button data-id="${thisHouse.house_id}" onclick="toKonwMore(this)" class="fa bg-secondary mr-5 mt-2 py-1 px-1 know-more" type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>-->
-                </a>
-                <div class="col-md-6 mt-2 mb-0 pl-1 pr-4 pt-1"><b>收藏数：${thisHouse.collect_times || 0}</b></div>
-                <div class="pb-1 row">
-                    <div class="col-md-6 mt-2 mb-0 pl-2 pr-4"><a class="btn btn-primary knowmore px-1"  ${online ? '' : 'data-toggle="modal" data-target="#failCollect"'} href="house/onehouse.html#/page/${thisHouse.house_id}">
-                    <p style="margin-top:1px;">知道更多</p>
-                  </a></div>
-                <div class="col-md-6 my-2"><a data-id="${thisHouse.house_id}" class="btn btn-primary ml-5 mr-2 knowmore" ${online ? '' : 'data-toggle="modal" data-target="#failCollect"'} onclick="toCollectHouse(this)"><i class="collect fa-star fa-fw fa-1x ${thisHouse.house_collect_status ? 'fas' : 'far'}" style="margin-top:4px;"></i></a></div>
-                <!--<button type="button" data-id="${thisHouse.house_id}" class="btn btn-primary ml-5 " onclick="toCollectHouse(this)"><i class="collect fa-star fa-1x fa-fw py-1 ${thisHouse.house_collect_status ? 'fas' : 'far'}"></i></button>-->
-                <!-- <button data-id="${thisHouse.house_id}" onclick="toCollectHouse(this)" type="button" class="${thisHouse.house_collect_status ? 'fas' : 'far'} fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>-->
-                </div>
-              </div>
-            </div>
-          </div>`);
-          }
-        });
+          }});
+        
         petBox.click(function() {
           if (this.checked || this.checked == 'checked') {
             $('#petBox')
@@ -960,7 +864,7 @@
 
       $('#keyword').keyup(function(e) {
         // console.log($(this).val(), e.keyCode);
-        if (e.keyCode === 8) {
+        if (e.keyCode > 7) {
           allSelectBox.removeAttr('checked');
           refreshType();
         }
@@ -985,38 +889,11 @@
           }
         }
       });
-      // //监听checkbox的value值 改变则执行下列操作
-      // $("input").change(function() {
-      //   if ($(this).prop("checked")) {
-      //     arr.push($(this).val()); //将选中的选项添加到数组中
-      //   } else {
-      //     var index = getIndex(arr, $(this).val()) //找到没有选中的选项在数组中的索引
-      //     arr.splice(index, 1); //在数组中删除该选项
-      //   }
-      // })
-      // //这个函数用于获取指定值在数组中的索引
-      // function getIndex(arr, value) {
-      //   for (var i = 0; i < arr.length; i++) {
-      //     if (arr[i] == value) {
-      //       return i
-      //     }
-      //   }
-      // }
-      // //点击按钮是弹出数组 这里可能要修改一下！！！
-      // $('search').click(function() {
-      //   alert(arr)
-      // })
-    </script>
 
-    <!--搜索框js-->
-    <script type="text/javascript">
-      //TO DO:搜索框通过关键字筛选房源
-      //TO DO:文字模式匹配/联想
-      //传值，修改标题内容
       $('#search').click(function() {
         keywordOrConditionSearch();
-        return;
       });
+      
     </script>
   </body>
 </html>
