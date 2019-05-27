@@ -152,7 +152,7 @@
               <h5 class="pt-2">养宠物</h5>
             </div>
             <div class="col-md-8 border-bottom">
-              <p class="text-left pt-2" v-text="pet">可以</p>
+              <p v-cloak class="text-left pt-2">{{ pet ? '' : '不' }}可以</p>
             </div>
             <div class="col-md-4  border-bottom">
               <h5 class="pt-2">地区</h5>
@@ -303,7 +303,7 @@
           region: '',
           address: '',
           price: '',
-          pet: '',
+          pet: 1,
           price_discuss: -1,
           facility: '',
           house_image: [],

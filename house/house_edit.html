@@ -108,9 +108,9 @@
                         required="required"
                       >
                         <option value="not_choose">Choose...</option>
-                        <option value="rongchang">荣昌校区</option>
-                        <option value="beibei">北碚校区</option>
-                        <option value="other"
+                        <option value="荣昌">荣昌校区</option>
+                        <option value="北碚">北碚校区</option>
+                        <option value="其他"
                           >其他(含提供住房信息的非校内人员)</option
                         >
                       </select>
@@ -120,11 +120,11 @@
                   <div class="row">
                     <div class="col-md-6 form-group has-feedback">
                       <div class="form-group text-left">
-                        <label for="price">价格</label>
+                        <label for="price">价格(/月)</label>
                         <input
                           type="text"
                           class="form-control"
-                          placeholder="定价(如300元/月)"
+                          placeholder="300"
                           id="price"
                           required=""
                         />
@@ -145,27 +145,6 @@
                       </div>
                     </div>
                   </div>
-                  <!--上传房屋图片-->
-                  <!--<div class="col-md-3 ml-4">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="pb-2 form-group img-fluid d-block 
-                          rounded-circle d-inline-flex" id="preview">
-                          <img class="img-fluid d-block rounded-circle d-inline-flex" src="../svgs/img-placeholder-3.svg" width="150">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="input-group">
-                      <span class="" style="z-index:2">
-                        <input type="file" style=" opacity: 0;filter: alpha(opacity=0);
-                        width:12rem" accept="image/*" id="userimage">
-                        <input id="user_image_url" type="hidden">
-                      </span>
-                      <div style="z-index:1;position:fixed;float: left;min-width:9.2rem;
-                        width:auto;padding-top: .5rem;" class=" text-center btn btn-outline-dark 
-                        navbar-btn" id="upload">浏 览 </div>
-                    </div>
-                  </div>-->
                   <div class="row">
                     <div class="col-lg-3 col-md-4">
                       <!--上传按钮-->
@@ -216,7 +195,7 @@
                   <div class="buttons" style="margin-top: 30px">
                     <input
                       value="提 交 编 辑"
-                      type="submit"
+                      type="button"
                       class="btn btn-lg btn-block btn-primary"
                       id="save_house_info"
                     />
@@ -257,14 +236,14 @@
     <script>
       var house_image = [];
       //编辑房屋信息
-      $('#save_house_info').click(function() {
+      $('#save_house_info').click(function(e) {
         axios
-          .post('/user/houseEdit', {
+          .post('/qiju/house/create', {
             address: $('#address').val(),
             facility: $('#facility').val(),
             pet: $('#pet option:selected').val(),
             region: $('#region option:selected').val(),
-            price: $('#pet option:selected').val(),
+            price: $('#price').val(),
             price_discuss: $('#price_discuss option:selected').val(),
             house_image: house_image //获取上传图片路径url,待完善
           })
@@ -279,6 +258,8 @@
           .catch(function(error) {
             console.log(error);
           });
+        e.preventDefault();
+        return false;
       });
       //上传房屋图像
       $('#house_image').change(function(event) {
@@ -304,105 +285,6 @@
           }
         });
       });
-      /*
-      
-                            <div class="row product-items-active" id="preview">
-                              <div class="col-md-4">
-                                <div class="single-product-items">
-                                  <div class="product-item-image">
-                                    <img
-                                      class="img-fluid d-block d-inline-flex"
-                                      src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/living-room-10.jpg"
-                                      alt="Product"
-                                      width="180"
-                                    />
-                                  </div>
-                                  <div
-                                    class="product-item-content text-center mt-30"
-                                  >
-                                    <h5 class="product-title"><br /><br /></h5>
-                                  </div>
-                                </div>
-                                <!-- single product items -->
-                              </div>
-                              <div class="col-md-4">
-                                <div class="single-product-items">
-                                  <div class="product-item-image preview">
-                                    <img
-                                      class="img-fluid d-block d-inline-flex"
-                                      src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/living-room-11.jpg"
-                                      alt="Product"
-                                      width="180"
-                                    />
-                                    <div
-                                      class="product-item-content text-center mt-30"
-                                    >
-                                      <h5 class="product-title">
-                                        <br /><br />
-                                      </h5>
-                                    </div>
-                                  </div>
-                                  <!-- single product items -->
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="single-product-items">
-                                  <div class="product-item-image preview">
-                                    <img
-                                      class="img-fluid d-block d-inline-flex"
-                                      src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/living-room-12.jpg"
-                                      alt="Product"
-                                      width="180"
-                                    />
-                                  </div>
-                                  <div
-                                    class="product-item-content text-center mt-30"
-                                  >
-                                    <h5 class="product-title"><br /><br /></h5>
-                                  </div>
-                                </div>
-                                <!-- single product items -->
-                              </div>
-                              <div class="col-md-4">
-                                <div class="single-product-items">
-                                  <div class="product-item-image preview">
-                                    <img
-                                      class="img-fluid d-block d-inline-flex"
-                                      src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/living-room-13.jpg"
-                                      alt="Product"
-                                      width="180"
-                                    />
-                                  </div>
-                                  <div
-                                    class="product-item-content text-center mt-30"
-                                  >
-                                    <h5 class="product-title"><br /><br /></h5>
-                                  </div>
-                                </div>
-                                <!-- single product items -->
-                              </div>
-                              <div class="col-md-4">
-                                <div class="single-product-items">
-                                  <div class="product-item-image preview">
-                                    <img
-                                      class="img-fluid d-block d-inline-flex"
-                                      src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/photo-1.jpg"
-                                      alt="Product"
-                                      width="180"
-                                    />
-                                  </div>
-                                  <div
-                                    class="product-item-content text-center mt-30"
-                                  >
-                                    <h5 class="product-title"><br /><br /></h5>
-                                  </div>
-                                </div>
-                                <!-- single product items -->
-                              </div>
-                            </div>
-                            <!-- row -->
-                          
-      */
     </script>
   </body>
 </html>
