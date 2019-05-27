@@ -11,17 +11,22 @@
     <link rel="stylesheet" href="/static/css/all.css" type="text/css" />
     <link rel="stylesheet" href="/static/scss/theme.css" />
     <style>
+      [hidden] {
+        visibility: hidden;
+      }
       [v-cloak] {
         display: none;
       }
-      @font-face{
-      font-family:qiju;
-        src:url('https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/fonts/CYHLSFT.ttf');
-    }
+      @font-face {
+        font-family: qiju;
+        src: url('https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/fonts/CYHLSFT.ttf');
+      }
     </style>
   </head>
 
-  <body style="background-image: url(https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/dynamic-style.png);">
+  <body
+    style="background-image: url(https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/dynamic-style.png);"
+  >
     <div id="app">
       <div
         class="in collapse"
@@ -29,45 +34,52 @@
         style='background-image: url("https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/dynamic-style.png");'
       >
         <div class="container">
-            <div class="row" >
-                <div class="py-4 col-md-3 navigator">
-                  <a href="#" class="text-decoration-none" id="switchLoginOrLogout">
-                    <h2>登出</h2>
-                    <h5>点这里~</h5>
-                  </a>
-                </div>
-                <div class="py-4 col-md-3 navigator" id="userCenter">
-                  <a href="../user/user_page.html" class="text-decoration-none">
-                    <h2>个人中心</h2>
-                    <h5>请先登录哦</h5>
-                  </a>
-                </div>
-                <div class="py-4 col-md-3 navigator">
-                  <a href="../item/xianzhi.html" class="text-decoration-none">
-                    <h2>闲置物品</h2>
-                    <h5>便捷处理闲置物品</h5>
-                  </a>
-                </div>
-                <div class="col-md-3 navigator py-4">
-                  <h2>关于我们</h2>
-                  <ul class="list-unstyled">
-                    <li class="shadow-none">
-                      <a href="#" class="text-decoration-none">官方微博</a>
-                    </li>
-                    <li class="">
-                      <a href="#" class="text-decoration-none">官方微信</a>
-                    </li>
-                    <li class="">
-                      <a href="#" class="text-decoration-none">官方邮箱</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+          <div class="row">
+            <div class="py-4 col-md-3 navigator">
+              <a
+                id="switchLoginOrLogout"
+                href="/user/login.html"
+                class="text-decoration-none"
+              >
+                <h2>登录</h2>
+                <h5>点这里~</h5>
+              </a>
+            </div>
+            <div class="py-4 col-md-3 navigator" id="userCenter" hidden>
+              <a href="../user/user_page.html" class="text-decoration-none">
+                <h2>个人中心</h2>
+                <h5>请先登录哦</h5>
+              </a>
+            </div>
+            <div class="py-4 col-md-3 navigator">
+              <a href="../item/xianzhi.html" class="text-decoration-none">
+                <h2>闲置物品</h2>
+                <h5>便捷处理闲置物品</h5>
+              </a>
+            </div>
+            <div class="col-md-3 navigator py-4">
+              <h2>关于我们</h2>
+              <ul class="list-unstyled">
+                <li class="shadow-none">
+                  <a href="#" class="text-decoration-none">官方微博</a>
+                </li>
+                <li class="">
+                  <a href="#" class="text-decoration-none">官方微信</a>
+                </li>
+                <li class="">
+                  <a href="#" class="text-decoration-none">官方邮箱</a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
       <div class="navbar">
         <div class="container d-flex justify-content-between">
-          <a href="../index.html" class="navbar-brand d-flex align-items-center">
+          <a
+            href="../index.html"
+            class="navbar-brand d-flex align-items-center"
+          >
             <i class="d-block far fa-lg fa-building text-body"></i>
             <h1 style="font-family:qiju;" class="pb-0 mb-0">栖居</h1>
           </a>
@@ -78,7 +90,11 @@
             data-target="#navbarHeader"
             aria-expanded="false"
           >
-            <img url="" src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/gif/364.gif" width="50" />
+            <img
+              url=""
+              src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/gif/364.gif"
+              width="50"
+            />
           </button>
         </div>
       </div>
@@ -202,8 +218,11 @@
                       </a>
                     </li>
                     <li class="nav-item ">
-                      <a class="btn btn-primary px-3"  onclick="toCollectHouse(this)">
-                        <i class="collect far fa-star fa-fw fa-1x py-1"></i
+                      <a class="btn btn-primary px-3" @click="toCollectHouse">
+                        <i
+                          :class="house_collect_status ? 'fas' : 'far'"
+                          class="collect fa-star fa-fw fa-1x py-1"
+                        ></i
                       ></a>
                     </li>
                   </ul>
@@ -292,7 +311,7 @@
     <script src="https://g.alicdn.com/mui/jquery/4.0.1/jquery.js"></script>
     <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.min.js"></script>
-    <script src="https://cdn.staticfile.org/vue/2.6.10/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue/2.6.10/vue.js"></script>
     <script src="/static/js/hashRouter.min.js"></script>
     <script>
       var HOUSE_ID = '';
@@ -312,7 +331,8 @@
           update_time: '',
           qq: '',
           wechat: '',
-          phone: ''
+          phone: '',
+          house_collect_status: 0
         },
         methods: {
           switchGenClass(index) {
@@ -324,6 +344,21 @@
               return 'carousel-item-next';
             }
             return '';
+          },
+          toCollectHouse() {
+            axios
+              .post('/qiju/user/collectHouse', {
+                house_id: this.house_id
+              })
+              .then(response => {
+                console.log(response);
+                if (response.data.code === 1) {
+                  this.house_collect_status = !this.house_collect_status + 0;
+                }
+              })
+              .catch(function(error) {
+                console.log(error);
+              });
           }
         },
         watch: {
@@ -334,17 +369,11 @@
                 .then(({ data }) => {
                   if (data.code === 1) {
                     data = data.data;
-                    this.house_id = data.house_id;
-                    this.region = data.region;
-                    this.address = data.address;
-                    this.price = data.price;
-                    this.pet = data.pet;
-                    this.price_discuss = data.price_discuss;
-                    this.facility = data.facility;
-                    this.house_image = data.house_image;
-                    this.qq = data.qq;
-                    this.wechat = data.wechat;
-                    this.phone = data.phone;
+                    Object.keys(data).forEach(k => {
+                      if (Reflect.has(this, k)) {
+                        this[k] = data[k];
+                      }
+                    });
                   }
                 });
             }
@@ -355,59 +384,41 @@
       qRouter.on('/page/:house_id', function(req) {
         app.house_id = HOUSE_ID = req.params.house_id;
       });
-      $(function() {});
-  //-----------------------房源收藏js----------------------//
-    function toCollectHouse(ele) {
-      axios.post('/qiju/user/collectHouse', {
-        house_id: ele.dataset.id,
-      }).then(function(response) {
-        console.log(response);
-        // 已登录
-        // 切换收藏状态
-        if (response.data.code === 1) {
-          var thisHouseCollect = $(ele).find("i");
-          if (thisHouseCollect.hasClass('far')) {
-            thisHouseCollect.removeClass('far').addClass('fas')
-          } else {
-            thisHouseCollect.removeClass('fas').addClass('far');
+
+      // 建议移除 jq
+      //登录登出切换
+      axios
+        .get('/qiju/user/online')
+        .then(function(res) {
+          if (res.data.code === 1) {
+            // var online = res.data.data.online;
+            var nav = $('.navigator');
+            // if (online) {
+            var switchLoginOrLogout = $('#switchLoginOrLogout');
+            switchLoginOrLogout.removeAttr('href');
+            switchLoginOrLogout.css({ cursor: 'pointer' });
+            switchLoginOrLogout.find('h2').html('登出');
+            switchLoginOrLogout.click(function() {
+              axios.get('/qiju/user/logout').then(resp => {
+                if (resp.data.code === 1) {
+                  // 提示已登出
+                  // alter("登出成功");.
+                  //  online ? '' : 'data-toggle="modal" data-target="#LogoutSuccess"';
+                  setTimeout(() => {
+                    window.location.reload();
+                  }, 210);
+                  // //隐藏个人中心
+                  //   nav.removeClass('col-md-3').addClass('col-md-4');
+                  //   $('#userCenter').hide();
+                }
+              });
+            });
+            $('#userCenter').removeAttr('hidden');
           }
-        }
-      }).catch(function(error) {
-        console.log(error);
-      });
-    };
-     //登录登出切换
-     axios.get('/qiju/user/online').then(function(res) {
-      if (res.data.code === 1) {
-        var online = res.data.data.online;
-        var nav = $('.navigator');
-          if (online) {
-          var switchLoginOrLogout = $('#switchLoginOrLogout');
-          switchLoginOrLogout.attr('href', '');
-          switchLoginOrLogout.find('h2').html('登出');
-          switchLoginOrLogout.click(function () {
-            axios.get('/qiju/user/logout').then(resp => {
-              if (resp.data.code === 1) {
-                // 提示已登出
-               // alter("登出成功");.
-               $("#LogoutSuccess").modal('show');
-                // setTimeout(function () {
-                //$("#LogoutSuccess").modal('hide');
-                //}, 1000);              
-                setTimeout(() => {
-                  window.location.reload();
-                }, 500);
-              }
-            })
-          })
-        }
-      }
-         else {
-         // alert("Ooh,失败了,请稍后再试");
-        }
-      }).catch(function(error) {
-        console.log(error);
-      });
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     </script>
   </body>
 </html>
