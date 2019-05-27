@@ -6,7 +6,10 @@
     <title>HouseEdit</title>
     <!-- CSS dependencies -->
     <link rel="stylesheet" href="/static/css/all.css" type="text/css" />
-    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!--<link rel="stylesheet" href="/static/css/wireframe.css"> -->
     <!--====== Slick css ======-->
     <link rel="stylesheet" href="/static/css/slick.css" />
@@ -236,31 +239,75 @@
     <script>
       var house_image = [];
       //编辑房屋信息
-      $('#save_house_info').click(function(e) {
-        axios
-          .post('/qiju/house/create', {
-            address: $('#address').val(),
-            facility: $('#facility').val(),
-            pet: $('#pet option:selected').val(),
-            region: $('#region option:selected').val(),
-            price: $('#price').val(),
-            price_discuss: $('#price_discuss option:selected').val(),
-            house_image: house_image //获取上传图片路径url,待完善
-          })
-          .then(function(response) {
-            console.log(response);
-            if (response.data.code === 1) {
-              location.href = '../user/user_page.html'; //路由定位到我发布的房源模块
-            } else {
-              alert('Ooh，编辑失败了，请稍后再试');
-            }
-          })
-          .catch(function(error) {
-            console.log(error);
-          });
-        e.preventDefault();
-        return false;
-      });
+      if (/^#\/page\/([a-zA-Z0-9_-]{8,})$/.test(location.hash)) {
+        var match = location.hash.match(/^#\/page\/([a-zA-Z0-9_-]{8,})$/);
+        var house_id = match[1];
+        axios.get('/qiju/house/profile?house_id=' + house_id).then(resp => {
+          if (resp.data.code === 1) {
+            var data = resp.data.data;
+            $('#address').val(data.address);
+            $('#facility').val(data.facility);
+            $('#pet').val(data.pet);
+            $('#region').val(data.region);
+            $('#price').val(data.price);
+            $('#price_discuss').val(data.price_discuss);
+          }
+        });
+        //编辑房屋信息
+        $('#save_house_info').click(function(e) {
+          axios
+            .post('/qiju/house/houseUpdate', {
+              house_id: house_id,
+              address: $('#address').val(),
+              facility: $('#facility').val(),
+              pet: $('#pet option:selected').val(),
+              region: $('#region option:selected').val(),
+              price: $('#price').val(),
+              price_discuss: $('#price_discuss option:selected').val(),
+              house_image: house_image
+            })
+            .then(function(response) {
+              console.log(response);
+              if (response.data.code === 1) {
+                location.href = '../user/user_page.html'; //路由定位到我发布的房源模块
+              } else {
+                alert('Ooh，编辑失败了，请稍后再试');
+              }
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+          e.preventDefault();
+          return false;
+        });
+      } else {
+        // 创建一个房屋
+        $('#save_house_info').click(function(e) {
+          axios
+            .post('/qiju/house/create', {
+              address: $('#address').val(),
+              facility: $('#facility').val(),
+              pet: $('#pet option:selected').val(),
+              region: $('#region option:selected').val(),
+              price: $('#price').val(),
+              price_discuss: $('#price_discuss option:selected').val(),
+              house_image: house_image
+            })
+            .then(function(response) {
+              console.log(response);
+              if (response.data.code === 1) {
+                location.href = '../user/user_page.html'; //路由定位到我发布的房源模块
+              } else {
+                alert('Ooh，编辑失败了，请稍后再试');
+              }
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+          e.preventDefault();
+          return false;
+        });
+      }
       //上传房屋图像
       $('#house_image').change(function(event) {
         var file = event.target.files[0];

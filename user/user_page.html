@@ -210,7 +210,7 @@
                           <div class="col-md-12 p-3">
                             <img class="img-fluid d-block" style="box-shadow: 10px 10px 10px #ccc" src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/house-post.jpg"></div>
                         </div>
-                        <div class="row" id="postHouse">
+                        <div class="row" id="postHouse"><!-- 
                           <div class="col-md-4 p-3" style="float: left;" id="house1">
                             <div class="card box-shadow" style="box-shadow: 5px 5px 10px #ccc">
                               <img class="card-img-top" src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/building4.jpg">
@@ -241,7 +241,7 @@
                                 </div>
                               </div>
                             </div>
-                          </div>
+                          </div> -->
                           <div class="col-md-4" style="float:left;padding: 15%">
                             <button class="btn btn-primary" style="border-radius:50%;" id="append1">
                               <i class="fa fa-plus fa-fw fa-1x py-1"></i>
@@ -885,23 +885,19 @@
 
       </div>
   </div>
+  <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
   <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
   <script src="/static/js/easyform.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('#reg-form').easyform();
-    });
-  </script>
-  
   <!-- <script src="/static/js/popover.js"></script> -->
   <script type="text/javascript">
     $(function() {
+      $('#reg-form').easyform();
       $("[data-toggle='popover']").popover();
     });
   </script>
   <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.min.js"></script>
   <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+  <script src="/static/js/timedifference-zh.js"></script>
   <script>
     axios.get('/qiju/user/profile').then(({ data }) => {
       if (data.code === 1) {
@@ -917,25 +913,30 @@
     });
     //新增模块
     //发布房源——显示已发布的房子
-    axios.get('/qiju/user/postedHouse/*请求更新router.js里相关url(..°ω°..) */').then(function(res) {
+    axios.get('/qiju/user/getAllMyHouse').then(function(res) {
       if (res.data.code === 1) {
         var houseList = res.data.data.list;
         var length = houseList.length;
         for (var i = 0; i < length; i++) {
           var thisHouse = houseList[i];
-          var price_discuss = thisHouse.price_discuss ? "可议价" : "不可议价"
-          $('#postHouse.row').append(`
+          var price_discuss = thisHouse.price_discuss ? "可议价" : "不可议价";
+          var create_time = vagueTime.get({
+            from: Date.now(),
+            to: new Date(thisHouse.create_time).getTime(),
+            units: 'ms'
+          });
+          $('#postHouse.row').prepend(`
           <div class="col-md-4 p-3" style="float: left;" id="${thisHouse.house_id}">
             <div class="card box-shadow" style="box-shadow: 5px 5px 10px #ccc">
-              <img class="card-img-top" src="${thisHouse.house_image}" height="220px">
+              <img class="card-img-top" src="${thisHouse.house_image[0]}" height="220px">
                <div class="card-body">
                 <h5>${thisHouse.address}</h5>
-                 <i class="fa fa-jpy d-inline" aria-hidden="true"><h7>${thisHouse.price}</h7>><h7>（${price_discuss}）</h7></i><div class="d-flex justify-content-between align-items-center">
+                 <i class="fa fa-jpy d-inline" aria-hidden="true"><h7>${thisHouse.price}/月</h7><h7>（${price_discuss}）</h7></i><div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group pt-2">
-               <a data-toggle="modal" data-target="#house_view1" href="house/onehouse.html" class="btn btn-sm btn-outline-secondary">详情</a>
-              <a href="house/house_edit.html" class="btn btn-sm btn-outline-secondary"> 编辑</a>
+               <a target="_blank" href="/house/onehouse.html#/page/${thisHouse.house_id}" class="btn btn-sm btn-outline-secondary">详情</a>
+              <a href="/house/house_edit.html#/page/${thisHouse.house_id}" class="btn btn-sm btn-outline-secondary"> 编辑</a>
              </div>
-            <small class="text-muted">创建时间:${thisHouse.create_time}</small>
+            <small class="text-muted">创建: ${create_time}</small>
           </div>
          </div>
         </div>
@@ -954,24 +955,13 @@
    var number1 = length + 1;
     //发布房源——增加房子
     $("#append1").click(function() {
-      $('#house' + count1 + '').after('<div class="col-md-4 p-3" style="float: left;" id="house' + number1 + '"><div class="card box-shadow" style="box-shadow: 5px 5px 10px #ccc"><img class="card-img-top" src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/photo-1.jpg"><div class="card-body"><p class="card-text">Here to show your house address.</p><div class="d-flex justify-content-between align-items-center"><div class="btn-group"><a data-toggle="modal" data-target="#house_view' + number1 + '" href="" class="btn btn-sm btn-outline-secondary">详情</a><a href="../house/house_edit.html" class="btn btn-sm btn-outline-secondary">编辑</a></div></div></div></div></div>');
-      number1++;
-      count1++;
+      window.location.href = '/house/house_edit.html';
+      // $('#house' + count1 + '').after('<div class="col-md-4 p-3" style="float: left;" id="house' + number1 + '"><div class="card box-shadow" style="box-shadow: 5px 5px 10px #ccc"><img class="card-img-top" src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/photo-1.jpg"><div class="card-body"><p class="card-text">Here to show your house address.</p><div class="d-flex justify-content-between align-items-center"><div class="btn-group"><a data-toggle="modal" data-target="#house_view' + number1 + '" href="" class="btn btn-sm btn-outline-secondary">详情</a><a href="../house/house_edit.html" class="btn btn-sm btn-outline-secondary">编辑</a></div></div></div></div></div>');
+      // number1++;
+      // count1++;
     });
   </script>
   <script>
-        //TO DO:显示用户基本信息
-        axios.get('/qiju/user/userinfo/*请求更新router.js里相关url(..°ω°..) */').then(function(res) {
-      if (res.data.code === 1) {
-        var userList = res.data.data.list;
-        $('#personal_info').find(h4) = userList.username;
-        $('#personal_info').find(img).attr('src',userList.userimage);
-      } else {
-        //alter('暂无数据')
-      };
-    }).catch(function(error) {
-      console.log(error);
-    });
     //发布闲置物品——显示已增加的闲置物及其展示框
     axios.get('/qiju/user/collectHouse/*请求更新router.js里相关url(..°ω°..) */').then(function(res) {
       if (res.data.code === 1) {
