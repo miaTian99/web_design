@@ -255,6 +255,11 @@
         });
         //编辑房屋信息
         $('#save_house_info').click(function(e) {
+          if (!house_image || house_image.length < 1) {
+            alert('请选择上传房屋图片');
+            e.preventDefault();
+            return false;
+          }
           axios
             .post('/qiju/house/houseUpdate', {
               house_id: house_id,
@@ -283,6 +288,11 @@
       } else {
         // 创建一个房屋
         $('#save_house_info').click(function(e) {
+          if (!house_image || house_image.length < 1) {
+            alert('请选择上传房屋图片');
+            e.preventDefault();
+            return false;
+          }
           axios
             .post('/qiju/house/create', {
               address: $('#address').val(),

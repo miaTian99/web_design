@@ -120,7 +120,7 @@
                     <!-- <li class="nav-item"> <a class="nav-link active show" href="#" data-toggle="pill" data-target="#tabone"><i class="fa fa-1x fa-bed">居住体验及评价</i></a> </li>-->
                     <li class="nav-item"> <a class="nav-link" href="#" data-toggle="pill" data-target="#tabtwo"><i class="fa fa-1x fa-home">发布我的房源</i></a> </li>
                     <li class="nav-item"> <a class="nav-link" href="#" data-toggle="pill" data-target="#tabthree"><i class="fa fa-box fa-1x">发布我的闲置物品</i></a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#" data-toggle="pill" data-target="#tabfour"><i class="fa fa-1x fa-home">收藏的房源</i></a> </li>
+                    <li class="nav-item"> <a id="linkTotabfour"class="nav-link" href="#" data-toggle="pill" data-target="#tabfour"><i class="fa fa-1x fa-home">收藏的房源</i></a> </li>
                     <li class="nav-item"> <a class="nav-link" href="#" data-toggle="pill" data-target="#tabfive"><i class="fa fa-1x fa-box">收藏的闲置物品</i></a> </li>
                   </ul>
                   <div class="tab-content" style="background-color: #eee;">
@@ -464,34 +464,7 @@
                             </div>
                           </div>
                           <div class="row" id="collectHouse">
-                            <div class="col-md-4 p-3">
-                              <div class="card box-shadow" style="box-shadow: 5px 5px 10px #ccc">
-                                <img class="card-img-top" src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/building4.jpg">
-                                <div class="card-body">
-                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                  <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                      <a data-toggle="modal" data-target="#house3" href="" class="btn btn-sm btn-outline-secondary">View-detail </a>
-                                    </div>
-                                    <small class="text-muted">9 mins</small>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-md-4 p-3">
-                              <div class="card box-shadow" style="box-shadow: 5px 5px 10px #ccc">
-                                <img class="card-img-top" src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/building4.jpg">
-                                <div class="card-body">
-                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. </p>
-                                  <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                      <a data-toggle="modal" data-target="#house4" href="" class="btn btn-sm btn-outline-secondary">View-detail</a>
-                                    </div>
-                                    <small class="text-muted">9 mins</small>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                            <!-- 收藏房源 显示容器 -->
                           </div>
                         </div>
                       </div>
@@ -963,13 +936,20 @@
   </script>
   <script>
     //发布闲置物品——显示已增加的闲置物及其展示框
-    axios.get('/qiju/user/collectHouse/*请求更新router.js里相关url(..°ω°..) */').then(function(res) {
+    axios.get('/qiju/user/collectHouse').then(function(res) {
+      // TODO TO DO
+      return false;
       if (res.data.code === 1) {
         var itemList = res.data.data.list;
         var length = itemList.length;
         for (var i = 0; i < length; i++) {
           var thisItem = itemList[i];
-          var price_discuss = thisItem.price_discuss ? "可议价" : "不可议价"
+          var price_discuss = thisItem.price_discuss ? "可议价" : "不可议价";
+          var create_time = vagueTime.get({
+            from: Date.now(),
+            to: new Date(thisItem.create_time).getTime(),
+            units: 'ms'
+          });
           $('#postItem.row').append(`<div class="col-md-4 p-3" style="float: left;" id="${thisItem.house_id}">
             <div class="card box-shadow" style="box-shadow: 5px 5px 10px #ccc">
               <img class="card-img-top" src="${thisItem.house_image}" height="220px">
@@ -980,7 +960,7 @@
                <a data-toggle="modal" data-target="#house_view1" href="house/onehouse.html" class="btn btn-sm btn-outline-secondary">详情</a>
               <a href="house/item_edit.html" class="btn btn-sm btn-outline-secondary"> 编辑</a>
              </div>
-            <small class="text-muted">创建时间:${thisItem.create_time}</small>
+            <small class="text-muted">创建: ${thisItem.create_time}</small>
           </div>
          </div>
         </div>
@@ -1104,37 +1084,46 @@
     });
   </script>
   <script>
-    //------------收藏房源显示------------//
-    axios.get('/qiju/user/collectedHouse/*请求更新router.js里相关url(..°ω°..) */').then(function(res) {
-      if (res.data.code === 1) {
-        var houseList = res.data.data.list;
-        //var length = houseList.length;
-        for (var i = 0; i < houseList.length; i++) {
-          var thisHouse = houseList[i];
-          var price_discuss = thisHouse.price_discuss ? "可议价" : "不可议价"
-          $('#collectHouse.row').append(`<div class="col-md-4 p-3">
-            <div class="card box-shadow"> <a data-toggle="modal" data-target=".white" href="onehouse.html" class="text-decoration-none">
-                <img class="card-img-top" src="${thisHouse.house_image}" height="220px">
-                <div class="card-body pt-1 pb-1"> 
-                <h5>${thisHouse.address}</h5>
-                <i class="fas fa-jpy d-inline"><h7>${thisHouse.price}</h7><h7>（${price_discuss}）</h7></i>
-                <!--<div class="align-items-center d-flex mb-1">
-                <button data-id="${thisHouse.house_id}" onclick="toKonwMore(this)" class="fa bg-secondary mr-5 mt-2 py-1 px-1 know-more" type="button" class="fa bg-secondary mr-5 mt-2 py-1 px-1"> Know more</button>-->
-                </a>
-                <div class="pb-1">
-                <b>收藏数：${thisHouse.collect_times || 0}</b>&nbsp;&nbsp;&nbsp;
-                <!--<button type="button" data-id="${thisHouse.house_id}" class="btn btn-primary px-2 ml-5" onclick="toCollectHouse(this)"><i class="collect fa-star fa-1x fa-fw py-1 ${thisHouse.house_collect_status ? 'fas' : 'far'}"></i></button>-->
-                <!-- <button data-id="${thisHouse.house_id}" onclick="toCollectHouse(this)" type="button" class="${thisHouse.house_collect_status ? 'fas' : 'far'} fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>-->
-                </div>
+    // 当点击收藏房源列表的时候再加载 提高页面加载速度
+    // 当鼠标经过时（点击之前）预加载 防止插入时页面抖动
+    // TO DO 兼容手机端
+    $('#linkTotabfour').one('mouseenter', function (e) {
+      console.log(new Date().toLocaleTimeString())
+      //------------收藏房源显示------------//
+      axios.get('/qiju/user/getAllMyCollectHouse').then(function(res) {
+        if (res.data.code === 1) {
+          var houseList = res.data.data.list;
+          //var length = houseList.length;
+          for (var i = 0; i < houseList.length; i++) {
+            var thisHouse = houseList[i];
+            var price_discuss = thisHouse.price_discuss ? "可议价" : "不可议价";
+            var create_time = vagueTime.get({
+              from: Date.now(),
+              to: new Date(thisHouse.create_time).getTime(),
+              units: 'ms'
+            });
+            $('#collectHouse.row').append(`
+            <div class="col-md-4 p-3" style="float: left;" id="${thisHouse.house_id}">
+              <div class="card box-shadow" style="box-shadow: 5px 5px 10px #ccc">
+                <img class="card-img-top" src="${thisHouse.house_image[0]}" height="220px">
+                <div class="card-body">
+                  <h5>${thisHouse.address}</h5>
+                  <i class="fa fa-jpy d-inline" aria-hidden="true"><h7>${thisHouse.price}/月</h7><h7>（${price_discuss}）</h7></i><div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group pt-2">
+                <a target="_blank" href="/house/onehouse.html#/page/${thisHouse.house_id}" class="btn btn-sm btn-outline-secondary">详情</a>
               </div>
+              <small class="text-muted">创建: ${create_time}</small>
             </div>
-          </div>`);
-        }
-      } else {
-        alter('暂无数据')
-      };
-    }).catch(function(error) {
-      console.log(error);
+          </div>
+          </div>
+        </div>`);
+          }
+        } else {
+          alter('暂无数据')
+        };
+      }).catch(function(error) {
+        console.log(error);
+      });
     });
     //-----------收藏的闲置物品显示------------//
     axios.get('/qiju/user/collectedItem/*请求更新router.js里相关url(..°ω°..) */').then(function(res) {
