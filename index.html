@@ -391,26 +391,27 @@
     if (res.data.code === 1) {
       // var online = res.data.data.online;
       var nav = $('.navigator');
-        // if (online) {
-        var switchLoginOrLogout = $('#switchLoginOrLogout');
-        switchLoginOrLogout.attr('href', '');
-        switchLoginOrLogout.find('h2').html('登出');
-        switchLoginOrLogout.click(function () {
-          axios.get('/qiju/user/logout').then(resp => {
-            if (resp.data.code === 1) {
-              // 提示已登出
-             // alter("登出成功");.
-             online ? '' : 'data-toggle="modal" data-target="#LogoutSuccess"';
-              setTimeout(() => {
-                window.location.reload();
-              }, 500);
-              //隐藏个人中心
-                nav.removeClass('col-md-3').addClass('col-md-4');
-                $('#userCenter').hide();
-            }
-          })
-        });
-        $('#userPageEnter').removeAttr('hidden');
+      // if (online) {
+      var switchLoginOrLogout = $('#switchLoginOrLogout');
+      switchLoginOrLogout.removeAttr('href');
+      switchLoginOrLogout.css({ cursor: 'pointer' });
+      switchLoginOrLogout.find('h2').html('登出');
+      switchLoginOrLogout.click(function () {
+        axios.get('/qiju/user/logout').then(resp => {
+          if (resp.data.code === 1) {
+            // 提示已登出
+            // alter("登出成功");.
+          //  online ? '' : 'data-toggle="modal" data-target="#LogoutSuccess"';
+            setTimeout(() => {
+              window.location.reload();
+            }, 210);
+            // //隐藏个人中心
+            //   nav.removeClass('col-md-3').addClass('col-md-4');
+            //   $('#userCenter').hide();
+          }
+        })
+      });
+      $('#userPageEnter').removeAttr('hidden');
     }
       
     }).catch(function(error) {
