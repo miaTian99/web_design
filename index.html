@@ -326,7 +326,10 @@ a.knowmore:focus {
               if (resp.data.code === 1) {
                 // 提示已登出
                // alter("登出成功");.
-               online ? '' : 'data-toggle="modal" data-target="#LogoutSuccess"';
+               $("#LogoutSuccess").modal('show');
+                // setTimeout(function () {
+                //$("#LogoutSuccess").modal('hide');
+                //}, 1000);              
                 setTimeout(() => {
                   window.location.reload();
                 }, 500);
@@ -342,7 +345,7 @@ a.knowmore:focus {
           $('#userCenter').show();
           }
         } else {
-          alert("Ooh,失败了,请稍后再试");
+         // alert("Ooh,失败了,请稍后再试");
         }
       }).catch(function(error) {
         console.log(error);
@@ -374,7 +377,7 @@ a.knowmore:focus {
                     <div class="col-md-6 mt-2 mb-0 pl-2 pr-4"><a class="btn btn-primary knowmore px-1"  ${online ? '' : 'data-toggle="modal" data-target="#failCollect"'} href="house/onehouse.html#/page/${thisHouse.house_id}">
                     <p style="margin-top:1px;">知道更多</p>
                   </a></div>
-                <div class="col-md-6 my-2"><a data-id="${thisHouse.house_id}" class="btn btn-primary ml-5 mr-2 knowmore" onclick="toCollectHouse(this)"  ${online ? '' : 'data-toggle="modal" data-target="#failCollect"'}>
+                <div class="col-md-6 my-2"><a data-id="${thisHouse.house_id}" class="btn btn-primary ml-5 mr-2 knowmore" onclick="toCollectHouse(this)">
                 <i class="collect fa-star fa-fw fa-1x ${thisHouse.house_collect_status ? 'fas' : 'far'}" style="margin-top:4px;"></i></a></div>
                 <!--<button type="button" data-id="${thisHouse.house_id}" class="btn btn-primary ml-5 " onclick="toCollectHouse(this)"><i class="collect fa-star fa-1x fa-fw py-1 ${thisHouse.house_collect_status ? 'fas' : 'far'}"></i></button>-->
                 <!-- <button data-id="${thisHouse.house_id}" onclick="toCollectHouse(this)" type="button" class="${thisHouse.house_collect_status ? 'fas' : 'far'} fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>-->
@@ -414,10 +417,9 @@ a.knowmore:focus {
                     <div class="col-md-6 mt-2 mb-0 pl-2 pr-4"><a class="btn btn-primary knowmore px-1"  ${online ? '' : 'data-toggle="modal" data-target="#failCollect"'} href="house/onehouse.html#/page/${thisHouse.house_id}">
                     <p style="margin-top:1px;">知道更多</p>
                   </a></div>
-                <div class="col-md-6 my-2"><a data-id="${thisHouse.house_id}" class="btn btn-primary ml-5 mr-2 knowmore" onclick="toCollectHouse(this)"  ${online ? '' : 'data-toggle="modal" data-target="#failCollect"'}><i class="collect fa-star fa-fw fa-1x ${thisHouse.house_collect_status ? 'fas' : 'far'}" style="margin-top:4px;"></i></a></div>
-                <!--<button type="button" data-id="${thisHouse.house_id}" class="btn btn-primary ml-5 " onclick="toCollectHouse(this)"><i class="collect fa-star fa-1x fa-fw py-1 ${thisHouse.house_collect_status ? 'fas' : 'far'}"></i></button>-->
-                <!-- <button data-id="${thisHouse.house_id}" onclick="toCollectHouse(this)" type="button" class="${thisHouse.house_collect_status ? 'fas' : 'far'} fa-star py-1 px-2 bg-secondary ml-4 mt-2 collect"></button>-->
-                </div>
+                <div class="col-md-6 my-2"><a data-id="${thisHouse.house_id}" class="btn btn-primary ml-5 mr-2 knowmore" onclick="toCollectHouse(this)">
+                <i class="collect fa-star fa-fw fa-1x ${thisHouse.house_collect_status ? 'fas' : 'far'}" style="margin-top:4px;"></i></a></div>
+               </div>
               </div>
             </div>
           </div>`);
@@ -438,6 +440,11 @@ a.knowmore:focus {
         if (response.data.code === -1 && response.data.message === '需要验证') {
          //若用户未登录，不允许进行收藏操作，但允许浏览。跳转至登录界面
          //alert("Ooh,请先登录再操作哦");
+         $("#failCollect").modal('show');  //failCollect提醒弹框
+          setTimeout(function () {
+            $("#failCollect").modal('hide');
+            location.href = '../user/login.html';
+          }, 1500); 
          }
         // 已登录
         // 切换收藏状态
