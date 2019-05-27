@@ -36,7 +36,7 @@
 	font-size: smaller;
 	line-height: 30px;
 	text-align: center;
-    float: left;
+  float: left;
 }
 
 /*导航条下a*/
@@ -70,7 +70,7 @@
 	color: #f9bf45;
 }
 
-  .clickstyle {
+.clickstyle {
    /*content: " ";
    width: 100%;
 	position: absolute;*/
