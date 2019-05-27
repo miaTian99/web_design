@@ -87,7 +87,7 @@
                   <div>
                     <div class="row"  id="personal_info">
                       <div class="col">
-                        <img class="img-fluid d-block rounded-circle mx-2 mb-3" src="/static/svgs/profile_pic.svg" alt="Card image cap" width="100">
+                        <img id="user_image"  style="width: 100px; height: 100px; border-radius: 50%; background-size: contain; background-image: url(/static/svgs/profile_pic.svg)" class="img-fluid d-block rounded-circle mx-2 mb-3">
                       </div>
                       <div class="col-7 d-flex flex-column justify-content-center text-left">
                         <h4>user-name</h4>
@@ -903,6 +903,18 @@
   <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
   <script>
+    axios.get('/qiju/user/profile').then(({ data }) => {
+      if (data.code === 1) {
+        console.log('data', data);
+        data = data.data;
+        // setTimeout(() => {
+          $('#user_image').css({
+            'background-image': `url(${data.user_image})`
+          });
+          $('#personal_info h4').html(data.user_name);
+        // }, 1000);
+      }
+    });
     //新增模块
     //发布房源——显示已发布的房子
     axios.get('/qiju/user/postedHouse/*请求更新router.js里相关url(..°ω°..) */').then(function(res) {

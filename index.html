@@ -394,6 +394,7 @@
     //登录登出切换
     axios.get('/qiju/user/online').then(function(res) {
       if (res.data.code === 1) {
+        localStorage.setItem('online', '1');
         // var online = res.data.data.online;
         var nav = $('.navigator');
           // if (online) {
@@ -404,6 +405,7 @@
             axios.get('/qiju/user/logout').then(resp => {
               if (resp.data.code === 1) {
                 // 提示已登出
+                localStorage.removeItem('online');
                // alter("登出成功");.
                online ? '' : 'data-toggle="modal" data-target="#LogoutSuccess"';
                 setTimeout(() => {
@@ -416,6 +418,8 @@
             })
           });
           $('#userPageEnter').removeAttr('hidden');
+      } else {
+        localStorage.removeItem('online');
       }
         
       }).catch(function(error) {
@@ -543,6 +547,15 @@
       refreshType();
 
       function keywordOrConditionSearch() {
+        if (!localStorage.getItem('online')) {
+          alert('Ooh,请先登录再操作哦');
+              $('#failCollect').show(); //failCollect对应弹框无效操作提醒弹框的id
+              setTimeout(function() {
+                $('#failCollect').hide();
+              }, 1000);
+              location.href = 'user/login.html';
+              return;
+        }
         $('#searchShow').removeAttr('hidden');
         $('#paginationRow').removeAttr('hidden');
         if (searchType === 'keyword') {
