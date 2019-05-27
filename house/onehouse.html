@@ -14,6 +14,10 @@
       [v-cloak] {
         display: none;
       }
+      @font-face{
+      font-family:qiju;
+        src:url('https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/fonts/CYHLSFT.ttf');
+    }
     </style>
   </head>
 
@@ -25,41 +29,47 @@
         style='background-image: url("https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/dynamic-style.png");'
       >
         <div class="container">
-          <div class="row">
-            <div class="py-4 col-md-4">
-              <a href="../user/login.html" class="text-decoration-none">
-                <h1>Login</h1>
-                <h5>Click here to login</h5>
-              </a>
-            </div>
-            <div class="py-4 col-md-4">
-              <a href="xianzhi.html" class="text-decoration-none">
-                <h1>Idle Swapping</h1>
-                <h5>Do you want to know more? Click here</h5>
-              </a>
-            </div>
-            <div class="col-md-4  py-4">
-              <h1>About us</h1>
-              <ul class="list-unstyled">
-                <li class="shadow-none">
-                  <a href="#" class="text-decoration-none">Follow on Weibo</a>
-                </li>
-                <li class="">
-                  <a href="#" class="text-decoration-none">Like on Wechat</a>
-                </li>
-                <li class="">
-                  <a href="#" class="text-decoration-none">Email me</a>
-                </li>
-              </ul>
-            </div>
-          </div>
+            <div class="row" >
+                <div class="py-4 col-md-3 navigator">
+                  <a href="#" class="text-decoration-none" id="switchLoginOrLogout">
+                    <h2>登出</h2>
+                    <h5>点这里~</h5>
+                  </a>
+                </div>
+                <div class="py-4 col-md-3 navigator" id="userCenter">
+                  <a href="../user/user_page.html" class="text-decoration-none">
+                    <h2>个人中心</h2>
+                    <h5>请先登录哦</h5>
+                  </a>
+                </div>
+                <div class="py-4 col-md-3 navigator">
+                  <a href="../item/xianzhi.html" class="text-decoration-none">
+                    <h2>闲置物品</h2>
+                    <h5>便捷处理闲置物品</h5>
+                  </a>
+                </div>
+                <div class="col-md-3 navigator py-4">
+                  <h2>关于我们</h2>
+                  <ul class="list-unstyled">
+                    <li class="shadow-none">
+                      <a href="#" class="text-decoration-none">官方微博</a>
+                    </li>
+                    <li class="">
+                      <a href="#" class="text-decoration-none">官方微信</a>
+                    </li>
+                    <li class="">
+                      <a href="#" class="text-decoration-none">官方邮箱</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
         </div>
       </div>
       <div class="navbar">
         <div class="container d-flex justify-content-between">
-          <a href="#" class="navbar-brand d-flex align-items-center">
+          <a href="../index.html" class="navbar-brand d-flex align-items-center">
             <i class="d-block far fa-lg fa-building text-body"></i>
-            <strong>Qiju</strong>
+            <h1 style="font-family:qiju;" class="pb-0 mb-0">栖居</h1>
           </a>
           <button
             class="navbar-toggler collapsed"
@@ -192,8 +202,8 @@
                       </a>
                     </li>
                     <li class="nav-item ">
-                      <a class="btn btn-primary isclick px-3" href="#"
-                        ><i class="collect far fa-star fa-fw fa-1x py-1"></i
+                      <a class="btn btn-primary px-3"  onclick="toCollectHouse(this)">
+                        <i class="collect far fa-star fa-fw fa-1x py-1"></i
                       ></a>
                     </li>
                   </ul>
@@ -346,6 +356,58 @@
         app.house_id = HOUSE_ID = req.params.house_id;
       });
       $(function() {});
+  //-----------------------房源收藏js----------------------//
+    function toCollectHouse(ele) {
+      axios.post('/qiju/user/collectHouse', {
+        house_id: ele.dataset.id,
+      }).then(function(response) {
+        console.log(response);
+        // 已登录
+        // 切换收藏状态
+        if (response.data.code === 1) {
+          var thisHouseCollect = $(ele).find("i");
+          if (thisHouseCollect.hasClass('far')) {
+            thisHouseCollect.removeClass('far').addClass('fas')
+          } else {
+            thisHouseCollect.removeClass('fas').addClass('far');
+          }
+        }
+      }).catch(function(error) {
+        console.log(error);
+      });
+    };
+     //登录登出切换
+     axios.get('/qiju/user/online').then(function(res) {
+      if (res.data.code === 1) {
+        var online = res.data.data.online;
+        var nav = $('.navigator');
+          if (online) {
+          var switchLoginOrLogout = $('#switchLoginOrLogout');
+          switchLoginOrLogout.attr('href', '');
+          switchLoginOrLogout.find('h2').html('登出');
+          switchLoginOrLogout.click(function () {
+            axios.get('/qiju/user/logout').then(resp => {
+              if (resp.data.code === 1) {
+                // 提示已登出
+               // alter("登出成功");.
+               $("#LogoutSuccess").modal('show');
+                // setTimeout(function () {
+                //$("#LogoutSuccess").modal('hide');
+                //}, 1000);              
+                setTimeout(() => {
+                  window.location.reload();
+                }, 500);
+              }
+            })
+          })
+        }
+      }
+         else {
+         // alert("Ooh,失败了,请稍后再试");
+        }
+      }).catch(function(error) {
+        console.log(error);
+      });
     </script>
   </body>
 </html>
