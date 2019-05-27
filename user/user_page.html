@@ -886,9 +886,11 @@
           console.log('data', data);
           data = data.data;
           // setTimeout(() => {
-          $('#user_image').css({
-            'background-image': `url(${data.user_image})`
-          });
+          if (data.user_image) {
+            $('#user_image').css({
+              'background-image': `url(${data.user_image})`
+            });
+          }
           $('#personal_info h4').html(data.user_name);
           // }, 1000);
         }
