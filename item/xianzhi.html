@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>xianzhi</title>
+  <meta charset="utf-8">
+  <style>
+    @font-face{
+      font-family:hudie;
+      src:url('https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/webfonts/fa-brands-400.ttf');
+    }
+    html, body{
+      height:100%;
+     width:100%;
+     margin:0px;
+     padding:0px;
+    }
+    a{
+		text-decoration: none;
+		color: black;
+	  }
+	
+	   a:hover{
+		color: rgb(192,142,175);
+	   }
+    h1{
+    font-family:hudie;
+    }
+	  .pt-perspective {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    transform-style: preserve-3d;
+    } 
+   .pt-page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+    }
+ 
+    .pt-page-current,
+    .no-js .pt-page {
+    visibility: visible;
+     }
+ 
+    .no-js body {
+    overflow: auto;}
+  
+    .pt-page-ontop {
+    z-index: 999;}
+    
+    
+    .pt-page-scaleDown {
+    animation: scaleDown .7s ease both;}
+
+
+    @keyframes scaleDown {
+    to { opacity: 0; transform: scale(.8); }
+     }
+     
+   	.container{
+		width: 100%;
+		height: 100%;
+		background-color: rgb(255,255,255);
+		margin:0;
+		padding: 0px;
+
+	}
+	.first{
+		width: 33.33%;
+		height: 50%;
+		overflow: hidden;
+		float: left;
+		margin:0px;
+		padding: 0px;
+        box-shadow: -5px -5px 20px rgba(248,223,114,0.5) inset;
+        text-align: center;
+        animation: fadeIN 1s 0s linear forwards;
+    }
+   
+	.img{   height:200px;
+		    width: 200px;
+		   
+		    overflow: hidden;
+		    margin:0 auto;
+		    margin-top: 50px;
+	}
+    @keyframes fadeIN{
+    	from{opacity: 0;transform:scale(2.5);}
+    	to{opacity: 1;transform: scale(1);}
+    }
+	</style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="first" id="book">
+      <a href="item.html#/page/book">
+        <div class="img">
+          <img src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/book.png" width="210" class="border-top-0">
+        </div>
+        <h1 contenteditable="true">书</h1>
+      </a>
+    </div>
+    <div class="first" id="electric">
+      <a href="item.html#/page/electric">
+        <div class="img">
+          <img src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/san.png" width="150">
+        </div>
+        <h1>电子用品</h1>
+      </a>
+    </div>
+    <div class="first" id="furniture">
+      <a href="item.html#/page/furniture">
+        <div class="img">
+          <img src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/chair.png" width="200">
+        </div>
+        <h1>家具</h1>
+      </a>
+    </div>
+    <div class="first" id="sporting">
+      <a href="item.html#/page/sporting">
+        <div class="img">
+          <img src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/run.png" width="200">
+        </div>
+        <h1>健身器材</h1>
+      </a>
+    </div>
+    <div class="first" id="vehicle">
+      <a href="item.html#/page/vehicle">
+        <div class="img">
+          <img src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/zxc.png" width="200">
+        </div>
+        <h1 contenteditable="true">交通工具</h1>
+      </a>
+    </div>
+    <div class="first" id="other">
+      <a href="item.html#/page/other">
+        <div class="img">
+          <img src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/img/guitar.png" height="200">
+        </div>
+        <h1 contenteditable="true">其他</h1>
+      </a>
+    </div>
+  </div>
+</body>
+
+</html>
