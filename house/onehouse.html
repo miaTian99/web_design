@@ -21,6 +21,12 @@
         font-family: qiju;
         src: url('https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/fonts/CYHLSFT.ttf');
       }
+      #cat div{
+       display:none;
+      }
+      #cat:hover div{
+       display:initial;
+      }
     </style>
   </head>
 
@@ -89,7 +95,7 @@
             <i class="d-block far fa-lg fa-building text-body"></i>
             <h1 style="font-family:qiju;" class="pb-0 mb-0">栖居</h1>
           </a>
-          <button
+          <button id="cat"
             class="navbar-toggler collapsed"
             type="button"
             data-toggle="collapse"
@@ -101,6 +107,11 @@
               src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/gif/364.gif"
               width="50"
             />
+            <div 
+            style="position:relative;float:left;z-index:10;font-family:qiju;font-size: 22px;border-radius: 50%;" 
+            class="text-black bg-light p-2" 
+            >
+            "迷路啦？点我点我~~~"<div>
           </button>
         </div>
       </div>

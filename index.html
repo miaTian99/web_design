@@ -46,6 +46,12 @@
         padding: 5px 5px 5px 5px;
         background-color: #fff;
       }
+      #cat div{
+       display:none;
+      }
+      #cat:hover div{
+       display:initial;
+      }
     </style>
 <body>
   <div
@@ -100,18 +106,24 @@
             <i class="d-block far fa-lg fa-building text-body"></i>
             <h1 style="font-family:qiju;" class="pb-0 mb-0">栖居</h1>
           </a>
-          <button
+          <button id="cat"
             class="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarHeader"
             aria-expanded="true"
+            
           >
-            <img
+            <img 
               url=""
               src="https://qiju-1252919816.cos.ap-chongqing.myqcloud.com/static/gif/364.gif"
               width="50"
             />
+            <div 
+            style="position:relative;float:left;z-index:10;font-family:qiju;font-size: 22px;border-radius: 50%;" 
+            class="text-black bg-light p-2" 
+            >
+            "迷路啦？点我点我~~~"<div>
           </button>
         </div>
       </div>
@@ -121,6 +133,7 @@
             <form class="form-inline mb-0" style="width:1100px">
               <div class="input-group w-75">
                 <input
+                  id="searchform"
                   type="text"
                   id="keyword"
                   class="form-control form-control-lg"
@@ -249,13 +262,6 @@
           <div class="col-md-12">
             <h1 class="bg-secondary pl-2 pb-1">精品推荐</h1>
           </div>
-          
-          <a
-            data-toggle="modal"
-            data-target=".white"
-            href="house/onehouse.html"
-          >
-          </a>
         </div>
         <a data-toggle="modal" data-target=".white" href=""> </a>
       </div>
@@ -331,7 +337,7 @@
               </a>
               <div class="col-md-6 mt-2 mb-0 pl-1 pr-4 pt-1"><b>收藏数：${thisHouse.collect_times || 0}</b></div>
               <div class="pb-1 row">
-                  <div class="col-md-6 mt-2 mb-0 pl-2 pr-4"><a class="btn btn-primary knowmore px-1"  ${online ? '' : 'data-toggle="modal" data-target="#failCollect"'} href="house/onehouse.html#/page/${thisHouse.house_id}">
+                  <div class="col-md-6 mt-2 mb-0 pl-2 pr-4"><a ${online ? '' : 'data-toggle="modal" data-target="#failCollect"'} class="btn btn-primary knowmore px-1" href="house/onehouse.html#/page/${thisHouse.house_id}">
                   <p style="margin-top:1px;">知道更多</p>
                 </a></div>
               <div class="col-md-6 my-2"><a data-id="${thisHouse.house_id}" class="btn btn-primary ml-5 mr-2 knowmore" onclick="toCollectHouse(this)"  ${online ? '' : 'data-toggle="modal" data-target="#failCollect"'}>
@@ -356,12 +362,12 @@
             response.data.message === '需要验证'
           ) {
             //若用户未登录，不允许进行收藏操作，但允许浏览。跳转至登录界面
-            alert('Ooh,请先登录再操作哦');
-            $('#failCollect').show(); //failCollect对应弹框无效操作提醒弹框的id
+           // alert('Ooh,请先登录再操作哦');
+            $('#failCollect').modal('show'); //failCollect对应弹框无效操作提醒弹框的id
             setTimeout(function() {
-              $('#failCollect').hide();
-            }, 1000);
-            location.href = 'user/login.html';
+              $('#failCollect').modal('hide');
+              location.href = 'user/login.html';
+            }, 1500);
             return;
           }
           // 已登录
@@ -382,6 +388,7 @@
 </script>
 <script type="text/javascript">
   // 点击 Konw More的操作
+ 
   function toKonwMore(ele) {
     // 房子id
     alert(ele.dataset.id);
@@ -400,8 +407,7 @@
         axios.get('/qiju/user/logout').then(resp => {
           if (resp.data.code === 1) {
             // 提示已登出
-            // alter("登出成功");.
-          //  online ? '' : 'data-toggle="modal" data-target="#LogoutSuccess"';
+            // alter("登出成功");
             setTimeout(() => {
               window.location.reload();
             }, 210);
@@ -429,7 +435,7 @@
       for (var i = 0; i < length; i++) {
         var thisHouse = houseList[i];
         // 渲染数据
-        renderHouses('#topRecommand.row', thisHouse, { online: 1 });
+        renderHouses('#topRecommand.row', thisHouse, {  online: res.data.data.online });
       }
     }
    });
@@ -467,6 +473,11 @@
     $('#box').click(function() {
       $('#selectBox').toggle();
     });
+    $('#searchform').click(function() {
+      $('#selectBox').toggle();
+      
+    });
+    
     //前三项复选框单选限制
     //勾记复选框传值至搜索框中
     $(function() {
