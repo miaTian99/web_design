@@ -14,6 +14,9 @@
   <link rel="stylesheet" href="/static/scss/theme.css" />
   <link href="/static/css/Home.css" rel="stylesheet" type="text/css" />
   <style>
+      [hidden] {
+        visibility: hidden;
+      }
     a:link {
       text-decoration: none;
     }
@@ -68,25 +71,25 @@
       id="navbarHeader">
       <div class="container">
         <div class="row">
-          <div class="py-4 col-md-3 navig">
+          <div class="py-4 col-md-3">
             <a href="../user/login.html" class="text-decoration-none" id="switchLoginOrLogout">
               <h2>登录</h2>
               <h5>点这里~</h5>
             </a>
           </div>
-          <div id="userPageEnter" class="py-4 col-md-3 navig" id="userCenter">
+          <div id="userPageEnter" class="py-4 col-md-3" hidden>
             <a href="../user/user_page.html" class="text-decoration-none">
               <h2>个人中心</h2>
               <h5>请先登录哦</h5>
             </a>
           </div>
-          <div class="py-4 col-md-3 navig">
+          <div class="py-4 col-md-3">
             <a href="xianzhi.html" class="text-decoration-none">
               <h2>闲置物品</h2>
               <h5>便捷处理闲置物品</h5>
             </a>
           </div>
-          <div class="col-md-3 navig py-4">
+          <div class="col-md-3 py-4">
             <h2>关于我们</h2>
             <ul class="list-unstyled">
               <li class="shadow-none">
@@ -443,7 +446,7 @@
         },
         toCollectItem(id) {
           axios
-            .post('/qiju/user/collectItem', {
+            .post('/qiju/user/collectHouse', {
               item_id: id
             })
             .then(function (response) {
@@ -553,9 +556,8 @@
       .get('/qiju/user/online')
       .then(function (res) {
         if (res.data.code === 1) {
-          var online = res.data.data.online;
-          var nav = $('.navig');
-          if (online) {
+         // var online = res.data.data.online;
+         // if (online) {
             var switchLoginOrLogout = $('#switchLoginOrLogout');
             switchLoginOrLogout.attr('href', '');
             switchLoginOrLogout.find('h2').html('登出');
@@ -570,22 +572,20 @@
                   //}, 1000);
                   setTimeout(() => {
                     window.location.reload();
-                  }, 500);
+                  }, 210);
                   //隐藏个人中心
                  // nav.removeClass('col-md-3').addClass('col-md-4');
                  // $('#userCenter').hide();
                 }
               });
             });
-           
-          } else {
             $('#userPageEnter').removeAttr('hidden');
+       
+           
             //显示个人中心
             //nav.removeClass('col-md-4').addClass('col-md-3');
             //$('#userCenter').show();
-            alter('请先登录~');
           } 
-        }
       })
       .catch(function (error) {
         console.log(error);

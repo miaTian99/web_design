@@ -396,9 +396,9 @@
   //登录登出切换
   axios.get('/qiju/user/online').then(function(res) {
     if (res.data.code === 1) {
-      // var online = res.data.data.online;
-      var nav = $('.navigator');
-      // if (online) {
+      //var online = res.data.data.online;
+      //var nav = $('.navigator');
+      //if (online) {
       var switchLoginOrLogout = $('#switchLoginOrLogout');
       switchLoginOrLogout.removeAttr('href');
       switchLoginOrLogout.css({ cursor: 'pointer' });
@@ -419,7 +419,7 @@
       });
       $('#userPageEnter').removeAttr('hidden');
     }
-      
+    //}  
     }).catch(function(error) {
       console.log(error);
     });
