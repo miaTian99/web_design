@@ -276,10 +276,11 @@
                               <a class="nav-link" data-toggle="tab" data-target="#tabthree" href="#">联系方式</a>
                             </li>
                             <li class="nav-item">
-                              <a class="btn btn-primary px-3 " onclick="toCollectItem(this)"
-                                :id="modalRenderData.item_id"><i
+                              <a class="btn btn-primary px-3 " @click="toCollectItem(modalRenderData.item_id)">
+                                <i
                                   :class="modalRenderData.item_collect_status ? 'fas' : 'far'"
-                                  class="fa-star fa-fw fa-1x py-1"></i></a>
+                                  class="fa-star fa-fw fa-1x py-1"></i>
+                              </a>
                             </li>
                           </ul>
                         </div>
@@ -422,7 +423,7 @@
                                   <p style="margin-top:1px;">详情</p>
                                 </a></div>
                               <div class="col-md-6 my-2">
-                                <a class="btn btn-primary knowmore ml-5 mr-2"  @click="toCollectItem(item.item_id)" :id="item.item_id">
+                                <a class="btn btn-primary knowmore ml-5 mr-2"  @click="toCollectItem(item.item_id, index)">
                                   <i :class="item.item_collect_status ? 'fas' : 'far'" class="collect fa-star fa-fw fa-1x" style="margin-top:4px;"></i>
                                 </a>
                               </div>
@@ -444,39 +445,17 @@
         showAndRender(index) {
           this.$parent.renderIndex = index;
         },
-        toCollectItem(id) {
+        toCollectItem(id, index) {
+          var PAR_APP = this.$parent;
           axios
             .post('/qiju/user/collectItem', {
               item_id: id
             })
             .then(function (response) {
               console.log(response.data);
-              // 未登录
-              if (
-                response.data.code === -1 &&
-                response.data.message === '需要验证'
-              ) {
-                //若用户未登录，不允许进行收藏操作，但允许浏览。跳转至登录界面
-                //alert("Ooh,请先登录再操作哦");
-                $('#failCollect').modal('show');
-                //$("#failCollect").show(); //failCollect对应弹框无效操作提醒弹框的id
-                setTimeout(function () {
-                  $('#failCollect').modal('hide');
-                  location.href = '../user/login.html';
-                }, 1500);
-
-                return;
+              if (response.data.code === 1 && PAR_APP.items.length > index) {
+                PAR_APP.items[index].item_collect_status = !PAR_APP.items[index].item_collect_status + 0;
               }
-          // 已登录
-          // 切换收藏状态
-          if (response.data.code === 1) {
-            var thisHouseCollect = $('#id').find('i');
-            if (thisHouseCollect.hasClass('far')) {
-              thisHouseCollect.removeClass('far').addClass('fas');
-            } else {
-              thisHouseCollect.removeClass('fas').addClass('far');
-            }
-          }
             })
             .catch(function (error) {
               console.log(error);
@@ -537,6 +516,23 @@
             .catch(reason => {
               console.log(reason);
             });
+        },
+        toCollectItem(id) {
+          var index = this.renderIndex;
+          var self = this;
+          axios
+            .post('/qiju/user/collectItem', {
+              item_id: id
+            })
+            .then(function (resp) {
+              console.log(resp.data);
+              if (resp.data.code === 1 && self.items.length > index) {
+                self.items[index].item_collect_status = !self.items[index].item_collect_status + 0;
+              }
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
         }
       },
       watch: {
@@ -574,27 +570,13 @@
             switchLoginOrLogout.click(function () {
               axios.get('/qiju/user/logout').then(resp => {
                 if (resp.data.code === 1) {
-                  // 提示已登出
-                  //alter('登出成功');
-                  //$('#LogoutSuccess').modal('show');
-                  // setTimeout(function () {
-                  //$("#LogoutSuccess").modal('hide');
-                  //}, 1000);
                   setTimeout(() => {
                     window.location.reload();
                   }, 210);
-                  //隐藏个人中心
-                 // nav.removeClass('col-md-3').addClass('col-md-4');
-                 // $('#userCenter').hide();
                 }
               });
             });
             $('#userPageEnter').removeAttr('hidden');
-       
-           
-            //显示个人中心
-            //nav.removeClass('col-md-4').addClass('col-md-3');
-            //$('#userCenter').show();
           } 
       })
       .catch(function (error) {
@@ -608,46 +590,6 @@
         .removeClass('clickstyle');
       $(this).addClass('clickstyle');
     });
-    //-----------------------闲置物品收藏js----------------------//
-    function toCollectItem(ele) {
-      console.log('onclick:toCollectItem');
-      axios
-        .post('/qiju/user/collectItem', {
-          item_id: ele.id
-        })
-        .then(function (response) {
-          console.log(response);
-          // 未登录
-          if (
-            response.data.code === -1 &&
-            response.data.message === '需要验证'
-          ) {
-            //若用户未登录，不允许进行收藏操作，但允许浏览。跳转至登录界面
-            //alert("Ooh,请先登录再操作哦");
-            $('#failCollect').modal('show');
-            //$("#failCollect").show(); //failCollect对应弹框无效操作提醒弹框的id
-            setTimeout(function () {
-              $('#failCollect').modal('hide');
-              location.href = '../user/login.html';
-            }, 1500);
-
-            return;
-          }
-          // 已登录
-          // 切换收藏状态
-          if (response.data.code === 1) {
-            var thisItemCollect = $(ele).find('i');
-            if (thisItemCollect.hasClass('far')) {
-              thisItemCollect.removeClass('far').addClass('fas');
-            } else {
-              thisItemCollect.removeClass('fas').addClass('far');
-            }
-          }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
 
     $('#pagination').jqPaginator({
       totalPages: 100,
