@@ -511,6 +511,12 @@
                 data = data.data;
                 // 调用vue以更新视图
                 this.items = data.list;
+              } else if (data.code === -1 && data.message === '需要验证') {
+                setTimeout(function () {
+                  window.location.href = '/user/login.html';
+                }, 1000);
+              } else {
+                console.log(data);
               }
             })
             .catch(reason => {
