@@ -868,15 +868,15 @@
         }
         $('#item_view1 .carousel-item img').attr('src', thisItem.item_image);
         $('#xzwpjbxx').html(thisItem.description);
-        $('#starOfIdle')[0].onclick = function() {
-          axios.post('/qiju/user/collectItem', {
-            item_id: '' + thisItem.item_id
-          }).then(({ data }) => {
-            if (data.code === 1) {
-              console.log(data); 
-            } 
-          });
-        };
+        // $('#starOfIdle')[0].onclick = function() {
+        //   axios.post('/qiju/user/collectItem', {
+        //     item_id: '' + thisItem.item_id
+        //   }).then(({ data }) => {
+        //     if (data.code === 1) {
+        //       console.log(data); 
+        //     } 
+        //   });
+        // };
         $('#all_contact').html(
           `Phone: ${thisItem.phone || '无'} | QQ: ${thisItem.qq ||
             '无'} | 微信: ${thisItem.wechat || '无'}`
