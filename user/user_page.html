@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="/static/css/all.css" type="text/css" />
     <link rel="stylesheet" href="/static/scss/theme.css" />
     <link href="/static/css/Home.css" rel="stylesheet" type="text/css" />
+    <link
+    rel="stylesheet"
+    href="https://cdn.bootcss.com/font-awesome/5.8.2/css/fontawesome.min.css"
+    type="text/css"
+  />
     <!--修改用户头像图片预览-->
     <style type="text/css">
       #preview {
@@ -195,8 +200,8 @@
                 <div class="row">
                   <div class="col-md-12">
                     <ul class="nav nav-bar">
-                      <!-- <li class="nav-item"> <a class="nav-link active show" href="#" data-toggle="pill" data-target="#tabone"><i class="fa fa-1x fa-bed">居住体验及评价</i></a> </li>-->
-                      <li class="nav-item">
+                      <!-- <li class="nav-item navigator"> <a class="nav-link active show" href="#" data-toggle="pill" data-target="#tabone"><i class="fa fa-1x fa-bed">居住体验及评价</i></a> </li>-->
+                      <li class="nav-item navigator">
                         <a
                           class="nav-link"
                           href="#"
@@ -205,7 +210,7 @@
                           ><i class="fa fa-1x fa-home">发布我的房源</i></a
                         >
                       </li>
-                      <li class="nav-item">
+                      <li class="nav-item navigator">
                         <a
                           class="nav-link"
                           href="#"
@@ -214,7 +219,7 @@
                           ><i class="fa fa-box fa-1x">发布我的闲置物品</i></a
                         >
                       </li>
-                      <li class="nav-item">
+                      <li class="nav-item navigator">
                         <a
                           id="linkTotabfour"
                           class="nav-link"
@@ -224,7 +229,7 @@
                           ><i class="fa fa-1x fa-home">收藏的房源</i></a
                         >
                       </li>
-                      <li class="nav-item">
+                      <li class="nav-item navigator">
                         <a
                           class="nav-link"
                           href="#"
@@ -570,7 +575,7 @@
         >
           <div class="modal-content">
             <div class="modal-header bg-light">
-              <h5 class="modal-title">Preview</h5>
+              <h5 class="modal-title">物品详情</h5>
               <button
                 type="button"
                 class="close"
@@ -633,7 +638,7 @@
                           class="nav nav-tabs card-header-tabs"
                         >
                           <li class="nav-item">
-                            <a
+                            <a  href="#"
                               class="nav-link active show"
                               data-toggle="tab"
                               data-target="#tab1"
@@ -641,20 +646,21 @@
                             >
                           </li>
                           <li class="nav-item">
-                            <a
+                            <a href="#"
                               class="nav-link"
                               data-toggle="tab"
                               data-target="#tab2"
                               >联系方式</a
                             >
                           </li>
-                          <li class="nav-item">
-                            <i
-                              id="starOfIdle"
-                              class="fa fa-star fa-1x btn btn-secondary px-3"
-                            >
-                            </i>
-                          </li>
+                          <!--<li class="nav-item">
+                            <a class="btn btn-primary px-3">
+                              <i id="starOfIdle"
+                              :class="item_collect_status ? 'fas' : 'far'"
+                              class="collect fa-star fa-fw fa-1x py-1"
+                              ></i
+                            ></a>   
+                          </li>-->
                         </ul>
                       </div>
                       <div class="card-body h-50">
@@ -668,7 +674,7 @@
                               id="xzwpjbxx"
                               class="text-justify"
                             >
-                              闲置物品基本信息
+                            这个人很懒，还没有留下闲置物品基本信息哦
                             </p>
                           </div>
                           <div
@@ -680,9 +686,7 @@
                               id="all_contact"
                               class=""
                             >
-                              联系方式，弹出来的二维码，
-                              这样比较便利，做不到的话直接写微信号
-                              或者扣扣号也是很好的
+                              这个人很懒，还没有留下联系方式哦
                             </p>
                           </div>
                         </div>
@@ -869,8 +873,8 @@
             item_id: '' + thisItem.item_id
           }).then(({ data }) => {
             if (data.code === 1) {
-              console.log(data);
-            }
+              console.log(data); 
+            } 
           });
         };
         $('#all_contact').html(
@@ -880,6 +884,29 @@
 
         console.log(thisItem);
       }
+       //-----------------------闲置物品收藏js----------------------//
+    /*function toCollectItem(ele) {
+      axios
+        .post('/qiju/user/collectItem', {
+          item_id: ele.id
+        })
+        .then(function (response) {
+          console.log(response);
+          // 已登录
+          // 切换收藏状态
+          if (response.data.code === 1) {
+            var thisItemCollect = $(ele).find('i');
+            if (thisItemCollect.hasClass('far')) {
+              thisItemCollect.removeClass('far').addClass('fas');
+            } else {
+              thisItemCollect.removeClass('fas').addClass('far');
+            }
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }*/
       // 渲染用户资料
       axios.get('/qiju/user/profile').then(({ data }) => {
         if (data.code === 1) {
@@ -1104,8 +1131,8 @@
                 <div class="btn-group pt-2">
                <a onclick="renderIdleModal(this)" data-idle='${JSON.stringify(
                  thisItem
-               )}' data-toggle="modal" data-target="#item_view1" href="house/onehouse.html" class="btn btn-sm btn-outline-secondary">详情</a>
-              <a href="/item/item_edit.html#/page/${thisItem.item_id}" class="btn btn-sm btn-outline-secondary"> 编辑</a>
+               )}' data-toggle="modal" data-target="#item_view1" class="btn btn-sm btn-outline-secondary">详情</a>
+              <!--<a href="/item/item_edit.html#/page/${thisItem.item_id}" class="btn btn-sm btn-outline-secondary"> 编辑</a>-->
              </div>
             <small class="text-muted">创建: ${create_time}</small>
           </div>
@@ -1215,7 +1242,7 @@
     </script>
     <script type="text/javascript">
       /*var oLis=document.getElementsByTagName("li");*/
-      var oLis = $('.nav-item');
+      var oLis = $('.navigator');
       var i, j;
       var length = oLis.length;
       for (i = 0; i < length; i++) {

@@ -422,7 +422,7 @@
                                   <p style="margin-top:1px;">详情</p>
                                 </a></div>
                               <div class="col-md-6 my-2">
-                                <a class="btn btn-primary knowmore ml-5 mr-2" @click="toCollectItem(item.item_id)">
+                                <a class="btn btn-primary knowmore ml-5 mr-2"  @click="toCollectItem(item.item_id)" :id="item.item_id">
                                   <i :class="item.item_collect_status ? 'fas' : 'far'" class="collect fa-star fa-fw fa-1x" style="margin-top:4px;"></i>
                                 </a>
                               </div>
@@ -446,7 +446,7 @@
         },
         toCollectItem(id) {
           axios
-            .post('/qiju/user/collectHouse', {
+            .post('/qiju/user/collectItem', {
               item_id: id
             })
             .then(function (response) {
@@ -467,6 +467,16 @@
 
                 return;
               }
+          // 已登录
+          // 切换收藏状态
+          if (response.data.code === 1) {
+            var thisHouseCollect = $('#id').find('i');
+            if (thisHouseCollect.hasClass('far')) {
+              thisHouseCollect.removeClass('far').addClass('fas');
+            } else {
+              thisHouseCollect.removeClass('fas').addClass('far');
+            }
+          }
             })
             .catch(function (error) {
               console.log(error);
@@ -600,7 +610,7 @@
     });
     //-----------------------闲置物品收藏js----------------------//
     function toCollectItem(ele) {
-      console.log('onclick: toCollectItem');
+      console.log('onclick:toCollectItem');
       axios
         .post('/qiju/user/collectItem', {
           item_id: ele.id
@@ -626,11 +636,11 @@
           // 已登录
           // 切换收藏状态
           if (response.data.code === 1) {
-            var thisHouseCollect = $(ele).find('i');
-            if (thisHouseCollect.hasClass('far')) {
-              thisHouseCollect.removeClass('far').addClass('fas');
+            var thisItemCollect = $(ele).find('i');
+            if (thisItemCollect.hasClass('far')) {
+              thisItemCollect.removeClass('far').addClass('fas');
             } else {
-              thisHouseCollect.removeClass('fas').addClass('far');
+              thisItemCollect.removeClass('fas').addClass('far');
             }
           }
         })
