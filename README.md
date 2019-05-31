@@ -7,6 +7,6 @@
 
 一、项目文件结构如下：
 
-![image](https://github.com/perseverance123/web_design/blob/master/栖居页面分布.jpg)
+![image](https://github.com/iiiovo/web_design/blob/master/栖居页面分布.jpg)
 
 
